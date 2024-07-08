@@ -24,4 +24,7 @@ tcp.run
 
 #sd.run
 =end
-Snackhack2::SSHBute.new("167.98.80.8").run
+#Snackhack2::SSHBute.new("167.98.80.8").run
+
+wp = Snackhack2::WordPress.new("https://kinsta.com")
+wp.run
