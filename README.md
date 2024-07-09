@@ -13,6 +13,9 @@ gem install snackhack2
 ## Usage
 
 ## WordPress
+
+There is 7 different elements in an array. The code loops through each line of the source code of the page, checking for that element in the source. If it is found it adds
+10 to the score. The higher the score the more likely it is a site with Wordpress.
 ```ruby
 require "snackhack2"
 wp = Snackhack2::WordPress.new("https://kinsta.com")
@@ -27,6 +30,7 @@ tcp.run
 
 ## Robots.txt
 
+This reads the robots.txt file and tries both the disallow and allow item and test to see if they are valid.
 ```ruby
 ip = Snackhack2::Robots.new("https://google.com", save_file: true)
 puts ip.run
@@ -36,6 +40,19 @@ puts ip.run
 ```ruby
 bg = Snackhack2::BannerGrabber.new("https://google.com")
 bg.run
+```
+## Website MetaData
+```ruby
+me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
+me.run
+```
+
+## Subdomains
+Uses DNS to find subdomains & IPs
+
+```ruby
+sd = Snackhack2::Subdomains.new("https://ruby-lang.org")
+sd.run
 ```
 ## Development
 

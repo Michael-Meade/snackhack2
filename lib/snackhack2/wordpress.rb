@@ -26,7 +26,7 @@ module Snackhack2
       wp.each do |path|
         percent += 10 if login2.body.include?(path)
       end
-      puts "Chances of it being wordpress: #{percent}"
+      puts "Wordpress Points: #{percent}"
     end
   end
 end
