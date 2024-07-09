@@ -41,6 +41,16 @@ puts ip.run
 bg = Snackhack2::BannerGrabber.new("https://google.com")
 bg.run
 ```
+
+## Banner grabber with cURL
+
+```ruby
+bg = Snackhack2::BannerGrabber.new("https://google.com")
+bg.curl
+# .server will give you the website's server banner
+bg.server
+```
+
 ## Website MetaData
 ```ruby
 me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
@@ -53,6 +63,12 @@ Uses DNS to find subdomains & IPs
 ```ruby
 sd = Snackhack2::Subdomains.new("https://ruby-lang.org")
 sd.run
+```
+
+## SSH Brute
+
+```ruby
+Snackhack2::SSHBute.new("167.98.80.8").run
 ```
 ## Development
 
