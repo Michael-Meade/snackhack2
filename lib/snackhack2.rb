@@ -9,5 +9,6 @@ require_relative 'snackhack2/robots'
 require_relative 'snackhack2/subdomains'
 require_relative 'snackhack2/sshbrute'
 require_relative 'snackhack2/website_meta'
+require_relative 'snackhack2/google_analytics'
 module Snackhack2
 end

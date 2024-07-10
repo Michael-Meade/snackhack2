@@ -42,6 +42,15 @@ bg = Snackhack2::BannerGrabber.new("https://google.com")
 bg.run
 ```
 
+## Google Analytics
+
+This could be used to find other sites on the web that uses the same g code
+
+```ruby
+ga = GoogleAnalytics.new("https://g-form.com")
+ga.run
+```
+
 ## Banner grabber with cURL
 
 ```ruby

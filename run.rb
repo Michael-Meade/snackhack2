@@ -4,6 +4,7 @@ require './lib/snackHack2'
 # ### Banner Grabber
 #
 # s = Snackhack2::BannerGrabber.new("https://google.com")
+
 # s.curl
 #
 ### Word Press
@@ -16,7 +17,6 @@ require './lib/snackHack2'
 # tcp.run
 #
 ### Robots
-#
 # ip = Snackhack2::Robots.new("https://google.com", save_file: true)
 # puts ip.run
 #
@@ -25,8 +25,12 @@ require './lib/snackHack2'
 # sd.run
 # Snackhack2::SSHBute.new("167.98.80.8").run
 
-wp = Snackhack2::WordPress.new('https://kinsta.com')
-wp.run
+#wp = Snackhack2::WordPress.new('https://kinsta.com')
+#wp.run
 
 #me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
 #me.run
+
+t = Snackhack2::GoogleAnalytics.new("https://g-form.com")
+
+t.run
