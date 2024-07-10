@@ -15,7 +15,7 @@ module Snackhack2
       percent = 0
       ## todo: maybe add Bayes Theorem to detect wp
       wp = ['wp-includes', 'wp-admin', 'Powered by WordPress', 'wp-login.php', 'yoast.com/wordpress/plugins/seo/',
-            'wordpress-login-url.jpg', 'wp-content/themes/', "wp-json/"]
+            'wordpress-login-url.jpg', 'wp-content/themes/', "wp-json"]
       login = HTTParty.get("#{@site}/wp-login.php")
       if login.code == 200
         wp.each do |path|

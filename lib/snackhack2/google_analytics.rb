@@ -13,6 +13,8 @@ module Snackhack2
     			puts a.match(/GTM-[A-Z0-9]{7}/)
     		elsif a.match(/G-([0-9]+([A-Za-z]+[0-9]+)+)/)
     			puts a.match(/G-([0-9]+([A-Za-z]+[0-9]+)+)/)
+    		else
+    			puts "[+] No Google Analytics found :("
     		end
     	end
 	end

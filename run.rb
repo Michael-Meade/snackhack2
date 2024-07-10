@@ -3,9 +3,8 @@
 require './lib/snackHack2'
 # ### Banner Grabber
 #
-# s = Snackhack2::BannerGrabber.new("https://google.com")
-
-# s.curl
+#s = Snackhack2::BannerGrabber.new("https://google.com")
+#s.curl
 #
 ### Word Press
 #
@@ -31,6 +30,10 @@ require './lib/snackHack2'
 #me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
 #me.run
 
-t = Snackhack2::GoogleAnalytics.new("https://g-form.com")
+#t = Snackhack2::GoogleAnalytics.new("https://g-form.com")
 
-t.run
+#t.run
+
+bg =  Snackhack2::Main.new("https://google.com")
+
+bg.website_meta
