@@ -34,6 +34,9 @@ require './lib/snackHack2'
 
 #t.run
 
-bg =  Snackhack2::Main.new("https://google.com")
+#bg =  Snackhack2::Main.new("https://google.com")
 
-bg.website_meta
+#bg.website_meta
+
+ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
+ca.run

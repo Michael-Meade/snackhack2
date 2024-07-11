@@ -10,6 +10,7 @@ require_relative 'snackhack2/subdomains'
 require_relative 'snackhack2/sshbrute'
 require_relative 'snackhack2/website_meta'
 require_relative 'snackhack2/google_analytics'
+require_relative 'snackhack2/cryptoextractor'
 module Snackhack2
   class Main
     def initialize(site)
