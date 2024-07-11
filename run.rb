@@ -30,9 +30,9 @@ require './lib/snackHack2'
 #me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
 #me.run
 
-#t = Snackhack2::GoogleAnalytics.new("https://g-form.com")
+t = Snackhack2::GoogleAnalytics.new("https://www.googletagmanager.com/gtag/js?id=G-SL8LSCXHSV")
 
-#t.run
+t.run
 
 #bg =  Snackhack2::Main.new("https://google.com")
 
@@ -44,7 +44,8 @@ ca.save_file = false
 ca.run
 
 =end
-
+=begin
 wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
 #wp.save_file = false
 wp.users
+=end
