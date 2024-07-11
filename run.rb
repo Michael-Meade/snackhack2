@@ -45,5 +45,6 @@ ca.run
 
 =end
 
-wp = Snackhack2::WordPress.new("https://themeisle.com")
+wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
+#wp.save_file = false
 wp.users

@@ -22,6 +22,23 @@ wp = Snackhack2::WordPress.new("https://kinsta.com")
 wp.run
 ```
 
+Now get wordpress users. This will save the users in a file with a similiar name like this: google.com_users.txt
+
+```ruby
+wp = Snackhack2::WordPress.new("https://themeisle.com")
+wp.users
+# print out users instead of saving to file.
+wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
+wp.users
+
+# you can also set it to false like this:
+wp = Snackhack2::WordPress.new("https://themeisle.com")
+wp.save_file = false
+
+wp.users
+
+```
+
 ## PortScan
 ```ruby
 tcp = Snackhack2::PortScan.new("167.71.98.134")
@@ -60,6 +77,7 @@ bg.curl
 bg.server
 ```
 ## CryptoExtrator
+
 By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out.
 ```ruby
 ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")

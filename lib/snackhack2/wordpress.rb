@@ -3,6 +3,7 @@ require 'json'
 require 'httparty'
 module Snackhack2
   class WordPress
+  	attr_accessor :save_file
     def initialize(site, save_file: true)
       @site = site
       @save_file = save_file
@@ -28,7 +29,7 @@ module Snackhack2
 	    if @save_file
 	    	File.open("#{file_site}_users.txt", 'w+') { |file| file.write(found_users) }
 	    else
-	    	puts users
+	    	puts found_users
 	    end
     end
 
