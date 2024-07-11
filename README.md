@@ -59,7 +59,15 @@ bg.curl
 # .server will give you the website's server banner
 bg.server
 ```
-
+## CryptoExtrator
+By default it @save_file is set by true. But can be changed to false as seen below. 
+```ruby
+ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
+puts ca.save_file
+ca.save_file = false
+puts ca.save_file
+ca.run
+```
 ## Website MetaData
 ```ruby
 me = Snackhack2::WebsiteMeta.new('https://kinsta.com')

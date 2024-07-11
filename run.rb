@@ -39,4 +39,6 @@ require './lib/snackHack2'
 #bg.website_meta
 
 ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
+puts ca.save_file
+ca.save_file = false
 ca.run

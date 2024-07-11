@@ -23,9 +23,12 @@ module Snackhack2
             crypto_regex.each do |name, regex|
                 addresses << body.scan(/#{regex}/)
             end
-
-        hostname = URI.parse(@site).host
-        File.open("#{hostname}_cryptoaddresses.txt", 'w+') { |file| file.write(addresses.uniq.join("\n")) } if @save_file 
+            if @save_file
+                hostname = URI.parse(@site).host
+                File.open("#{hostname}_cryptoaddresses.txt", 'w+') { |file| file.write(addresses.uniq.join("\n")) } if @save_file
+            else
+                puts addresses.join("\n")
+            end 
         end
     end
 end
