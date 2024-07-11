@@ -25,7 +25,7 @@ module Snackhack2
             end
             if @save_file
                 hostname = URI.parse(@site).host
-                File.open("#{hostname}_cryptoaddresses.txt", 'w+') { |file| file.write(addresses.uniq.join("\n")) } if @save_file
+                File.open("#{hostname}_cryptoaddresses.txt", 'w+') { |file| file.write(addresses.uniq.join("\n")) }
             else
                 puts addresses.join("\n")
             end 

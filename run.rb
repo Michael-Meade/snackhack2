@@ -37,8 +37,13 @@ require './lib/snackHack2'
 #bg =  Snackhack2::Main.new("https://google.com")
 
 #bg.website_meta
-
-ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
+=begin
+ca = Snackhack2::CryptoExtractWebsite.new("https://google.com")
 puts ca.save_file
 ca.save_file = false
 ca.run
+
+=end
+
+wp = Snackhack2::WordPress.new("https://themeisle.com")
+wp.users

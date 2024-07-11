@@ -60,7 +60,7 @@ bg.curl
 bg.server
 ```
 ## CryptoExtrator
-By default it @save_file is set by true. But can be changed to false as seen below. 
+By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out.
 ```ruby
 ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
 puts ca.save_file
