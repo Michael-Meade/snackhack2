@@ -89,7 +89,7 @@ bg.server
 ```
 ## CryptoExtrator
 
-By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out.
+By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out. This will find crytoaddresses in website and save them to a file or print them out. Currently it supports: BTC, DOGE, XMR, ETH, Tron.
 ```ruby
 ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
 puts ca.save_file

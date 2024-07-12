@@ -13,11 +13,16 @@ module Snackhack2
 
     def crypto_regex
       {
-        "Bitcoin": '^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$',
+        "Bitcoin": '(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$',
         "Monero": '[48][0-9AB][1-9A-HJ-NP-Za-km-z]{93}',
-        "Ethereum": '^0x[a-fA-F0-9]{40}$',
-        "DogeCoin": '^D{1}[56789ABCDEFGHJKLMNPQRSTU]{1}[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{32}$',
-        "Tron": 'T[A-Za-z1-9]{33}'
+        "Ethereum": '0x[a-fA-F0-9]{40}$',
+        "DogeCoin": 'D{1}[56789ABCDEFGHJKLMNPQRSTU]{1}[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{32}$',
+        "Tron": 'T[A-Za-z1-9]{33}',
+        "Dash": "X[1-9A-HJ-NP-Za-km-z]{33}$",
+        "LiteCoin": "[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}",
+        "BitcoinCash": "[13][a-km-zA-HJ-NP-Z1-9]{33}",
+        "NEO": "A[0-9a-zA-Z]{33}",
+        "Ripple": "r[0-9a-zA-Z]{24,34}"
       }
     end
 
