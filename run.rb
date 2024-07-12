@@ -3,8 +3,8 @@
 require './lib/snackHack2'
 # ### Banner Grabber
 #
-#s = Snackhack2::BannerGrabber.new("https://google.com")
-#s.curl
+# s = Snackhack2::BannerGrabber.new("https://google.com")
+# s.curl
 #
 ### Word Press
 #
@@ -24,30 +24,26 @@ require './lib/snackHack2'
 # sd.run
 # Snackhack2::SSHBute.new("167.98.80.8").run
 
-#wp = Snackhack2::WordPress.new('https://kinsta.com')
-#wp.run
+# wp = Snackhack2::WordPress.new('https://kinsta.com')
+# wp.run
 
-#me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
-#me.run
+# me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
+# me.run
 
-#t = Snackhack2::GoogleAnalytics.new("https://www.googletagmanager.com/gtag/js?id=G-SL8LSCXHSV")
+# t = Snackhack2::GoogleAnalytics.new("https://www.googletagmanager.com/gtag/js?id=G-SL8LSCXHSV")
 
-#t.run
+# t.run
 
-#bg =  Snackhack2::Main.new("https://google.com")
+# bg =  Snackhack2::Main.new("https://google.com")
 
-#bg.website_meta
-=begin
-ca = Snackhack2::CryptoExtractWebsite.new("https://google.com")
-puts ca.save_file
-ca.save_file = false
-ca.run
-
-=end
-=begin
-wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
-#wp.save_file = false
-wp.users
-=end
-links = Snackhack2::WebsiteLinks.new("https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/")
+# bg.website_meta
+# ca = Snackhack2::CryptoExtractWebsite.new("https://google.com")
+# puts ca.save_file
+# ca.save_file = false
+# ca.run
+#
+# wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
+# wp.save_file = false
+# wp.users
+links = Snackhack2::WebsiteLinks.new('https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/')
 links.run

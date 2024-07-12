@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'uri'
 require_relative 'snackhack2/version'
 require_relative 'snackhack2/bannergrabber'
@@ -17,15 +18,18 @@ module Snackhack2
     def initialize(site)
       @site = site
     end
+
     def banner_grabber
       s = Snackhack2::BannerGrabber.new(@site)
       s.run
       s.curl
     end
+
     def subdomain
       sd = Snackhack2::Subdomains.new(@site)
       sd.run
     end
+
     def website_meta
       wm = Snackhack2::WebsiteMeta.new(@site)
       wm.run
