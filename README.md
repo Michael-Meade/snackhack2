@@ -38,6 +38,17 @@ wp.save_file = false
 wp.users
 
 ```
+## Link
+
+Grab all the links in a site and save it in a file named `google.com_links.txt` By default `@save_file` is set as `true`. If set to false it will print out all the links
+```ruby
+links = Snackhack2::WebsiteLinks.new("https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/")
+links.run
+
+# set @save_file as false
+links.save_file = false
+
+```
 
 ## PortScan
 ```ruby

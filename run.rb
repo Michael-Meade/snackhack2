@@ -30,9 +30,9 @@ require './lib/snackHack2'
 #me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
 #me.run
 
-t = Snackhack2::GoogleAnalytics.new("https://www.googletagmanager.com/gtag/js?id=G-SL8LSCXHSV")
+#t = Snackhack2::GoogleAnalytics.new("https://www.googletagmanager.com/gtag/js?id=G-SL8LSCXHSV")
 
-t.run
+#t.run
 
 #bg =  Snackhack2::Main.new("https://google.com")
 
@@ -49,3 +49,5 @@ wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
 #wp.save_file = false
 wp.users
 =end
+links = Snackhack2::WebsiteLinks.new("https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/")
+links.run

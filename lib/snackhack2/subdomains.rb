@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'uri'
 require 'resolv'
 module Snackhack2
   class Subdomains
@@ -18,10 +18,6 @@ module Snackhack2
       end
     end
 
-    def site
-      @site.gsub('https://', '')
-    end
-
     def resolv(sd)
       # NOTE: this is really slow & multi thread doesnt work
       # due to resolv
@@ -37,8 +33,9 @@ module Snackhack2
           end
         end
       end
-      File.open("#{@site.gsub('https://', '')}_subdomains.txt", 'w+') { |file| file.write(subdomains.join("\n")) }
-      File.open("#{@site.gsub('https://', '')}_ips.txt", 'w+') { |file| file.write(active.join("\n")) }
+      host = URI.parse(@site).host
+      File.open("#{host}_subdomains.txt", 'w+') { |file| file.write(subdomains.join("\n")) }
+      File.open("#{host}_ips.txt", 'w+') { |file| file.write(active.join("\n")) }
     end
   end
 end
