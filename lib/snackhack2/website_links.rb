@@ -12,12 +12,14 @@ module Snackhack2
     end
 
     def run
-      hostname = URI.parse(@site).host
+      
       doc = Nokogiri::HTML(URI.open(@site))
       links = doc.xpath('//a')
       all_links = links.map { |e| e['href'] }.compact
       if @save_file
-        File.open("#{hostname}_links.txt", 'w+') { |file| file.write(all_links.uniq.join("\n")) }
+        content = all_links.uniq.join("\n")
+        hostname = URI.parse(@site).host
+        File.open("#{hostname}_links.txt", 'w+') { |file| file.write() }
       else
         all_links.each do |links|
           puts links
