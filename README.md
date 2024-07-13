@@ -12,10 +12,19 @@ gem install snackhack2
 
 ## Usage
 
+## WebServer cleaner
+
+You supply a IP and the code will find all the traces of the ip in the Log file and replace it with a fake IP that is generated . By default it reads from "/var/log/access.log", but that can be changed. It has to ran with root.
+
+```ruby
+Snackhack2::WebServerCleaner.new('83.149.9.216').run
+```
+
 ## WordPress
 
 There is 7 different elements in an array. The code loops through each line of the source code of the page, checking for that element in the source. If it is found it adds
 10 to the score. The higher the score the more likely it is a site with Wordpress.
+
 ```ruby
 require "snackhack2"
 wp = Snackhack2::WordPress.new("https://kinsta.com")
@@ -41,6 +50,7 @@ wp.users
 ## Link
 
 Grab all the links in a site and save it in a file named `google.com_links.txt` By default `@save_file` is set as `true`. If set to false it will print out all the links
+
 ```ruby
 links = Snackhack2::WebsiteLinks.new("https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/")
 links.run
@@ -51,6 +61,7 @@ links.save_file = false
 ```
 
 ## PortScan
+
 ```ruby
 tcp = Snackhack2::PortScan.new("167.71.98.134")
 tcp.run
@@ -65,6 +76,7 @@ puts ip.run
 ```
 
 ## Banner Grabber
+
 ```ruby
 bg = Snackhack2::BannerGrabber.new("https://google.com")
 bg.run
@@ -90,6 +102,7 @@ bg.server
 ## CryptoExtrator
 
 By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out. This will find crytoaddresses in website and save them to a file or print them out. Currently it supports: BTC, DOGE, XMR, ETH, Tron.
+
 ```ruby
 ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
 puts ca.save_file
@@ -98,12 +111,14 @@ puts ca.save_file
 ca.run
 ```
 ## Website MetaData
+
 ```ruby
 me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
 me.run
 ```
 
 ## Subdomains
+
 Uses DNS to find subdomains & IPs
 
 ```ruby

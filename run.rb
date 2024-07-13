@@ -45,5 +45,7 @@ require './lib/snackHack2'
 # wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
 # wp.save_file = false
 # wp.users
-links = Snackhack2::WebsiteLinks.new('https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/')
-links.run
+# links = Snackhack2::WebsiteLinks.new('https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/')
+# links.run
+
+Snackhack2::WebServerCleaner.new('83.149.9.216').run
