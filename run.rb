@@ -48,4 +48,6 @@ require './lib/snackHack2'
 # links = Snackhack2::WebsiteLinks.new('https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/')
 # links.run
 
-Snackhack2::WebServerCleaner.new('83.149.9.216').run
+#Snackhack2::WebServerCleaner.new('83.149.9.216').run
+#ga = Snackhack2::GoogleAnalytics.new("https://g-form.com")
+#ga.run

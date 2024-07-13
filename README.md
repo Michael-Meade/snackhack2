@@ -87,7 +87,7 @@ bg.run
 This could be used to find other sites on the web that uses the same g code
 
 ```ruby
-ga = GoogleAnalytics.new("https://g-form.com")
+ga = Snackhack::GoogleAnalytics.new("https://g-form.com")
 ga.run
 ```
 
@@ -101,7 +101,7 @@ bg.server
 ```
 ## CryptoExtrator
 
-By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out. This will find crytoaddresses in website and save them to a file or print them out. Currently it supports: BTC, DOGE, XMR, ETH, Tron.
+By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out. This will find crypto addresses displayed on websites and save them to a file or print them out. Currently it supports: BTC, DOGE, XMR, ETH, Tron, Ripple, Dash, NEO, BitcoinCash and LiteCoin
 
 ```ruby
 ca = Snackhack2::CryptoExtractWebsite.new("https://www.coincarp.com/currencies/tron/richlist/")
