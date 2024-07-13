@@ -14,7 +14,7 @@ gem install snackhack2
 
 ## WebServer cleaner
 
-You supply a IP and the code will find all the traces of the ip in the Log file and replace it with a fake IP that is generated . By default it reads from "/var/log/access.log", but that can be changed. It has to ran with root.
+You supply a IP and the code will find all the traces of the ip in the Log file and replace it with a fake IP that is generated . By default it reads from "/var/log/access.log", but that can be changed. It has to be ran with root.
 
 ```ruby
 Snackhack2::WebServerCleaner.new('83.149.9.216').run
