@@ -22,7 +22,8 @@ module Snackhack2
         "LiteCoin": '[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}',
         "BitcoinCash": '[13][a-km-zA-HJ-NP-Z1-9]{33}',
         "NEO": 'A[0-9a-zA-Z]{33}',
-        "Ripple": 'r[0-9a-zA-Z]{24,34}'
+        "Ripple": 'r[0-9a-zA-Z]{24,34}',
+        "Stellar": "G[A-Z0-9]{55}$"
       }
     end
 

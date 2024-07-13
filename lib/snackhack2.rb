@@ -13,6 +13,6 @@ require_relative 'snackhack2/website_meta'
 require_relative 'snackhack2/google_analytics'
 require_relative 'snackhack2/cryptoextractor'
 require_relative 'snackhack2/website_links'
-require_relative 'snackhack2/webserver_cleaner'
+require_relative 'snackhack2/webserver_log_cleaner'
 module Snackhack2
 end
