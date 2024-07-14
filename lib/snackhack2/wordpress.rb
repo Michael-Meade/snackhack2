@@ -28,7 +28,7 @@ module Snackhack2
         json.each_key do |k|
           found_users += "#{k['name']}\n"
         end
-      rescue JSON::ParserError
+      rescue 
         puts '[+] users not found'
       end
       if @save_file

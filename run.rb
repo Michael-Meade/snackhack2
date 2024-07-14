@@ -102,4 +102,15 @@ end
 #Snackhack2::read_serverversion
 #Snackhack2::clean_serverversion
 
-Snackhack2::IpLookup.new("https://google.com").run
+#Snackhack2::IpLookup.new("https://google.com").run
+#wp = Snackhack2::GoogleAnalytics.new("https://www.drrajatgupta.com").run
+
+ca = Snackhack2::CryptoExtractWebsite.new("https://blockchair.com/dash/block/2104711")
+ca.save_file = false
+ca.run
+
+=begin
+require 'httparty'
+body = HTTParty.get("https://www.getmonero.org/resources/moneropedia/address.html").body
+p body.scan(/[48][0-9AB][1-9A-HJ-NP-Za-km-z]{93}/)
+=end
