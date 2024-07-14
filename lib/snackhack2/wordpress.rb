@@ -5,6 +5,7 @@ require 'httparty'
 module Snackhack2
   class WordPress
     attr_accessor :save_file
+    attr_accessor :site
 
     def initialize(site, save_file: true)
       @site = site
@@ -35,6 +36,17 @@ module Snackhack2
       else
         puts found_users
       end
+    end
+
+    def wp_content_uploads
+    	s = HTTParty.get(File.join(@site, "/wp-content/uploads/"))
+    	if s.code == 200
+    		msg = File.join(@site, "/wp-content/uploads/")
+    		puts "[+] #{msg} is VALID...\n"
+    		if s.body.include?("Index of")
+    			puts "Index of is valid...\n"
+    		end
+    	end
     end
 
     def wp_login

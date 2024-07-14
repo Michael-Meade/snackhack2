@@ -12,6 +12,7 @@ module Snackhack2
     end
 
     def run
+      puts ":::"
       doc = Nokogiri::HTML(URI.open(@site))
       links = doc.xpath('//a')
       all_links = links.map { |e| e['href'] }.compact

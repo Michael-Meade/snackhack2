@@ -31,7 +31,7 @@ wp = Snackhack2::WordPress.new("https://kinsta.com")
 wp.run
 ```
 
-Now get wordpress users. This will save the users in a file with a similiar name like this: google.com_users.txt
+Now get wordpress user's. This will save the users in a file with a similiar name like this: google.com_users.txt. `wp_content_uploads` will check to see if there are any open directories. 
 
 ```ruby
 wp = Snackhack2::WordPress.new("https://themeisle.com")
@@ -46,10 +46,23 @@ wp.save_file = false
 
 wp.users
 
+
+## check to see if a site has wp-conent with open directories!
+wp.wp_content_uploads
+
+## Look at multiple sites for wordpress.
+
+["https://google.com", "https://kinsta.com", "https://porchlightshop.com", "https://www.drrajatgupta.com"].each do |site|
+    wp = Snackhack2::WordPress.new(site)
+    puts "#{site}: "
+    wp.run
+    puts "\n"
+end
 ```
 ## Link
 
-Grab all the links in a site and save it in a file named `google.com_links.txt` By default `@save_file` is set as `true`. If set to false it will print out all the links
+Grab all the links in a site and save it in a file named `google.com_links.txt` By default `@save_file` is set as `true`. If set to false it will print out all the links.
+
 
 ```ruby
 links = Snackhack2::WebsiteLinks.new("https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/")
@@ -59,8 +72,25 @@ links.run
 links.save_file = false
 
 ```
+## Clean serverversion
+
+This will remove all files that include all files that have `_severversion` in the file name. The `_serversversion` files are created by Snackhack2::curl. 
+
+```ruby
+Snackhack2::clean_serverversion
+```
+
+## Read serverversion files
+
+This will read all files with `_serverversion` in the file name. This is used if serverversion is used on a bunch of sites that you need to check and read. 
+
+```ruby
+SnackHack::read_serverversion
+```
 
 ## PortScan
+
+This uses multi thread to scan the first 1,000 ports and print the open ports. 
 
 ```ruby
 tcp = Snackhack2::PortScan.new("167.71.98.134")
@@ -70,6 +100,7 @@ tcp.run
 ## Robots.txt
 
 This reads the robots.txt file and tries both the disallow and allow item and test to see if they are valid.
+
 ```ruby
 ip = Snackhack2::Robots.new("https://google.com", save_file: true)
 puts ip.run
@@ -77,9 +108,24 @@ puts ip.run
 
 ## Banner Grabber
 
+Banner grabbing is when you get information about a computer system. This information can be used to gather what version of software or what OS the computer is running. This information could also be used to plan an attack or used to find a exploit for the version of the software. 
+
 ```ruby
 bg = Snackhack2::BannerGrabber.new("https://google.com")
 bg.run
+
+## Usin cURL
+
+bg.curl
+
+## Just get server name 
+bg.server
+
+
+["https://google.com", "https://kinsta.com", "https://porchlightshop.com", "https://www.drrajatgupta.com"].each do |site|
+    s = Snackhack2::BannerGrabber.new(site)
+    puts s.curl
+end
 ```
 
 ## Google Analytics

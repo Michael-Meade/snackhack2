@@ -4,14 +4,17 @@ require 'httparty'
 require 'socket'
 module Snackhack2
   class BannerGrabber
-    attr_accessor :site
+    attr_accessor :site, :save_file
 
-    def initialize(site, port: 443)
+    def initialize(site, port: 443, save_file: true)
       @site    = site
       @port    = port
       @headers = HTTParty.get(site).headers
+      @save_file = save_file
     end
-
+    def site
+      @site.gsub("https://", "")
+    end
     def run
       nginx
       apache2
@@ -31,8 +34,15 @@ module Snackhack2
     end
 
     def curl
+      servers = ""
       cmd = `curl -s -I #{@site.gsub('https://', '')}`
-      puts "Banner: #{cmd.split('Server: ')[1].split("\n")[0]}"
+      version = cmd.split('Server: ')[1].split("\n")[0].strip
+      if @save_file
+        servers += version.to_s 
+      else
+        puts "Banner: #{cmd.split('Server: ')[1].split("\n")[0]}"
+      end
+    File.open("#{@site.gsub('https://', '')}_serverversion.txt", 'w+') { |file| file.write(servers) }
     end
 
     def apache2
