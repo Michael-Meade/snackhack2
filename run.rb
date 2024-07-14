@@ -101,3 +101,5 @@ end
 =end
 #Snackhack2::read_serverversion
 #Snackhack2::clean_serverversion
+
+Snackhack2::IpLookup.new("https://google.com").run

@@ -12,6 +12,14 @@ gem install snackhack2
 
 ## Usage
 
+## IP Lookup
+
+Get IP of a site using Nslookup and ping.
+
+```ruby
+Snackhack2::IpLookup.new("https://google.com").run
+```
+
 ## WebServer cleaner
 
 You supply a IP and the code will find all the traces of the ip in the web server Log file and replace it with a fake IP that is randomly generated . By default it reads from "/var/log/access.log", but that can be changed. It has to be ran with root.

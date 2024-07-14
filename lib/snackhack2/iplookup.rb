@@ -13,7 +13,7 @@ module Snackhack2
 
     def get_ip
       ips = []
-      ip = `ping -c 2 #{@site}`.lines
+      ip = `ping -c 2 #{@site.gsub("https://", "")}`.lines
       ip.each do |l|
         new_ip = l.match(/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/)
         ips << new_ip.to_s unless ips.include?(new_ip)
@@ -22,7 +22,7 @@ module Snackhack2
     end
 
     def nslookup
-      ns = `nslookup #{@site}`.lines
+      ns = `nslookup #{@site.gsub("https://", "")}`.lines
       ns.each do |ip|
         puts ip if ip.include?('Address')
       end
