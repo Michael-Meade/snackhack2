@@ -174,6 +174,25 @@ ca.bitcoincash
 ca.dogecoin
 ```
 
+## Phone Number
+
+Get phone numbers from a site.
+
+```ruby
+wp = Snackhack2::PhoneNumber.new('https://pastebin.com/PgJuhznU')
+wp.run
+
+```
+
+## Phone Number Web Spider
+
+```ruby
+pn = Snackhack2::PhoneNumber.new('https://utica.edu/people')
+pn.spider
+# will print the phone numbers instead of saving them to file
+ph.save_file = false
+```
+
 ## wpForo Forum <= 1.4.11 - Unauthenticated Reflected Cross-Site Scripting (XSS)
 
 ```ruby

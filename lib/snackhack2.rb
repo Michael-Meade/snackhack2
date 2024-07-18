@@ -16,6 +16,7 @@ require_relative 'snackhack2/website_links'
 require_relative 'snackhack2/webserver_log_cleaner'
 require_relative 'snackhack2/wpForo_Forum'
 require_relative 'snackhack2/WP_Symposium'
+require_relative 'snackhack2/phone_number'
 module Snackhack2
   def self.read_serverversion
     files = Dir['*.txt']
