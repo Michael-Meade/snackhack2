@@ -14,19 +14,22 @@ require_relative 'snackhack2/google_analytics'
 require_relative 'snackhack2/cryptoextractor'
 require_relative 'snackhack2/website_links'
 require_relative 'snackhack2/webserver_log_cleaner'
+require_relative 'snackhack2/wpForo_Forum'
+require_relative 'snackhack2/WP_Symposium'
 module Snackhack2
   def self.read_serverversion
-    files = Dir["*.txt"]
+    files = Dir['*.txt']
     files.each do |f|
-      read  = File.read(f)
-      puts "#{f.split("_")[0]}: #{read}"
+      read = File.read(f)
+      puts "#{f.split('_')[0]}: #{read}"
     end
   end
+
   def self.clean_serverversion
     #  this wil remove all files that have '_serverversion'
     #  in the file name
-    Dir["*.txt"].each do |file|
-      if file.include?("_serverversion")
+    Dir['*.txt'].each do |file|
+      if file.include?('_serverversion')
         puts "[+] deleting #{file}..."
         File.delete(file)
       end

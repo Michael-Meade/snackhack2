@@ -12,9 +12,11 @@ module Snackhack2
       @headers = HTTParty.get(site).headers
       @save_file = save_file
     end
+
     def site
-      @site.gsub("https://", "")
+      @site.gsub('https://', '')
     end
+
     def run
       nginx
       apache2
@@ -34,15 +36,15 @@ module Snackhack2
     end
 
     def curl
-      servers = ""
+      servers = ''
       cmd = `curl -s -I #{@site.gsub('https://', '')}`
       version = cmd.split('Server: ')[1].split("\n")[0].strip
       if @save_file
-        servers += version.to_s 
+        servers += version.to_s
       else
         puts "Banner: #{cmd.split('Server: ')[1].split("\n")[0]}"
       end
-    File.open("#{@site.gsub('https://', '')}_serverversion.txt", 'w+') { |file| file.write(servers) }
+      File.open("#{@site.gsub('https://', '')}_serverversion.txt", 'w+') { |file| file.write(servers) }
     end
 
     def apache2

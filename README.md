@@ -163,6 +163,31 @@ puts ca.save_file
 ca.save_file = false
 puts ca.save_file
 ca.run
+
+ca.monero
+ca.bitcoin
+ca.litecoin
+ca.dash
+ca.stellar
+ca.ethereum
+ca.bitcoincash
+ca.dogecoin
+```
+
+## wpForo Forum <= 1.4.11 - Unauthenticated Reflected Cross-Site Scripting (XSS)
+
+```ruby
+wp = Snackhack2::WPForoForum.new("http://www.example.com")
+wp.run
+```
+
+## WordPress Plugin WP Symposium 15.1 - 'get_album_item.php' SQL Injection
+
+Get MySQL version. 
+
+```ruby
+wp = Snackhack2::WP_Symposium.new("https://example.com")
+wp.run
 ```
 ## Website MetaData
 

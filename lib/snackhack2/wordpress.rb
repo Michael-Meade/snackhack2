@@ -4,8 +4,7 @@ require 'json'
 require 'httparty'
 module Snackhack2
   class WordPress
-    attr_accessor :save_file
-    attr_accessor :site
+    attr_accessor :save_file, :site
 
     def initialize(site, save_file: true)
       @site = site
@@ -28,7 +27,7 @@ module Snackhack2
         json.each_key do |k|
           found_users += "#{k['name']}\n"
         end
-      rescue 
+      rescue StandardError
         puts '[+] users not found'
       end
       if @save_file
@@ -39,14 +38,14 @@ module Snackhack2
     end
 
     def wp_content_uploads
-    	s = HTTParty.get(File.join(@site, "/wp-content/uploads/"))
-    	if s.code == 200
-    		msg = File.join(@site, "/wp-content/uploads/")
-    		puts "[+] #{msg} is VALID...\n"
-    		if s.body.include?("Index of")
-    			puts "Index of is valid...\n"
-    		end
-    	end
+      s = HTTParty.get(File.join(@site, '/wp-content/uploads/'))
+      return unless s.code == 200
+
+      msg = File.join(@site, '/wp-content/uploads/')
+      puts "[+] #{msg} is VALID...\n"
+      return unless s.body.include?('Index of')
+
+      puts "Index of is valid...\n"
     end
 
     def wp_login
