@@ -31,7 +31,7 @@ module Snackhack2
         puts '[+] users not found'
       end
       if @save_file
-      	puts "[+] Saving file to #{file_site}_users.txt"
+        puts "[+] Saving file to #{file_site}_users.txt"
         File.open("#{file_site}_users.txt", 'w+') { |file| file.write(found_users) }
       else
         puts found_users
