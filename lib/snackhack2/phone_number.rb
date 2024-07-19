@@ -31,11 +31,14 @@ module Snackhack2
 		end
 		def spider
 			phone_numbers = []
-			Spidr.start_at(@site) do |agent|
+			Spidr.start_at(@site, max_depth: 2) do |agent|
 				agent.every_page do |page|
 					body = page.to_s
 					if body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
-						phone_numbers << body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
+						pn = body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
+						if !phone_numbers.include?(pn.to_s)
+							phone_numbers << pn.compact
+						end
 					end
 				end
 			end

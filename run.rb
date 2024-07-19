@@ -101,7 +101,5 @@ require './lib/snackHack2'
 # wp = Snackhack2::WPForoForum.new("http://www.example.com")
 # wp.run
 
-wp = Snackhack2::PhoneNumber.new('https://utica.edu/people')
-puts wp.save_file
-wp.save_file = false
-puts wp.save_file
+wp = Snackhack2::PhoneNumber.new('https://www.ewsd.org/o/ehs')
+wp.spider
