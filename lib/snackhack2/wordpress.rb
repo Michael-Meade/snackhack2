@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'json'
-require 'httparty'
 module Snackhack2
   class WordPress
     attr_accessor :save_file, :site
@@ -62,7 +61,7 @@ module Snackhack2
           percent += 10 if login.body.include?(path)
         end
       end
-      login2 = HTTParty.get(@site.to_s)
+      login2 = Snackhack2::get(@site.to_s)
       wp.each do |path|
         percent += 10 if login2.body.include?(path)
       end
