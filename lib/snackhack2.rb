@@ -20,6 +20,7 @@ require_relative 'snackhack2/WP_Symposium'
 require_relative 'snackhack2/phone_number'
 require_relative 'snackhack2/emails'
 require_relative 'snackhack2/drupal'
+require_relative 'snackhack2/Honeywell_PM43'
 module Snackhack2
   UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
   def self.read_serverversion

