@@ -13,10 +13,9 @@ require './lib/snackHack2'
 # s = Snackhack2::BannerGrabber.new("https://google.com")
 # s.curl
 
-### Word Press
-
-# wp = Snackhack2::WordPress.new("https://google.com")
-# wp.run
+### Word Press#
+#wp = Snackhack2::WordPress.new("https://www.piemonteinnova.it/")
+#wp.wp_log
 # ["https://google.com", "https://kinsta.com", "https://porchlightshop.com", "https://www.drrajatgupta.com"].each do |site|
 #   wp = Snackhack2::WordPress.new(site)
 #   puts "#{site}: "
@@ -89,9 +88,9 @@ require './lib/snackHack2'
 # Snackhack2::IpLookup.new("https://google.com").run
 # wp = Snackhack2::GoogleAnalytics.new("https://www.drrajatgupta.com").run
 
-# ca = Snackhack2::CryptoExtractWebsite.new('https://www.revuo-xmr.com/weekly/issue-201')
-# ca.save_file = false
-# puts ca.monero
+#ca = Snackhack2::CryptoExtractWebsite.new('https://www.revuo-xmr.com/weekly/issue-201')
+# ca.save_file = falseputs 
+#ca.run
 
 # wp = Snackhack2::WPForoForum.new("http://www.example.com")
 # wp.run

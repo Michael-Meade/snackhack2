@@ -2,6 +2,8 @@
 
 ### What is SnackHack?
 
+A collection of scripts that could be used to aid in hacking or performing recon on a taraget. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 
+Originally this idea was apart of my senior project but I had to ditch the idea. 
 
 
 ## Installation
@@ -108,7 +110,7 @@ links.run
 links.save_file = false
 
 ```
-## Clean serverversion
+## Clean server version
 
 This will remove all files that include all files that have `_severversion` in the file name. The `_serversversion` files are created by Snackhack2::curl. 
 
@@ -116,7 +118,7 @@ This will remove all files that include all files that have `_severversion` in t
 Snackhack2::clean_serverversion
 ```
 
-## Read serverversion files
+## Read server version files
 
 This will read all files with `_serverversion` in the file name. This is used if serverversion is used on a bunch of sites that you need to check and read. 
 

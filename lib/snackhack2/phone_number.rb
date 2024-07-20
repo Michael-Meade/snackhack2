@@ -28,7 +28,7 @@ module Snackhack2
         if @save_file
           hostname = URI.parse(@site).host
           puts "[+] Saving to #{hostname}_phone_numbers.txt..."
-          File.open("#{hostname}_phone_numbers.txt", 'w+') { |file| file.write(numbers.join("\n")) }
+          Snackhack2::file_save(@site, "phone_numbers", numbers.join("\n"))
         end
       end
     end

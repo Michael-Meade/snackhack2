@@ -16,6 +16,7 @@ module Snackhack2
       users
       wp_content_uploads
       all_in_one_seo
+      wp_log
     end
 
     def file_site
@@ -84,6 +85,34 @@ module Snackhack2
           puts "Site is using the plugin: #{alios.body.match(/(All in One SEO Pro\s\d.\d.\d)/)}"
         end
       end
+    end
+    def wp_log
+    	wplog_score = 0
+    	wp = [ '\wp-content\plugins', 'PHP Notice', 'wp-cron.php', '/var/www/html', 'Yoast\WP\SEO', 'wordpress-seo' ]
+    	log = Snackhack2::get(File.join(@site, "/wp-content/debug.log"))
+    	if log.code == 200
+    		puts "[+] #{File.join(@site, "/wp-content/debug.log")} is giving status 200. Now double checking...\n\n\n"
+    		wp.each do |e|
+    			if log.body.include?(e)
+    				wplog_score += 10
+    			end
+    		end
+    	end
+    puts "WordPress Log score: #{wplog_score}..."
+    end
+    def wp_plugin
+    	wp_plugin_score = 0
+    	wp = [ 'Index of', 'Name', 'Last modified', 'Size', 'Parent Directory', '/wp-content/plugins' ]
+    	plug = Snackhack2::get(File.join(@site, '/wp-content/plugins/'))
+    	if plug.code == 200
+    		puts "[+] Looks like #{File.join(@site, '/wp-content/plugins/')} is giving status 200. Checking to make sure...\n\n\n"
+    		wp.each do |e|
+    			if plug.body.include?(e)
+    				wp_plugin_score += 10
+    			end
+    		end
+    	end
+    puts "[+] WordPress Plugin Score: #{wp_plugin_score}"
     end
   end
 end
