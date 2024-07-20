@@ -15,7 +15,7 @@ module Snackhack2
       doc = Nokogiri::HTML(URI.open(@site))
       links = doc.xpath('//a')
       all_links = links.map { |e| e['href'] }.compact
-        content = all_links.uniq.join("\n")
+      content = all_links.uniq.join("\n")
       if @save_file
         Snackhack2::file_save(@site, "links", content)
       else

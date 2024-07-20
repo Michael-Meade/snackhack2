@@ -71,13 +71,13 @@ if options[:robots]
   ip.run
 end
 if options[:phonenumber]
-	wp = Snackhack2::PhoneNumber.new(options[:phonenumber])
-	wp.spider
+  wp = Snackhack2::PhoneNumber.new(options[:phonenumber])
+  wp.spider
 end
 if options[:drupal]
-	d = Snackhack2::Drupal.new(options[:drupal])
-	d.all
+  d = Snackhack2::Drupal.new(options[:drupal])
+  d.all
 end
 if options[:weblog]
-	Snackhack2::WebServerCleaner.new(options[:weblog]).run
+  Snackhack2::WebServerCleaner.new(options[:weblog]).run
 end

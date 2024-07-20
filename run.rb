@@ -63,9 +63,9 @@ require './lib/snackHack2'
 # ca.run
 
 ## Detect the chances of the site being wordpress.
-#wp = Snackhack2::WordPress.new("https://themeisle.com")
+# wp = Snackhack2::WordPress.new("https://themeisle.com")
 # wp.save_file = false
-#wp.users
+# wp.users
 
 ## Get all the links of a site.
 
@@ -93,21 +93,17 @@ require './lib/snackHack2'
 # ca.save_file = false
 # puts ca.monero
 
-
 # wp = Snackhack2::WPForoForum.new("http://www.example.com")
 # wp.run
 
-
-#wp = Snackhack2::PhoneNumber.new('https://pohs.grcsu.org/staff-directory/')
-#wp.spider
+# wp = Snackhack2::PhoneNumber.new('https://pohs.grcsu.org/staff-directory/')
+# wp.spider
 =begin
 e = Snackhack2::Email.new("https://www.tupeloschools.com/leadership/staff-directory")
 puts e.max_depth
 e.max_depth = 2
 puts e.max_depth
 =end
-
-
 
 d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
 d.user_brute
@@ -117,4 +113,4 @@ wp.all_in_one_seo
 
 =end
 
-#Snackhack2::BannerGrabber.new("http://95.142.29.235").apache2
+# Snackhack2::BannerGrabber.new("http://95.142.29.235").apache2

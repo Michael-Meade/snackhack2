@@ -25,7 +25,7 @@ module Snackhack2
 
     def nginx
       if @headers['server'].match(/nginx/)
-        puts "[+] Server is running NGINX... Now checking if #{File.join(@site,"nginx_status")} is valid..."
+        puts "[+] Server is running NGINX... Now checking if #{File.join(@site, "nginx_status")} is valid..."
         nginx = Snackhack2::get(File.join(@site, "nginx_status"))
         if nginx.code == 200
           puts "Check #{@site}/nginx_status"

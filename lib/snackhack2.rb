@@ -21,7 +21,7 @@ require_relative 'snackhack2/phone_number'
 require_relative 'snackhack2/emails'
 require_relative 'snackhack2/drupal'
 module Snackhack2
-  UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+  UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
   def self.read_serverversion
     files = Dir['*.txt']
     files.each do |f|
@@ -40,12 +40,14 @@ module Snackhack2
       end
     end
   end
+
   def self.file_save(site, type, content)
     hostname = URI.parse(site).host
     File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
     puts "[+] Saving file to #{hostname}_#{type}.txt..."
   end
+
   def self.get(site)
-    HTTParty.get(site, { headers: {"User-Agent" => UA}})
+    HTTParty.get(site, { headers: { "User-Agent" => UA } })
   end
 end

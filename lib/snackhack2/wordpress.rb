@@ -26,18 +26,17 @@ module Snackhack2
     def users
       found_users = ''
       begin
-
-        users = Snackhack2::get(File.join(@site, "wp-login", "wp","users")).body
+        users = Snackhack2::get(File.join(@site, "wp-login", "wp", "users")).body
         json = JSON.parse(users)
         json.each do |k|
           found_users += "#{k['name']}\n"
         end
       rescue StandardError => e
-      	puts e
+        puts e
         puts '[+] users not found'
       end
       if @save_file
-      	Snackhack2::file_save(@site, "users", found_users)
+        Snackhack2::file_save(@site, "users", found_users)
       else
         puts found_users
       end
@@ -46,9 +45,9 @@ module Snackhack2
     def wp_content_uploads
       s = Snackhack2::get(File.join(@site, '/wp-content/uploads/'))
       if s.code == 200
-      	if s.body.include?('Index of')
-      		puts "[+] #{File.join(@site, '/wp-content/uploads/')} is valid..."
-      	end
+        if s.body.include?('Index of')
+          puts "[+] #{File.join(@site, '/wp-content/uploads/')} is valid..."
+        end
       end
     end
 
@@ -71,20 +70,21 @@ module Snackhack2
     end
 
     def yoast_seo
-    	ys = Snackhack2::get(@site)
-    	if ys.code == 200
-    		if ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)
-    			puts "#{ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)}"
-    		end
-    	end
+      ys = Snackhack2::get(@site)
+      if ys.code == 200
+        if ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)
+          puts "#{ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)}"
+        end
+      end
     end
+
     def all_in_one_seo
-    	alios = Snackhack2::get(@site)
-    	if alios.code == 200
-    		if alios.body.scan(/(All in One SEO Pro\s\d.\d.\d)/)
-    			puts "Site is using the plugin: #{alios.body.match(/(All in One SEO Pro\s\d.\d.\d)/)}"
-    		end
-    	end
+      alios = Snackhack2::get(@site)
+      if alios.code == 200
+        if alios.body.scan(/(All in One SEO Pro\s\d.\d.\d)/)
+          puts "Site is using the plugin: #{alios.body.match(/(All in One SEO Pro\s\d.\d.\d)/)}"
+        end
+      end
     end
   end
 end
