@@ -105,8 +105,8 @@ e.max_depth = 2
 puts e.max_depth
 =end
 
-d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
-d.user_brute
+#d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
+#d.all
 =begin
 wp = Snackhack2::WordPress.new("https://adk.org")
 wp.all_in_one_seo

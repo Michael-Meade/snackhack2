@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'httparty'
 require 'socket'
 module Snackhack2
   class BannerGrabber
@@ -62,7 +61,7 @@ module Snackhack2
     end
 
     def wordpress
-      wp = HTTParty.get(@site.to_s).body
+      wp = Snackhack2::get(@site).body
       return unless wp.match(/wp-content/)
 
       puts '[+] Wordpress found [+]'

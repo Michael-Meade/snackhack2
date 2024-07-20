@@ -48,7 +48,7 @@ e.max_depth = 2
 puts e.max_depth
 ```
 
-## WebServer cleaner
+## Web Server log cleaner
 
 You supply a IP and the code will find all the traces of the ip in the web server Log file and replace it with a fake IP that is randomly generated . By default it reads from "/var/log/access.log", but that can be changed. It has to be ran with root.
 
@@ -181,7 +181,7 @@ bg.curl
 # .server will give you the website's server banner
 bg.server
 ```
-## CryptoExtrator
+## Crypto Extrator
 
 By default it @save_file is set by true. But can be changed to false as seen below. If set to false it will print it out. This will find crypto addresses displayed on websites and save them to a file or print them out. Currently it supports: BTC, DOGE, XMR, ETH, Tron, Ripple, Dash, NEO, BitcoinCash and LiteCoin
 
@@ -202,7 +202,7 @@ ca.bitcoincash
 ca.dogecoin
 ```
 
-## Phone Number
+## Phone Number Extractor
 
 Get phone numbers from a site. Use the following command to install spidr
 
@@ -261,8 +261,3 @@ sd.run
 ```ruby
 Snackhack2::SSHBute.new("167.98.80.8").run
 ```
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
