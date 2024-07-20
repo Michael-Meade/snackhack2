@@ -4,7 +4,7 @@ module Snackhack2
   class Robots
     def initialize(site, save_file: true)
       @site = site
-      @http = HTTParty.get("#{@site}/robots.txt")
+      @http = Snackhack2::get(File.join(@site, "robots.txt"))
       @save_file = save_file
     end
 
@@ -31,8 +31,7 @@ module Snackhack2
         puts allow
         puts disallow
       end
-
-      File.open("#{@site.gsub('https://', '')}_robots.txt", 'w+') { |file| file.write(save_txt_file) }
+      Snackhack2::file_save(@site, "robots", save_txt_file) if @save_file
     end
 
     def allow_robots
@@ -47,7 +46,7 @@ module Snackhack2
       end
       open_links = []
       allow_dir.each do |path|
-        link = HTTParty.get("#{@site}#{path.strip}")
+        link = Snackhack2::get(File.join(@site, path.strip))
         if link.code == 200
           valid_links = "#{@site}#{path}"
           open_links << valid_links
@@ -68,7 +67,7 @@ module Snackhack2
       end
       open_links = []
       disallow_dir.each do |path|
-        link = HTTParty.get("#{@site}#{path.strip}")
+        link = Snackhack2::get(File.join(@site, path.strip))
         if link.code == 200
           valid_links = "#{@site}#{path}"
           open_links << valid_links

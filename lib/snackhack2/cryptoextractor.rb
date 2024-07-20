@@ -7,7 +7,7 @@ module Snackhack2
     attr_accessor :save_file
 
     def initialize(site, save_file: true)
-      @http = HTTParty.get(site).body
+      @http = Snackhack2::get(site).body
       @site = site
       @save_file = save_file
     end
@@ -23,8 +23,7 @@ module Snackhack2
       addresses << dogecoin unless dogecoin.nil?
       addresses << stellar unless stellar.nil?
       if @save_file
-        hostname = URI.parse(@http).host
-        File.open("#{hostname}_cryptoaddresses.txt", 'w+') { |file| file.write(addresses.uniq.join("\n")) }
+        Snackhack2::file_save(@site, "cryptoaddresses", addresses.uniq.join("\n"))
       else
         puts addresses.join("\n")
       end

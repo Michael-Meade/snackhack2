@@ -3,8 +3,7 @@
 # require 'nokogiri'
 # require 'open-uri'
 require './lib/snackHack2'
-# document = Nokogiri::HTML.parse(URI.open('https://porchlightshop.com/wp-content/uploads'))
-#
+
 # tags = document.xpath("//a")
 # tags.each do |t|
 #   puts t[:href]
@@ -64,10 +63,9 @@ require './lib/snackHack2'
 # ca.run
 
 ## Detect the chances of the site being wordpress.
-
-# wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
+#wp = Snackhack2::WordPress.new("https://themeisle.com")
 # wp.save_file = false
-# wp.users
+#wp.users
 
 ## Get all the links of a site.
 
@@ -95,11 +93,28 @@ require './lib/snackHack2'
 # ca.save_file = false
 # puts ca.monero
 
-# require 'httparty'
-# body = HTTParty.get("https://www.getmonero.org/resources/moneropedia/address.html").body
-# p body.scan(/[48][0-9AB][1-9A-HJ-NP-Za-km-z]{93}/)
+
 # wp = Snackhack2::WPForoForum.new("http://www.example.com")
 # wp.run
 
-wp = Snackhack2::PhoneNumber.new('https://www.ewsd.org/o/ehs')
-wp.spider
+
+#wp = Snackhack2::PhoneNumber.new('https://pohs.grcsu.org/staff-directory/')
+#wp.spider
+=begin
+e = Snackhack2::Email.new("https://www.tupeloschools.com/leadership/staff-directory")
+puts e.max_depth
+e.max_depth = 2
+puts e.max_depth
+=end
+
+
+
+d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
+d.user_brute
+=begin
+wp = Snackhack2::WordPress.new("https://adk.org")
+wp.all_in_one_seo
+
+=end
+
+#Snackhack2::BannerGrabber.new("http://95.142.29.235").apache2

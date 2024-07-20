@@ -2,7 +2,7 @@
 
 require 'snackhack2'
 require 'optparse'
-
+require 'uri'
 options = {}
 OptionParser.new do |opts|
   opts.banner = 'Usage: example.rb [options]'
@@ -34,6 +34,15 @@ OptionParser.new do |opts|
   opts.on('--robots', '--robots=SITE', 'Check robots.txt') do |v|
     options[:curl] = v
   end
+  opts.on('--phonenumber', '--phonenumber=SITE', 'Crawl a website looking for phone numbers') do |v|
+    options[:phonenumber] = v
+  end
+  opts.on('--drupal', '--drupal=SITE', 'Detect drupal') do |v|
+    options[:drupal] = v
+  end
+  opts.on('--weblog', '--weblog=IP', 'Replace a certain IP in the web server logs.') do |v|
+    options[:weblog] = v
+  end
 end.parse!
 
 if options[:ga]
@@ -52,15 +61,23 @@ if options[:meta]
 end
 Snackhack2::WebServerCleaner.new(options[:weblogclear]).run if options[:weblogclear]
 if options[:cryptoextract]
-  options[:cryptoextract].gsub('https://', '')
-  puts 'Saving links to file...'
   Snackhack2::CryptoExtractWebsite.new(options[:cryptoextract]).run
 end
 Snackhack2::BannerGrabber.new(options[:bannergrab]).run if options[:bannergrab]
 Snackhack2::BannerGrabber.new(options[:curl]).curl if options[:curl]
 Snackhack2::Subdomains.new(options[:subdomain]).run if options[:subdomain]
 if options[:robots]
-  puts 'Saving to file...'
   ip = Snackhack2::Robots.new(options[:robots], save_file: true)
   ip.run
+end
+if options[:phonenumber]
+	wp = Snackhack2::PhoneNumber.new(options[:phonenumber])
+	wp.spider
+end
+if options[:drupal]
+	d = Snackhack2::Drupal.new(options[:drupal])
+	d.all
+end
+if options[:weblog]
+	Snackhack2::WebServerCleaner.new(options[:weblog]).run
 end

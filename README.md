@@ -12,12 +12,40 @@ gem install snackhack2
 
 ## Usage
 
+## Detect Drupal
+
+Like the wordpress feature, there is a drupal score. The higher the score the better chance the site is using Drupal. Each time Drupal is detected it increases the score by 10. The `.all` will run all the different Drupal tests. 
+
+```ruby
+d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
+# Find out how many users the site has.
+d.user_brute
+# This will run all the methods to detect Drupal.
+d.all
+# This will just run the drupal score method. This will also print out the version of Drupal. 
+d.drupal_score
+```
+
 ## IP Lookup
 
 Get IP of a site using Nslookup and ping.
 
 ```ruby
 Snackhack2::IpLookup.new("https://google.com").run
+```
+## Extract Emails from Website
+
+By default @max_depth is set to four. This can be changed as seen below. This wil save the emails with the host name of the site
+and the '_emails.txt'. For example: 'example.com_emails.txt'
+
+
+```ruby
+e = Snackhack2::Email.new("https://www.tupeloschools.com/leadership/staff-directory")
+e.run
+
+# set @max_depth to two
+e.max_depth = 2
+puts e.max_depth
 ```
 
 ## WebServer cleaner
@@ -176,7 +204,11 @@ ca.dogecoin
 
 ## Phone Number
 
-Get phone numbers from a site.
+Get phone numbers from a site. Use the following command to install spidr
+
+```ruby
+ sudo gem install spidr
+ ```
 
 ```ruby
 wp = Snackhack2::PhoneNumber.new('https://pastebin.com/PgJuhznU')

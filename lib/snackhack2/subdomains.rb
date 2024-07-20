@@ -20,7 +20,7 @@ module Snackhack2
     end
 
     def resolv(sd)
-      # NOTE: this is really slow & multi thread doesnt work
+      # NOTE: this is really slow & multi thread does not work
       # due to resolv
       active = []
       subdomains = []

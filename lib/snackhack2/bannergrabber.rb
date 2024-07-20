@@ -9,7 +9,7 @@ module Snackhack2
     def initialize(site, port: 443, save_file: true)
       @site    = site
       @port    = port
-      @headers = HTTParty.get(site).headers
+      @headers = Snackhack2::get(@site).headers
       @save_file = save_file
     end
 
@@ -24,14 +24,14 @@ module Snackhack2
     end
 
     def nginx
-      return if @headers['server'].nil?
-      return unless @headers['server'].match(/nginx/)
-
-      nginx = HTTParty.get("#{@site}/nginx_status")
-      if nginx.code == 200
-        puts "Check #{@site}/nginx_status"
-      else
-        puts "Response code: #{nginx.code}"
+      if @headers['server'].match(/nginx/)
+        puts "[+] Server is running NGINX... Now checking if #{File.join(@site,"nginx_status")} is valid..."
+        nginx = Snackhack2::get(File.join(@site, "nginx_status"))
+        if nginx.code == 200
+          puts "Check #{@site}/nginx_status"
+        else
+          puts "Response code: #{nginx.code}"
+        end
       end
     end
 
@@ -44,18 +44,20 @@ module Snackhack2
       else
         puts "Banner: #{cmd.split('Server: ')[1].split("\n")[0]}"
       end
-      File.open("#{@site.gsub('https://', '')}_serverversion.txt", 'w+') { |file| file.write(servers) }
+      Snackhack2::file_save(@site, "serverversion", servers) if @save_file
     end
 
     def apache2
-      return if @headers['server'].nil?
-      return unless @headers['server'].match(/Apache/)
-
-      apache = HTTParty.get("#{@site}/server-status")
-      if apache.code == 200
-        puts "Check #{@site}/server-status"
+      if @headers['server'].match(/Apache/)
+        puts "[+] Server is running APACHE2... Now checking #{File.join(@site, "server-status")}..."
+        apache = Snackhack2::get(File.join(@site, "server-status"))
+        if apache.code == 200
+          puts "Check #{@site}/server-status"
+        else
+          puts "Response Code: #{apache.code}"
+        end
       else
-        puts "Response Code: #{apache.code}"
+        puts "Apache2 is not found..."
       end
     end
 

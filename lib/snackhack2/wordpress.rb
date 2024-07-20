@@ -13,6 +13,10 @@ module Snackhack2
 
     def run
       wp_login
+      yoast_seo
+      users
+      wp_content_uploads
+      all_in_one_seo
     end
 
     def file_site
@@ -22,31 +26,30 @@ module Snackhack2
     def users
       found_users = ''
       begin
-        users = HTTParty.get("#{@site}/wp-json/wp/v2/users").body
+
+        users = Snackhack2::get(File.join(@site, "wp-login", "wp","users")).body
         json = JSON.parse(users)
-        json.each_key do |k|
+        json.each do |k|
           found_users += "#{k['name']}\n"
         end
-      rescue StandardError
+      rescue StandardError => e
+      	puts e
         puts '[+] users not found'
       end
       if @save_file
-        puts "[+] Saving file to #{file_site}_users.txt"
-        File.open("#{file_site}_users.txt", 'w+') { |file| file.write(found_users) }
+      	Snackhack2::file_save(@site, "users", found_users)
       else
         puts found_users
       end
     end
 
     def wp_content_uploads
-      s = HTTParty.get(File.join(@site, '/wp-content/uploads/'))
-      return unless s.code == 200
-
-      msg = File.join(@site, '/wp-content/uploads/')
-      puts "[+] #{msg} is VALID...\n"
-      return unless s.body.include?('Index of')
-
-      puts "Index of is valid...\n"
+      s = Snackhack2::get(File.join(@site, '/wp-content/uploads/'))
+      if s.code == 200
+      	if s.body.include?('Index of')
+      		puts "[+] #{File.join(@site, '/wp-content/uploads/')} is valid..."
+      	end
+      end
     end
 
     def wp_login
@@ -54,7 +57,7 @@ module Snackhack2
       ## todo: maybe add Bayes Theorem to detect wp
       wp = ['wp-includes', 'wp-admin', 'Powered by WordPress', 'wp-login.php', 'yoast.com/wordpress/plugins/seo/',
             'wordpress-login-url.jpg', 'wp-content/themes/', 'wp-json']
-      login = HTTParty.get("#{@site}/wp-login.php")
+      login = Snackhack2::get(File.join(@site, "wp-login.php"))
       if login.code == 200
         wp.each do |path|
           percent += 10 if login.body.include?(path)
@@ -65,6 +68,23 @@ module Snackhack2
         percent += 10 if login2.body.include?(path)
       end
       puts "Wordpress Points: #{percent}"
+    end
+
+    def yoast_seo
+    	ys = Snackhack2::get(@site)
+    	if ys.code == 200
+    		if ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)
+    			puts "#{ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)}"
+    		end
+    	end
+    end
+    def all_in_one_seo
+    	alios = Snackhack2::get(@site)
+    	if alios.code == 200
+    		if alios.body.scan(/(All in One SEO Pro\s\d.\d.\d)/)
+    			puts "Site is using the plugin: #{alios.body.match(/(All in One SEO Pro\s\d.\d.\d)/)}"
+    		end
+    	end
     end
   end
 end

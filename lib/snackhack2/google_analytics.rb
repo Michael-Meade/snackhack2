@@ -10,7 +10,7 @@ module Snackhack2
     end
 
     def run
-      a = HTTParty.get(@site).body
+      a = Snackhack2::get(@site).body
       case a
       when /UA-\d{8}-\d/
         puts a.match(/UA-\d{8}-\d/)
