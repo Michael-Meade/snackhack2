@@ -51,9 +51,9 @@ require './lib/snackHack2'
 
 ## Grab gooogle Analytics from a site. this could be used to find similar sites
 
-# t = Snackhack2::GoogleAnalytics.new("https://www.googletagmanager.com/gtag/js?id=G-SL8LSCXHSV")
+#t = Snackhack2::GoogleAnalytics.new("https://training.vib.be/drupal/login")
 
-# t.run
+#t.run
 
 ## Extract a bunch of different types of crypto addresses from a site.
 

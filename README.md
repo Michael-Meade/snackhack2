@@ -1,8 +1,8 @@
 # Snackhack2
 
-TODO: Delete this and the text below, and describe your gem
+### What is SnackHack?
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/snackhack2`. To experiment with that code, run `bin/console` for an interactive prompt.
+
 
 ## Installation
 
@@ -260,4 +260,10 @@ sd.run
 
 ```ruby
 Snackhack2::SSHBute.new("167.98.80.8").run
+```
+## Install needed gems
+
+```ruby
+gem install httparty
+gem install spidr
 ```
