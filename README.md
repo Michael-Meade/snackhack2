@@ -27,6 +27,7 @@ These techniques work to manipulate the user to give information or perform a ce
 
 The Robots.txt file is used to by sites to tell web crawlers such as Google what paths to crawl and what paths to ignore. Not every crawler will honor the robots.txt file. The site's robots.txt file will include paths that they do not want to be crawled, we can use this information to possibly access paths will disclose sensitive information. It could also lead hackers to areas of the site that are not supposed to be viewed by unauthorized users. The sitemap.xml includes a list of URLs of a site. This helps Google and other search engines to be able to crawl links on a site. It is supposed to help with search ranking. 
 
+## Website MetaData & Google Analytics
 
 ## Installation
 
