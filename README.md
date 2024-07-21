@@ -29,6 +29,8 @@ The Robots.txt file is used to by sites to tell web crawlers such as Google what
 
 ## Website MetaData & Google Analytics
 
+Websites use the HTML meta tag to include information about the site that supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker to locate different sites that are probally owned by the same owner. 
+
 ## Installation
 
 ```ruby
