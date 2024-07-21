@@ -29,7 +29,7 @@ OptionParser.new do |opts|
     options[:curl] = v
   end
   opts.on('--subdomain', '--subdomain=SITE', "Get a site's subdomains via DNS.") do |v|
-    options[:curl] = v
+    options[:subdomain] = v
   end
   opts.on('--robots', '--robots=SITE', 'Check robots.txt') do |v|
     options[:curl] = v

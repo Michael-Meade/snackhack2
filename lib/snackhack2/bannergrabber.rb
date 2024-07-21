@@ -20,6 +20,7 @@ module Snackhack2
       nginx
       apache2
       wordpress
+      headers
     end
 
     def nginx
@@ -53,10 +54,10 @@ module Snackhack2
         if apache.code == 200
           puts "Check #{@site}/server-status"
         else
-          puts "Response Code: #{apache.code}"
+          puts "[+] Response Code: #{apache.code}...\n\n"
         end
       else
-        puts "Apache2 is not found..."
+        puts "Apache2 is not found...\n\n"
       end
     end
 
@@ -64,11 +65,12 @@ module Snackhack2
       wp = Snackhack2::get(@site).body
       return unless wp.match(/wp-content/)
 
-      puts '[+] Wordpress found [+]'
+      puts "[+] Wordpress found [+]\n\n\n"
     end
 
     def headers
-      @headers.to_a
+      h = Snackhack2::get(@site).headers
+      puts "[+] Server Version: #{h['server']}..."
     end
 
     def server

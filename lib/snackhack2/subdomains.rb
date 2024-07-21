@@ -25,12 +25,12 @@ module Snackhack2
       active = []
       subdomains = []
       Resolv::DNS.open do |dns|
-        ress = dns.getresources "#{sd}.#{site}", Resolv::DNS::Resource::IN::A
+        ress = dns.getresources "#{sd}.#{@site}", Resolv::DNS::Resource::IN::A
         unless ress.map(&:address).empty?
           address = ress.map(&:address)
           unless active.include?(address)
             active << address
-            subdomains << "#{sd}.#{site}" unless subdomains.include?(sd)
+            subdomains << "#{sd}.#{@site}" unless subdomains.include?(sd)
           end
         end
       end

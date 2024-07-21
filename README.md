@@ -31,7 +31,7 @@ When a site displays a cryptocurrency address on the site, the address could be 
 
 Not all cryptocurrencies are public, cryptocurrenies like Monero have a private blockchain meaning that you CAN'T see how much a certain address has. 
 
-## Website MetaData & Google Analytics
+## Website MetaData & Google Analytics.
 
 Websites use the HTML meta tag to include information about the site that supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker to locate different sites that are probably owned by the same owner. 
 
@@ -42,6 +42,15 @@ Scanning the first thousand ports of a server or computer will help reveal the p
 ## Enumerating Web Content Management Platforms.
 
 Figuring out what plugins or the version of the Web content management platforms can aid the hacker in compromising the site. The information could also be used to gather information about the site owners such as the usernames which could be used to brute forced the login for a certain user. The disclosure of the version and other information could also be used by a hacker to attemp to exploit a vulnerablity. Information like the MySQL version could be used to get into the site's database where they might be able to dump the database and use the dump to login into the site which could give them complete control of the server. 
+
+## Exploits
+
+Exploits can be used to gain unauthorized access to a server or computer. Currently Snackhack2 has an exploits for CVE-2023-3710, 
+CVE-2018-11709 and CVE-2015-6522. `CVE-2018-11709` is a XSS exploit. While CVE-2023-3710 exploits a Command Injection vulnerabilities in printer web page. This could allow hackers access to the network. `CVE-2015-6522` allows remote attackers to execute arbitrary SQL commands in the WordPress plugin, wp-symposium.
+
+## Post Exploitation
+
+After exploiting a vulnerability and gaining access to server, a hacker might want to hide their tracks. As of right of now there is only one post exploitaton feature in Snackhack. This feature will take a web server log and remove a certain IP and replace it with a randomly generated IP. This could be used to cover your tracks or as a anti forsenic method. 
 
 ## Installation
 
@@ -147,6 +156,14 @@ links.run
 links.save_file = false
 
 ```
+## Snackhack CLI
+
+```ruby
+ruby snackhack.rb -h
+```
+
+
+
 ## Clean server version
 
 This will remove all files that include all files that have `_severversion` in the file name. The `_serversversion` files are created by Snackhack2::curl. 

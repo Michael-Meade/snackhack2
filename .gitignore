@@ -2,3 +2,5 @@
 *.log
 *.sh
 test.rb
+*.DMP
+m.rb
