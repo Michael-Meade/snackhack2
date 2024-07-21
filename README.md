@@ -5,6 +5,24 @@
 A collection of scripts that could be used to aid in hacking or performing recon on a taraget. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 
 Originally this idea was apart of my senior project but I had to ditch the idea. 
 
+## Banner Grabbing.
+
+Banner grabbing is used to get information about a server or computer. This information could help the hacker determine if the server or service is vulnerable. This information could also be used to figure out how to best enumerate a service. 
+
+## Extracting Emails & Phone Numbers
+
+Scraping Emails or phone numbers from a site could be used to attemp to Social Engineer a user from that site via email, phone or SMS. Not all phishing emails or texts contain miss spellings or improper grammar. Some common technique used when writting phishing emails or messages include the following:
+
+- Intimidation
+- Scarcity
+- Familiarity
+- Trust
+- Urgency
+- Authority
+- Consensus
+
+These techniques work to manipulate the user to give information or perform a certain task like entering their password into a phishing page.
+
 
 ## Installation
 
@@ -203,9 +221,19 @@ ca.ethereum
 ca.bitcoincash
 ca.dogecoin
 ```
+
+## Sitemap.xml
+
+This class will try to see if a site has a sitemap.xml file. This could be used to find URLS that might be of intrest.
+
+```ruby
+sm = Snackhack2::SiteMap.new("https://google.com")
+sm.run
+```
+
 ## Honeywell PM43
 
-This will exploit CVE-2023-3710. By default it uses the `ls` command.  This can be changed. 
+This will exploit CVE-2023-3710. By default it uses the `ls` command.  This can be changed as seen below. 
 
 ```ruby
 s = Snackhack2::HoneywellPM43.new("http://81.84.149.129:80")

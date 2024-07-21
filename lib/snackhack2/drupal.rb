@@ -1,4 +1,3 @@
-require 'httparty'
 require 'nokogiri'
 require 'open-uri'
 module Snackhack2

