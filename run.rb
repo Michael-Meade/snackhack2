@@ -120,5 +120,7 @@ s.command = "id"
 puts s.command
 s.run
 =end
- sm = Snackhack2::SiteMap.new("https://cryptogrinders.us")
- sm.run
+#sm = Snackhack2::SiteMap.new("https://cryptogrinders.us")
+#sm.run
+tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
+tc.run

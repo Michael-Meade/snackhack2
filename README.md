@@ -29,7 +29,11 @@ The Robots.txt file is used to by sites to tell web crawlers such as Google what
 
 ## Website MetaData & Google Analytics
 
-Websites use the HTML meta tag to include information about the site that supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker to locate different sites that are probally owned by the same owner. 
+Websites use the HTML meta tag to include information about the site that supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker to locate different sites that are probably owned by the same owner. 
+
+## Port Scanning. 
+
+Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computers internal network.  If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figue out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include a UDP ports.
 
 ## Installation
 
@@ -236,6 +240,14 @@ This class will try to see if a site has a sitemap.xml file. This could be used 
 ```ruby
 sm = Snackhack2::SiteMap.new("https://google.com")
 sm.run
+```
+## TomCat
+
+This will visit `/docs/` which if the web server is running Tom Cat, it will parse the page and print out the TomCat version. 
+
+```ruby
+tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
+tc.run
 ```
 
 ## Honeywell PM43
