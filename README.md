@@ -9,7 +9,7 @@ Originally this idea was apart of my senior project but I had to ditch the idea.
 
 Banner grabbing is used to get information about a server or computer. This information could help the hacker determine if the server or service is vulnerable. This information could also be used to figure out how to best enumerate a service. 
 
-## Extracting Emails & Phone Numbers
+## Extracting Emails & Phone Numbers.
 
 Scraping Emails or phone numbers from a site could be used to attemp to Social Engineer a user from that site via email, phone or SMS. Not all phishing emails or texts contain miss spellings or improper grammar. Some common technique used when writting phishing emails or messages include the following:
 
@@ -22,6 +22,10 @@ Scraping Emails or phone numbers from a site could be used to attemp to Social E
 - Consensus
 
 These techniques work to manipulate the user to give information or perform a certain task like entering their password into a phishing page.
+
+## Robots.txt & Sitemap.xml.
+
+The Robots.txt file is used to by sites to tell web crawlers such as Google what paths to crawl and what paths to ignore. Not every crawler will honor the robots.txt file. The site's robots.txt file will include paths that they do not want to be crawled, we can use this information to possibly access paths will disclose sensitive information. It could also lead hackers to areas of the site that are not supposed to be viewed by unauthorized users. The sitemap.xml includes a list of URLs of a site. This helps Google and other search engines to be able to crawl links on a site. It is supposed to help with search ranking. 
 
 
 ## Installation
@@ -115,7 +119,7 @@ wp.wp_content_uploads
     puts "\n"
 end
 ```
-## Link
+## Links
 
 Grab all the links in a site and save it in a file named `google.com_links.txt` By default `@save_file` is set as `true`. If set to false it will print out all the links.
 
@@ -144,7 +148,7 @@ This will read all files with `_serverversion` in the file name. This is used if
 SnackHack::read_serverversion
 ```
 
-## PortScan
+## Port Scan
 
 This uses multi thread to scan the first 1,000 ports and print the open ports. 
 
