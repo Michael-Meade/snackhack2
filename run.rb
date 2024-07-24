@@ -121,6 +121,10 @@ puts s.command
 s.run
 =end
 #sm = Snackhack2::SiteMap.new("https://cryptogrinders.us")
-#sm.run
-tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
-tc.run
+#tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
+#tc.run
+
+Snackhack2::Subdomains2.new("https://netflix.com").run
+
+
+#Snackhack2::brute_force("https://netflix.com")

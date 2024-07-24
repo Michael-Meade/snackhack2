@@ -343,6 +343,14 @@ sd = Snackhack2::Subdomains.new("https://ruby-lang.org")
 sd.run
 ```
 
+## Subdomains2
+
+This uses HTTP instead of DNS to find subdomains. By default the subdomain list is located in the `\lib\snackhack2\lists\subdomains.txt` directory. 
+
+```ruby
+Snackhack2::Subdomains2.new("https://netflix.com").run
+```
+
 ## SSH Brute
 
 ```ruby

@@ -46,6 +46,9 @@ OptionParser.new do |opts|
   opts.on('--tomcat', '--tomcat=IP', 'Check for Tomcat') do |v|
     options[:tomcat] = v
   end
+  opts.on('--emails', '--emails=IP', 'Crawl a site looking for Emails.') do |v|
+    options[:emails] = v
+  end
 end.parse!
 
 if options[:ga]
@@ -85,4 +88,7 @@ end
 if options[:tomcat]
 	tc = Snackhack2::TomCat.new(options[:tomcat])
 	tc.run
+end
+if options[:emails]
+  Snackhack2::Email.new(options[:emails]).run
 end
