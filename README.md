@@ -1,5 +1,8 @@
 # Snackhack2
 
+![SnackHack2 Hacking Tools](https://i.imgur.com/8k7YH2N.png)
+
+
 ### What is SnackHack?
 
 A collection of scripts that could be used to aid in hacking or performing recon on a taraget. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 

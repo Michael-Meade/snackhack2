@@ -32,7 +32,7 @@ module Snackhack2
           found_users += "#{k['name']}\n"
         end
       rescue StandardError => e
-        puts '[+] users not found'
+        puts "[+] users not found\n"
       end
       if @save_file
         Snackhack2::file_save(@site, "users", found_users)
