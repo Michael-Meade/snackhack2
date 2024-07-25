@@ -32,7 +32,6 @@ module Snackhack2
           found_users += "#{k['name']}\n"
         end
       rescue StandardError => e
-        puts e
         puts '[+] users not found'
       end
       if @save_file

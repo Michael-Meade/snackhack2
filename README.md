@@ -11,7 +11,7 @@ Banner grabbing is used to get information about a server or computer. This info
 
 ## Extracting Emails & Phone Numbers.
 
-Scraping Emails or phone numbers from a site could be used to attemp to Social Engineer a user from that site via email, phone or SMS. Not all phishing emails or texts contain miss spellings or improper grammar. Some common technique used when writting phishing emails or messages include the following:
+Scraping Emails or phone numbers from a site could be used to attemp to Social Engineer a user from that site via email, phone or SMS. Not all phishing emails or texts contain miss spellings or improper grammar. Some common techniques used when writting phishing emails or messages include the following:
 
 - Intimidation
 - Scarcity
@@ -37,18 +37,18 @@ Websites use the HTML meta tag to include information about the site that suppos
 
 ## Port Scanning. 
 
-Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computers internal network.  If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figue out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include a UDP ports.
+Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computers internal network. If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figue out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include a UDP ports.
 
 ## Enumerating Web Content Management Platforms.
 
 Figuring out what plugins or the version of the Web content management platforms can aid the hacker in compromising the site. The information could also be used to gather information about the site owners such as the usernames which could be used to brute forced the login for a certain user. The disclosure of the version and other information could also be used by a hacker to attemp to exploit a vulnerablity. Information like the MySQL version could be used to get into the site's database where they might be able to dump the database and use the dump to login into the site which could give them complete control of the server. 
 
-## Exploits
+## Exploits.
 
 Exploits can be used to gain unauthorized access to a server or computer. Currently Snackhack2 has an exploits for CVE-2023-3710, 
 CVE-2018-11709 and CVE-2015-6522. `CVE-2018-11709` is a XSS exploit. While CVE-2023-3710 exploits a Command Injection vulnerabilities in printer web page. This could allow hackers access to the network. `CVE-2015-6522` allows remote attackers to execute arbitrary SQL commands in the WordPress plugin, wp-symposium.
 
-## Post Exploitation
+## Post Exploitation.
 
 After exploiting a vulnerability and gaining access to server, a hacker might want to hide their tracks. As of right of now there is only one post exploitaton feature in Snackhack. This feature will take a web server log and remove a certain IP and replace it with a randomly generated IP. This could be used to cover your tracks or as a anti forsenic method. 
 
@@ -115,7 +115,7 @@ wp = Snackhack2::WordPress.new("https://kinsta.com")
 wp.run
 ```
 
-Now get wordpress user's. This will save the users in a file with a similiar name like this: google.com_users.txt. `wp_content_uploads` will check to see if there are any open directories. 
+Now get wordpress user's. This will save the users in a file with a similar name like this: google.com_users.txt. `wp_content_uploads` will check to see if there are any open directories. 
 
 ```ruby
 wp = Snackhack2::WordPress.new("https://themeisle.com")
