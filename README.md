@@ -1,7 +1,7 @@
 # Snackhack2
 
-<p align="left" width="100%">
-    <img width="33%" src="https://i.imgur.com/8k7YH2N.png">
+<p align="center">
+    <img src="https://i.imgur.com/8k7YH2N.png">
 </p>
 
 ### What is SnackHack?
