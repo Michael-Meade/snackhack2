@@ -1,8 +1,8 @@
-# Snackhack2
-
 <p align="center">
-    <img src="https://i.imgur.com/8k7YH2N.png">
+    <img src="https://i.imgur.com/R5JEtiq.png">
 </p>
+
+# Snackhack2
 
 ### What is SnackHack?
 
