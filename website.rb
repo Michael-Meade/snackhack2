@@ -17,14 +17,6 @@ puts "[+] Checking for TomCat...\n".red
 Snackhack2::TomCat.new(url)
 puts"--------\n"
 
-puts "[+] Looking for Phone Numbers...\n".red
-Snackhack2::PhoneNumber.new(url).spider
-puts"--------\n"
-
-puts "[+] Looking for Emails...\n".red
-Snackhack2::Email.new(url).run
-puts"--------\n"
-
 puts "[+] Checking the site for Google Analytics...\n".red
 Snackhack2::GoogleAnalytics.new(url).run
 puts"--------\n"
