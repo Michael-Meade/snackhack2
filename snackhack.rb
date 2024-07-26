@@ -86,8 +86,8 @@ if options[:drupal]
 end
 
 if options[:tomcat]
-	tc = Snackhack2::TomCat.new(options[:tomcat])
-	tc.run
+  tc = Snackhack2::TomCat.new(options[:tomcat])
+  tc.run
 end
 if options[:emails]
   Snackhack2::Email.new(options[:emails]).run

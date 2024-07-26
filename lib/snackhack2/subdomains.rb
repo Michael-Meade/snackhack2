@@ -9,9 +9,11 @@ module Snackhack2
       @site     = site
       @wordlist = wordlist
     end
+
     def site
-    	@site.gsub("https://", "")
+      @site.gsub("https://", "")
     end
+
     def wordlist
       File.join(__dir__, 'lists', 'subdomains.txt')
     end
@@ -23,25 +25,26 @@ module Snackhack2
     end
 
     def brute
-    	found = ""
-    	File.readlines(wordlist).each do |l|
-    		s = "#{l.strip}.#{site}"
-    		begin
-    			puts File.join("https://", s)
-    			g = Snackhack2::get(File.join("https://", s))
-	    		if g.code == 200
-	    			found += s + "\n"
-	    		elsif g.code == 300
-	    			found += s + "\n" 
-	    		else 
-	    			puts "HTTP Code: #{g.code}"
-	    		end
-	    	rescue => e
-	    		puts e
-    		end
-    	end
-    Snackhack2::file_save(@site, "subdomain_brute", found)
+      found = ""
+      File.readlines(wordlist).each do |l|
+        s = "#{l.strip}.#{site}"
+        begin
+          puts File.join("https://", s)
+          g = Snackhack2::get(File.join("https://", s))
+          if g.code == 200
+            found += s + "\n"
+          elsif g.code == 300
+            found += s + "\n"
+          else
+            puts "HTTP Code: #{g.code}"
+          end
+        rescue => e
+          puts e
+        end
+      end
+      Snackhack2::file_save(@site, "subdomain_brute", found)
     end
+
     def resolv(sd)
       # NOTE: this is really slow & multi thread does not work
       # due to resolv

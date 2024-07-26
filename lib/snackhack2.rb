@@ -54,5 +54,4 @@ module Snackhack2
   def self.get(site)
     HTTParty.get(site, { headers: { "User-Agent" => UA } })
   end
-
 end

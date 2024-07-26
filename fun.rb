@@ -1,18 +1,18 @@
 require 'snackhack2'
 require 'colorize'
-banner =%Q{
+banner = %Q{
 
-███████ ███    ██  █████   ██████ ██   ██ ██   ██  █████   ██████ ██   ██ ██████  
-██      ████   ██ ██   ██ ██      ██  ██  ██   ██ ██   ██ ██      ██  ██       ██ 
-███████ ██ ██  ██ ███████ ██      █████   ███████ ███████ ██      █████    █████  
-     ██ ██  ██ ██ ██   ██ ██      ██  ██  ██   ██ ██   ██ ██      ██  ██  ██      
-███████ ██   ████ ██   ██  ██████ ██   ██ ██   ██ ██   ██  ██████ ██   ██ ███████ 
-                                                                                  
-                                                                                  
+███████ ███    ██  █████   ██████ ██   ██ ██   ██  █████   ██████ ██   ██ ██████
+██      ████   ██ ██   ██ ██      ██  ██  ██   ██ ██   ██ ██      ██  ██       ██
+███████ ██ ██  ██ ███████ ██      █████   ███████ ███████ ██      █████    █████
+     ██ ██  ██ ██ ██   ██ ██      ██  ██  ██   ██ ██   ██ ██      ██  ██  ██
+███████ ██   ████ ██   ██  ██████ ██   ██ ██   ██ ██   ██  ██████ ██   ██ ███████
+
+
 
 }
 puts banner.colorize(:blue)
-options=%Q{
+options = %Q{
 1) Port Scan
 2) Robots.txt
 3) WordPress
@@ -32,55 +32,55 @@ options=%Q{
 17) WP_Symposium Exploit
 18) WebServer Log Cleaner
 19) Scrape Emails from Site
-20) Scrape Phone Numbers from Site 
+20) Scrape Phone Numbers from Site
 }
 print(options)
 print("Enter Number: ")
 
-num=gets.chomp
+num = gets.chomp
 
 print("Enter Site: ")
-site=gets.chomp
+site = gets.chomp
 print("\n\n\n")
 case num.to_i
 when 1
-	tcp = Snackhack2::PortScan.new(site).run
+  tcp = Snackhack2::PortScan.new(site).run
 when 2
-	ip = Snackhack2::Robots.new(site, save_file: true).run
+  ip = Snackhack2::Robots.new(site, save_file: true).run
 when 3
-	Snackhack2::WordPress.new(site).run
+  Snackhack2::WordPress.new(site).run
 when 4
-	Snackhack2::Drupal.new(site).all
+  Snackhack2::Drupal.new(site).all
 when 5
-	Snackhack2::GoogleAnalytics.new(site).run
+  Snackhack2::GoogleAnalytics.new(site).run
 when 6
-	Snackhack2::SiteMap.new(site).run
+  Snackhack2::SiteMap.new(site).run
 when 7
-	Snackhack2::Subdomains.new(site).run
+  Snackhack2::Subdomains.new(site).run
 when 8
-	Snackhack2::Subdomains2.new(site).run
+  Snackhack2::Subdomains2.new(site).run
 when 9
-	Snackhack2::TomCat.new(site).run
+  Snackhack2::TomCat.new(site).run
 when 10
-	Snackhack2::WebsiteLinks.new(site).run
+  Snackhack2::WebsiteLinks.new(site).run
 when 11
-	Snackhack2::SSHBute.new(site).run
+  Snackhack2::SSHBute.new(site).run
 when 12
-	Snackhack2::WebsiteMeta.new(site).run
+  Snackhack2::WebsiteMeta.new(site).run
 when 13
-	Snackhack2::WPForoForum.new(site).run
+  Snackhack2::WPForoForum.new(site).run
 when 14
-	Snackhack2::HoneywellPM43.new(site).run
+  Snackhack2::HoneywellPM43.new(site).run
 when 15
-	Snackhack2::IpLookup.new(site).run
+  Snackhack2::IpLookup.new(site).run
 when 16
-	Snackhack2::CryptoExtractWebsite.new(site).run
+  Snackhack2::CryptoExtractWebsite.new(site).run
 when 17
-	Snackhack2::WPSymposium.new(site).run
+  Snackhack2::WPSymposium.new(site).run
 when 18
-	Snackhack2::WebServerCleaner.new(site).run
+  Snackhack2::WebServerCleaner.new(site).run
 when 19
-	Snackhack2::Email.new(site).run
+  Snackhack2::Email.new(site).run
 when 20
-	Snackhack2::PhoneNumber.new(site).spider
+  Snackhack2::PhoneNumber.new(site).spider
 end
