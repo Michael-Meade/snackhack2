@@ -32,13 +32,16 @@ module Snackhack2
           found_users += "#{k['name']}\n"
         end
       rescue StandardError => e
-        puts "[+] users not found\n"
+        puts "[+] users not found\n\n\n"
       end
-      if @save_file
-        Snackhack2::file_save(@site, "users", found_users)
-      else
-        puts found_users
-      end
+
+      if !found_users.empty?
+	      if @save_file
+	        Snackhack2::file_save(@site, "users", found_users)
+	      else
+	        puts found_users
+	      end
+	    end
     end
 
     def wp_content_uploads
@@ -98,7 +101,7 @@ module Snackhack2
           end
         end
       end
-      puts "WordPress Log score: #{wplog_score}..."
+      puts "WordPress Log score: #{wplog_score}...\n\n\n"
     end
 
     def wp_plugin
