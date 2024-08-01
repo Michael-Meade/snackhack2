@@ -1,5 +1,7 @@
 require 'snackhack2'
 require 'colorize'
+puts "\e[H\e[2J"
+
 banner = %Q{
 
 ███████ ███    ██  █████   ██████ ██   ██ ██   ██  █████   ██████ ██   ██ ██████
@@ -13,6 +15,7 @@ banner = %Q{
 }
 puts banner.colorize(:blue)
 while true
+
   options = %Q{
   1) Port Scan
   2) Robots.txt
@@ -86,5 +89,5 @@ while true
     Snackhack2::PhoneNumber.new(site).spider
   end
 end
-  
+
 puts "\e[H\e[2J"

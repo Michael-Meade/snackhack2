@@ -24,6 +24,7 @@ require_relative 'snackhack2/Honeywell_PM43'
 require_relative 'snackhack2/sitemap'
 require_relative 'snackhack2/tomcat'
 require_relative 'snackhack2/subdomains2'
+require_relative 'snackhack2/reverse_shell'
 module Snackhack2
   UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
   def self.read_serverversion

@@ -36,12 +36,12 @@ module Snackhack2
       end
 
       if !found_users.empty?
-	      if @save_file
-	        Snackhack2::file_save(@site, "users", found_users)
-	      else
-	        puts found_users
-	      end
-	    end
+        if @save_file
+          Snackhack2::file_save(@site, "users", found_users)
+        else
+          puts found_users
+        end
+      end
     end
 
     def wp_content_uploads
