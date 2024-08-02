@@ -124,6 +124,6 @@ s.run
 # tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
 # tc.run
 
-Snackhack2::ReverseShell.new("127.0.0.1", 23).run
+
 
 # Snackhack2::brute_force("https://netflix.com")
