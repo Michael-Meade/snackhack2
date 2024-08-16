@@ -64,6 +64,32 @@ gem install snackhack2
 
 ## Usage
 
+## Forward Remote SSH Tunnel
+
+```ruby
+ssh = Snackhack2::SSHForwardRemote.new
+ssh.site  = "187.171.198.132"
+ssh.user  = "root"
+ssh.pass  = "secretpassword"
+ssh.key   = "/home/JakeFromStateFarm/.ssh/id_rsa"
+ssh.lport = 2222
+ssh.lsite = "localhost"
+ssh.rport = 8022
+
+ssh.run
+```
+- lport: local IP
+- lport: local Port
+- lsite: local Site
+- rport: remote Port
+
+Now on the remote box run the following command:
+
+```ruby
+ssh -p8022 jake@localhost
+```
+This could be used to access a computer that is behind a firewall, if 187.171.198.132 is reachable via the internet. Make sure that the remote PC has a strong SSH password. It is connected to the internet so IT WILL be scanned by people trying break in. Use a SSH key too. 
+
 ## Detect Drupal
 
 Like the wordpress feature, there is a drupal score. The higher the score the better chance the site is using Drupal. Each time Drupal is detected it increases the score by 10. The `.all` will run all the different Drupal tests. 

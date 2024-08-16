@@ -18,8 +18,8 @@ module Snackhack2
       http = Snackhack2::get(@site)
       if http.code == 200
         regex = http.body
-        t = regex.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
-        out = t.map { |n| n[0] }.compact
+        phone = regex.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
+        out = phone.map { |n| n[0] }.compact
         numbers << out
       else
         puts "[+] Status code: #{http.code}"
