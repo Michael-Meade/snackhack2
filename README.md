@@ -199,8 +199,6 @@ links.save_file = false
 ruby snackhack.rb -h
 ```
 
-
-
 ## Clean server version
 
 This will remove all files that include all files that have `_severversion` in the file name. The `_serversversion` files are created by Snackhack2::curl. 

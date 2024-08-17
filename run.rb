@@ -124,6 +124,6 @@ s.run
 # tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
 # tc.run
 
-Snackhack2::BitcoinInfo.new("167.71.98.122", "99").run
+
 
 # Snackhack2::brute_force("https://netflix.com")
