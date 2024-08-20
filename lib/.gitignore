@@ -1,0 +1,8 @@
+*.txt
+*.log
+*.sh
+test.rb
+*.DMP
+m.rb
+a.rb
+clean.sh

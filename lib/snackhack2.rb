@@ -46,14 +46,27 @@ module Snackhack2
       end
     end
   end
-
-  def self.file_save(site, type, content)
-    hostname = URI.parse(site).host
-    File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
-    puts "[+] Saving file to #{hostname}_#{type}.txt..."
+  def self.file_save(site, type, content, ip:false)
+      hostname = URI.parse(site).host
+      File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
+      puts "[+] Saving file to #{hostname}_#{type}.txt..."
   end
 
   def self.get(site)
     HTTParty.get(site, { headers: { "User-Agent" => UA } })
+  end
+
+  def self.clean_portscan
+    Dir['*_port_scan.txt'].each do |file|
+      puts "[+] deleting #{file}..."
+      File.delete(file)
+    end
+  end
+  def self.read_portscan
+    files = Dir['*_port_scan.txt']
+    files.each do |f|
+      read = File.read(f)
+      puts "#{f.split('_')[0]}: #{read}"
+    end
   end
 end
