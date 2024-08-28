@@ -8,6 +8,5 @@ for i in 0..255
 	i+=1
 	print("\n\n")
 end
-
-
-#Snackhack2.clean_portscan
+tcp.delete = true
+tcp.ports_extractor("22")

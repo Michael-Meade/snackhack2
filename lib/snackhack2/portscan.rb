@@ -3,10 +3,11 @@
 require 'packetfu'
 module Snackhack2
   class PortScan
-    attr_accessor :display
-    def initialize(ip, display: true)
+    attr_accessor :display, :ip, :delete
+    def initialize(ip, display: true, delete: false)
       @ip = ip
       @display = display
+      @delete = delete
     end
 
     def run
@@ -15,7 +16,18 @@ module Snackhack2
       ports.each { |i| threads << Thread.new { tcp(i) } }
       threads.each(&:join)
     end
-
+    def ports_extractor(port)
+      ip=[]
+      files = Dir['*_port_scan.txt']
+      files.each do |f|
+        r=File.read(f)
+        if r.include?(port)
+          ip << f.split("_")[0]
+        end
+      File.delete(f) if delete
+      end
+    File.open("#{port}_scan.txt", 'w+') { |file| file.write(ip.join("\n")) }
+    end
     def tcp(i)
       ip = @ip
       open_ports = []
