@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'packetfu'
+
 module Snackhack2
   class PortScan
     attr_accessor :display, :ip, :delete

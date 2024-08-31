@@ -39,7 +39,7 @@ Not all cryptocurrencies are public, cryptocurrencies like Monero have a private
 
 Websites use the HTML meta tag to include information about the site that is supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker in locating different sites that are probably owned by the same owner. 
 
-## Port Scanning. 
+## Port Scanning. .
 
 Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computer's internal network. If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figure out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include UDP ports.
 
@@ -64,6 +64,25 @@ gem install snackhack2
 
 ## Usage
 
+### LolBins MSR.exe Recording Screen
+
+This feature uses Psr.exe to record the screen. By default it will record for 60 seconds. This can be changed by this:
+
+```ruby
+ss = Snackhack2::ScreenShot.new
+ss.time = 64
+ss.run
+```
+After the selected time, a new file, which by default is named "screenshots.zip" will be created. This will contain the screenshots.
+
+The snippet below shows how `zip` can be to create a different named zip file.
+
+PSR is built into windows, many threat actors will use this feature to record the activity of a victims. Threat actors could use the screenshots to monitor the users, learn the companies or target's procedures, record the user entering passwords.  This all can be done without a third party tool, LOLBins which stand for living off the land, LOLBins such as PSR can be used without the threat actor having to download a tool or worry about the tool being detected by AntiVirus
+```ruby
+ss = Snackhack2::ScreenShot.new
+ss.zip = "Test.zip"
+ss.run
+```
 ## Forward Remote SSH Tunnel
 
 ```ruby
@@ -396,4 +415,7 @@ Snackhack2::SSHBute.new("167.98.80.8").run
 ```ruby
 gem install httparty
 gem install spidr
+gem install packetfu
+gem install async-http -v 0.59.4
+gem install net-ssh
 ```
