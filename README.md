@@ -75,9 +75,11 @@ ss.run
 ```
 After the selected time, a new file, which by default is named "screenshots.zip" will be created. This will contain the screenshots.
 
-The snippet below shows how `zip` can be to create a different named zip file.
+The snippet below shows how `zip` can be used to create a different named zip file.
 
-PSR is built into windows, many threat actors will use this feature to record the activity of a victims. Threat actors could use the screenshots to monitor the users, learn the companies or target's procedures, record the user entering passwords.  This all can be done without a third party tool, LOLBins which stand for living off the land, LOLBins such as PSR can be used without the threat actor having to download a tool or worry about the tool being detected by AntiVirus
+PSR is built into Windows, many threat actors will use this feature to record the activity of a victims. Threat actors could use the screenshots to monitor the users, learn the company's procedures, record the user entering passwords.  This all can be done without a third party tool, LOLBins which stand for living off the land, LOLBins such as PSR can be used without the threat actor having to download a tool or worrying about the tool being detected by AntiVirus
+
+
 ```ruby
 ss = Snackhack2::ScreenShot.new
 ss.zip = "Test.zip"
