@@ -33,7 +33,7 @@ The Robots.txt file is used by sites to tell web crawlers such as Google what pa
 
 When a site displays a cryptocurrency address on the site, the address could be used to discover more sites that are owned by the site or even their financial situation because some cryptocurrency's blockchains are public. Cryptocurrencies like Bitcoin, DogeCoin, and Litecoin blockchains are public, meaning you can see the amount of coins owned by the address. Cryptocurrencies that have a public blockchain have blockchain explorers that can be used to see how much an address has. It can also be used to view past transactions. 
 
-Not all cryptocurrencies are public, cryptocurrencies like Monero have a private blockchain meaning that you CAN'T see how much a certain address has. 
+Not all cryptocurrencies balances are public, cryptocurrencies like Monero have a private blockchain meaning that you CAN'T see how much a certain address has. 
 
 ## Website MetaData & Google Analytics.
 
@@ -66,9 +66,10 @@ gem install snackhack2
 
 ### Indirect Command Injection
 
-This allows you to execute exe using LOLBINS. LOLBINs are features built into Windows that can and are abused by threat ators. Threat actors often uses LOLBINs because they are built in Windows and they dont need to download third party tools that could be detected by the computer's anti virus. 
+This allows you to execute exe's using features built into Windows. 
 
-This will execute a exe with the prompt "test". By default the @title is "Click Me!". But this can be changed as seen below.
+
+This will execute a exe with the prompt "test". By default the @title is "Click Me!". But this can be changed as seen below. The title can also be changed. 
 
 ```ruby
 cj = Snackhack2::CommandInjection.new
