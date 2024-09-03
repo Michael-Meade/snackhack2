@@ -15,6 +15,9 @@ module Snackhack2
 		def conhost
 			Process.spawn("conhost.exe #{@exe}")
 		end
+		def conhost_hide
+			# Specify --headless parameter to hide child process window (if applicable)
+			Process.spawn("conhost.exe --headless #{@exe}")
 		def ssh
 			Process.spawn("ssh -o ProxyCommand=#{@exe} .")
 		end
