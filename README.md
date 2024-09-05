@@ -253,6 +253,29 @@ rs.bash
 rs.version2
 
 ```
+## List Users
+
+Search for a certain user, in this case a user name admin. It will display all the information about the user.
+```
+lu = Snackhack2::ListUsers.new
+lu.user = "admin"
+lu.windows_search_user
+```
+
+List all users in Linux systems
+Will list all users that are in the `/etc/passwd` file.
+
+```ruby
+lu = Snackhack2::ListUsers.new
+lu.linux
+```
+
+List all users on Windows. This feature uses `net user` command. 
+
+```ruby
+lu = Snackhack2::ListUsers.new
+lu.windows
+```
 
 ## Links
 
