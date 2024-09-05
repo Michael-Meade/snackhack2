@@ -2,6 +2,7 @@
 
 require 'uri'
 require 'httparty'
+
 require_relative 'snackhack2/version'
 require_relative 'snackhack2/bannergrabber'
 require_relative 'snackhack2/wordpress'
@@ -28,6 +29,7 @@ require_relative 'snackhack2/reverse_shell'
 require_relative 'snackhack2/forward_remote'
 require_relative 'snackhack2/screenshots'
 require_relative 'snackhack2/indirect_command_injection'
+require_relative 'snackhack2/list_users'
 
 module Snackhack2
   UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
@@ -49,10 +51,11 @@ module Snackhack2
       end
     end
   end
-  def self.file_save(site, type, content, ip:false)
-      hostname = URI.parse(site).host
-      File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
-      puts "[+] Saving file to #{hostname}_#{type}.txt..."
+
+  def self.file_save(site, type, content, ip: false)
+    hostname = URI.parse(site).host
+    File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
+    puts "[+] Saving file to #{hostname}_#{type}.txt..."
   end
 
   def self.get(site)
@@ -65,6 +68,7 @@ module Snackhack2
       File.delete(file)
     end
   end
+
   def self.read_portscan
     files = Dir['*_port_scan.txt']
     files.each do |f|

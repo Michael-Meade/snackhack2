@@ -90,7 +90,7 @@ while true
     Snackhack2::PhoneNumber.new(site).spider
   when 21
     print("Enter Port: ")
-    port=gets.chomp
+    port = gets.chomp
     Snackhack2::ReverseShell.new(site, port).run
   end
 end

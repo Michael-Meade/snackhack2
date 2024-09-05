@@ -12,6 +12,7 @@ module Snackhack2
       @lsite = lsite
       @rport = rport
     end
+
     def run
       Net::SSH.start(@site, @user, :password => @pass, :keys => @key) do |ssh|
         ssh.forward.remote(@lport, @lsite, @rport)

