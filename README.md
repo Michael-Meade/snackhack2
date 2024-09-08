@@ -276,6 +276,28 @@ List all users on Windows. This feature uses `net user` command.
 lu = Snackhack2::ListUsers.new
 lu.windows
 ```
+## Bypass 403 Errors
+
+The following methods can be used to bypass 403 errors. If the site gives a `200` repsonse code than the bypass was succesful. 
+The first method is to use two `//`. The second method is to capitalize random letters in the path. The third method is to use dots, a semi colon and slash like (`..;/`). 
+
+```ruby
+ph = Snackhack2::BypassHTTP.new
+ph.site = "https://example.com"
+ph.dots
+
+ph = Snackhack2::BypassHTTP.new
+ph.site = "https://example.com"
+ph.basic
+
+ph = Snackhack2::BypassHTTP.new
+ph.site = "https://example.com"
+ph.uppercase
+
+ph = Snackhack2::BypassHTTP.new
+ph.site = "https://example.com"
+ph.url_encode
+```
 
 ## Links
 

@@ -135,6 +135,8 @@ cj = Snackhack2::CommandInjection.new
 cj.prompt = "test"
 cj.wlrmdr_With_prompt
 =end
-lu = Snackhack2::ListUsers.new
-lu.user = ""
-lu.windows_search_user
+
+
+ph = Snackhack2::BypassHTTP.new
+ph.site = "https://hackex.net"
+ph.url_encode
