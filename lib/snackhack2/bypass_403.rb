@@ -1,16 +1,15 @@
 require 'async'
 module Snackhack2
   class BypassHTTP
-    attr_accessor :site
+    attr_accessor :site, :wordlist
 
     def initialize
-      @site = site
+      @site     = site
+      @wordlist = File.join(__dir__, 'lists', 'directory-list-2.3-big.txt')
     end
-    def wordlist
-      File.join(__dir__, 'lists', 'directory-list-2.3-big.txt')
-    end
+
     def web_request(bypass)
-      File.readlines(wordlist).each do |r|
+      File.readlines(@wordlist).each do |r|
         r = r.strip
         Async do
           url = File.join(@site, bypass , r)
@@ -25,7 +24,7 @@ module Snackhack2
       web_request("//")
     end
     def uppercase
-      File.readlines(wordlist).each do |r|
+      File.readlines(@wordlist).each do |r|
         r = r.strip.gsub(/./){|s| s.send(%i[upcase downcase].sample)}
         Async do
           url = File.join(@site, r)

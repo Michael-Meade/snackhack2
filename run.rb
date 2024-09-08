@@ -139,4 +139,4 @@ cj.wlrmdr_With_prompt
 
 ph = Snackhack2::BypassHTTP.new
 ph.site = "https://hackex.net"
-ph.url_encode
+puts ph.dots
