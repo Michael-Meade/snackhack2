@@ -3,7 +3,7 @@ require 'httparty'
 module Snackhack2
   class BypassHTTP
     attr_accessor :site, :wordlist, :bypass
-
+    
     def initialize
       @site     = site
       @wordlist = File.join(__dir__, 'lists', 'directory-list-2.3-big.txt')
@@ -17,9 +17,9 @@ module Snackhack2
           r = HTTParty.get(url, :headers => {
             "X-Forwarded-For": "127.0.0.1"
           })
-          puts url
-          puts r.code
-          puts "\n"
+        puts url
+        puts r.code
+        puts "\n"
         end
       end
     end

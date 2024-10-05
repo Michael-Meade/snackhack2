@@ -54,7 +54,8 @@ CVE-2018-11709 and CVE-2015-6522. `CVE-2018-11709` is an XSS exploit. At the sam
 
 ## Post Exploitation.
 
-After exploiting a vulnerability and gaining access to the server, a hacker might want to hide their tracks. As of right now, there is only one post-exploitation feature in Snackhack. This feature will take the web server logs, remove a certain IP, and replace it with a randomly generated IP. This could be used to cover your tracks or as an anti-forensic method. 
+After exploiting a vulnerability and gaining access to the server, a hacker might want to hide their tracks. As of right now, there is only one post-exploitation feature in Snackhack. This feature will take the web server logs, remove a certain IP, and replace it with a randomly generated IP. This could be used to cover your tracks or as an anti-forensic method. A reverse shell is used to be 
+able to access a remote computer at will. A remote fordward SSH will let you connect to a remote server's port to a local machine's port. From the remote server you can have remote shell to the local machine that is behind a firewall.
 
 ## Installation
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'nokogiri'
 require 'json'
 module Snackhack2
   class WordPress
@@ -26,7 +27,7 @@ module Snackhack2
     def users
       found_users = ''
       begin
-        users = Snackhack2::get(File.join(@site, "wp-login", "wp", "users")).body
+        users = Snackhack2::get(File.join(@site, "wp-json", "wp", "v2", "users")).body
         json = JSON.parse(users)
         json.each do |k|
           found_users += "#{k['name']}\n"
@@ -44,6 +45,13 @@ module Snackhack2
       end
     end
 
+    def authors
+    	for i in 0..100
+    		 b = Snackhack2::get(File.join(@site, "?author=#{i}")).body
+    		 doc = Nokogiri::HTML(b)
+    		 puts doc.at_css('title').text
+    	end
+    end
     def wp_content_uploads
       s = Snackhack2::get(File.join(@site, '/wp-content/uploads/'))
       if s.code == 200

@@ -4,7 +4,7 @@ module Snackhack2
   class PortScan
     attr_accessor :display, :ip, :delete
 
-    def initialize(ip, display: true, delete: false)
+    def initialize(display: true, delete: false)
       @ip = ip
       @display = display
       @delete = delete
