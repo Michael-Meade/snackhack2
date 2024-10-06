@@ -44,14 +44,6 @@ module Snackhack2
         end
       end
     end
-
-    def authors
-    	for i in 0..100
-    		 b = Snackhack2::get(File.join(@site, "?author=#{i}")).body
-    		 doc = Nokogiri::HTML(b)
-    		 puts doc.at_css('title').text
-    	end
-    end
     def wp_content_uploads
       s = Snackhack2::get(File.join(@site, '/wp-content/uploads/'))
       if s.code == 200
@@ -82,12 +74,15 @@ module Snackhack2
     def yoast_seo
       ys = Snackhack2::get(@site)
       if ys.code == 200
-        if ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)
-          puts "#{ys.body.match(/ This site is optimized with the Yoast SEO plugin\s.\d\d.\d/)}"
+      	yoast_version = ys.body.split("<!-- This site is optimized with the Yoast SEO Premium plugin")[1].split(" -->")[0]
+        ["This site is optimized with the Yoast SEO plugin", "This site is optimized with the Yoast SEO Premium plugin"].each do |site|
+          if !ys.body.scan(/#{site}/).shift.nil?
+            puts "#{ ys.body.scan(/#{site}/).shift.to_s } with version #{yoast_version}"
+          end
         end
       end
-    end
 
+    end
     def all_in_one_seo
       alios = Snackhack2::get(@site)
       if alios.code == 200
