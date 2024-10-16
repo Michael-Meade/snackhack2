@@ -48,7 +48,7 @@ module Snackhack2
       s = Snackhack2::get(File.join(@site, '/wp-content/uploads/'))
       if s.code == 200
         if s.body.include?('Index of')
-          puts "[+] #{File.join(@site, '/wp-content/uploads/')} is valid..."
+          puts "[+] #{File.join(@site, '/wp-content/uploads/')} is valid...\n\n\n"
         end
       end
     end

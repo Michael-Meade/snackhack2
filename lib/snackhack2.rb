@@ -31,6 +31,7 @@ require_relative 'snackhack2/screenshots'
 require_relative 'snackhack2/indirect_command_injection'
 require_relative 'snackhack2/list_users'
 require_relative "snackhack2/bypass_403"
+require_relative "snackhack2/comments"
 
 module Snackhack2
   UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"

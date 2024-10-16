@@ -137,7 +137,6 @@ cj.wlrmdr_With_prompt
 =end
 
 
-ph = Snackhack2::BypassHTTP.new
-ph.site = "https://hackex.net"
-ph.bypass = ";;"
-puts ph.forward_for
+ph = Snackhack2::Comments.new
+ph.site = "https://www.utica.edu"
+ph.run
