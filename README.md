@@ -65,6 +65,16 @@ gem install snackhack2
 
 ## Usage
 
+### Random IP Port Scan
+
+This feature will generate 100 random IPS and scan the top 1k ports. By default it will generate 10 random IPs.
+
+```ruby
+tcp = Snackhack2::PortScan.new
+tcp.count = 100
+tcp.mass_scan
+```
+
 ### Indirect Command Injection
 
 This allows you to execute exe's using features built into Windows. 
@@ -203,21 +213,25 @@ There is 7 different elements in an array. The code loops through each line of t
 
 ```ruby
 require "snackhack2"
-wp = Snackhack2::WordPress.new("https://kinsta.com")
+wp = Snackhack2::WordPress.new
+wp.site = "https://kinsta.com"
 wp.run
 ```
 
 Now get wordpress user's. This will save the users in a file with a similar name like this: google.com_users.txt. `wp_content_uploads` will check to see if there are any open directories. 
 
 ```ruby
-wp = Snackhack2::WordPress.new("https://themeisle.com")
+wp = Snackhack2::WordPress.new
+wp.site = "https://kinsta.com"
 wp.users
 # print out users instead of saving to file.
-wp = Snackhack2::WordPress.new("https://themeisle.com", save_file: false)
+wp = Snackhack2::WordPress.new(save_file: false)
+wp.site = "https://kinsta.com"
 wp.users
 
 # you can also set it to false like this:
-wp = Snackhack2::WordPress.new("https://themeisle.com")
+wp = Snackhack2::WordPress.new
+wp.site = "https://kinsta.com"
 wp.save_file = false
 
 wp.users
@@ -229,7 +243,8 @@ wp.wp_content_uploads
 ## Look at multiple sites for wordpress.
 
 ["https://google.com", "https://kinsta.com", "https://porchlightshop.com", "https://www.drrajatgupta.com"].each do |site|
-    wp = Snackhack2::WordPress.new(site)
+    wp = Snackhack2::WordPress.new
+    wp.site = site
     puts "#{site}: "
     wp.run
     puts "\n"

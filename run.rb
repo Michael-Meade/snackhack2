@@ -136,7 +136,22 @@ cj.prompt = "test"
 cj.wlrmdr_With_prompt
 =end
 
-
+=begin
 ph = Snackhack2::Comments.new
-ph.site = "https://www.utica.edu"
+ph.site = "https://hackex.net"
 ph.run
+=end
+=begin
+tcp = Snackhack2::PortScan.new
+tcp.count = 2
+tcp.test
+=end
+=begin
+ga = Snackhack2::GoogleAnalytics.new
+ga.site = "https://hackex.net"
+ga.run
+=end
+
+wp = Snackhack2::WordPress.new
+wp.site = "https://themeisle.com"
+wp.users

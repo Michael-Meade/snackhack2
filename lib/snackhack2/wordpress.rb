@@ -6,7 +6,7 @@ module Snackhack2
   class WordPress
     attr_accessor :save_file, :site
 
-    def initialize(site, save_file: true)
+    def initialize(save_file: true)
       @site = site
       @save_file = save_file
     end
@@ -44,6 +44,7 @@ module Snackhack2
         end
       end
     end
+
     def wp_content_uploads
       s = Snackhack2::get(File.join(@site, '/wp-content/uploads/'))
       if s.code == 200
@@ -74,15 +75,16 @@ module Snackhack2
     def yoast_seo
       ys = Snackhack2::get(@site)
       if ys.code == 200
-      	yoast_version = ys.body.split("<!-- This site is optimized with the Yoast SEO Premium plugin")[1].split(" -->")[0]
-        ["This site is optimized with the Yoast SEO plugin", "This site is optimized with the Yoast SEO Premium plugin"].each do |site|
+        yoast_version = ys.body.split("<!-- This site is optimized with the Yoast SEO Premium plugin")[1].split(" -->")[0]
+        ["This site is optimized with the Yoast SEO plugin",
+         "This site is optimized with the Yoast SEO Premium plugin"].each do |site|
           if !ys.body.scan(/#{site}/).shift.nil?
-            puts "#{ ys.body.scan(/#{site}/).shift.to_s } with version #{yoast_version}"
+            puts "#{ys.body.scan(/#{site}/).shift.to_s} with version #{yoast_version}"
           end
         end
       end
-
     end
+
     def all_in_one_seo
       alios = Snackhack2::get(@site)
       if alios.code == 200

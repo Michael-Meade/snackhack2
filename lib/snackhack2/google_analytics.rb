@@ -3,9 +3,9 @@
 require 'httparty'
 module Snackhack2
   class GoogleAnalytics
-    attr_reader :site
+    attr_accessor :site
 
-    def initialize(site)
+    def initialize
       @site = site
     end
 

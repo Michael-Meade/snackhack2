@@ -2,12 +2,13 @@
 
 module Snackhack2
   class PortScan
-    attr_accessor :display, :ip, :delete
+    attr_accessor :display, :ip, :delete, :count
 
-    def initialize(display: true, delete: false)
-      @ip = ip
+    def initialize(display: true, delete: false, count: 10)
+      @ip      = ip
       @display = display
-      @delete = delete
+      @delete  = delete
+      @count   = count
     end
 
     def run
@@ -15,6 +16,22 @@ module Snackhack2
       ports = [*1..1000]
       ports.each { |i| threads << Thread.new { tcp(i) } }
       threads.each(&:join)
+    end
+
+    def mass_scan
+      generate_ips.each do |ips|
+        tcp = PortScan.new
+        tcp.ip = ips
+        tcp.run
+      end
+    end
+
+    def generate_ips
+      ips = []
+      @count.to_i.times do |c|
+        ips << Array.new(4) { rand(256) }.join('.')
+      end
+      ips
     end
 
     def ports_extractor(port)
@@ -38,7 +55,7 @@ module Snackhack2
           s = TCPSocket.new(@ip, i)
           s.close
           open_ports << i
-        rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+        rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Errno::ENETUNREACH
           return false
         end
       rescue Timeout::Error
