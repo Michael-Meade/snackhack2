@@ -4,7 +4,8 @@ require 'nokogiri'
 require 'open-uri'
 module Snackhack2
   class WebsiteMeta
-    def initialize(site)
+    attr_accessor :site
+    def initialize
       @site = site
     end
 

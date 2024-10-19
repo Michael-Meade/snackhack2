@@ -13,7 +13,7 @@ module Snackhack2
     end
 
     def site
-      @site.gsub('https://', '')
+      #@site.gsub('https://', '')
     end
 
     def run
@@ -49,7 +49,7 @@ module Snackhack2
 
     def apache2
       if @headers['server'].match(/Apache/)
-        puts "[+] Server is running APACHE2... Now checking #{File.join(@site, "server-status")}..."
+        puts "[+] Server is running Apache2... Now checking #{File.join(@site, "server-status")}..."
         apache = Snackhack2::get(File.join(@site, "server-status"))
         if apache.code == 200
           puts "Check #{@site}/server-status"

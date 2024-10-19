@@ -2,6 +2,7 @@
 
 module Snackhack2
   class Robots
+    
     def initialize(site, save_file: true)
       @site = site
       @http = Snackhack2::get(File.join(@site, "robots.txt"))

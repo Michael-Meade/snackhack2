@@ -4,9 +4,9 @@ require 'nokogiri'
 require 'open-uri'
 module Snackhack2
   class WebsiteLinks
-    attr_accessor :save_file
+    attr_accessor :save_file, :site
 
-    def initialize(site, save_file: true)
+    def initialize(save_file: true)
       @site = site
       @save_file = save_file
     end

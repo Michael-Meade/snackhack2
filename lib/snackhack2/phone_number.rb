@@ -2,9 +2,9 @@ require 'httparty'
 require 'spidr'
 module Snackhack2
   class PhoneNumber
-    attr_accessor :save_file
+    attr_accessor :save_file, :site
 
-    def initialize(site, save_file: true)
+    def initialize(save_file: true)
       @site = site
       @save_file = save_file
     end
@@ -27,7 +27,6 @@ module Snackhack2
       if !numbers.empty?
         if @save_file
           hostname = URI.parse(@site).host
-          puts "[+] Saving to #{hostname}_phone_numbers.txt..."
           Snackhack2::file_save(@site, "phone_numbers", numbers.join("\n"))
         end
       end

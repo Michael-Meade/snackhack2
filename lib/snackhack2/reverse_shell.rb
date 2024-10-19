@@ -1,7 +1,8 @@
 require 'base64'
 module Snackhack2
   class ReverseShell
-    def initialize(ip, port)
+    attr_accessor :ip, :port
+    def initialize
       @ip   = ip
       @port = port
     end

