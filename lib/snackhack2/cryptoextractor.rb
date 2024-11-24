@@ -12,7 +12,7 @@ module Snackhack2
       @save_file = save_file
     end
 
-    def run
+    def all
       addresses = []
       addresses << monero unless monero.nil?
       addresses << bitcoin unless bitcoin.nil?
@@ -30,7 +30,7 @@ module Snackhack2
     end
 
     def monero
-      @http.scan(/[48][0-9AB][1-9A-HJ-NP-Za-km-z]{93}/)
+        @http.scan(/([48][0-9AB][1-9A-HJ-NP-Za-km-z]{93})/)
     end
 
     def bitcoin
@@ -38,27 +38,27 @@ module Snackhack2
     end
 
     def dash
-      @http.scan(/X[1-9A-HJ-NP-Za-km-z]{33}/)
+      @http.scan(/(X[1-9A-HJ-NP-Za-km-z]{33})/)
     end
 
     def stellar
-      @http.scan(/G[A-Z0-9]{55}$/)
+      @http.scan(/(G[A-Z0-9]{55}$)/)
     end
 
     def litecoin
-      @http.scan(/[LM3][a-km-zA-HJ-NP-Z1-9]{26,33}/)
+      @http.scan(/([LM3][a-km-zA-HJ-NP-Z1-9]{26,33})/)
     end
 
     def dogecoin
-      @http.scan(/D{1}[56789ABCDEFGHJKLMNPQRSTU]{1}[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{32}$/)
+      @http.scan(/(D{1}[56789ABCDEFGHJKLMNPQRSTU]{1}[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{32}$)/)
     end
 
     def ethereum
-      @http.scan(/0x[a-fA-F0-9]{40}/)
+      @http.scan(/(0x[a-fA-F0-9]{40})/)
     end
 
     def bitcoincash
-      @http.scan(/[13][a-km-zA-HJ-NP-Z1-9]{33}/)
+      @http.scan(/([13][a-km-zA-HJ-NP-Z1-9]{33})/)
     end
   end
 end
