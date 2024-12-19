@@ -1,4 +1,4 @@
-require './lib/snackHack2'
+require 'snackhack2'
 
 tcp = Snackhack2::PortScan.new
 tcp.count = 100

@@ -49,7 +49,9 @@ while true
   print("\n\n\n")
   case num.to_i
   when 1
-    tcp = Snackhack2::PortScan.new(site).run
+    tcp = Snackhack2::PortScan.new
+    tcp.site = site
+    tcp.run
   when 2
     ip = Snackhack2::Robots.new(site, save_file: true).run
   when 3
@@ -57,7 +59,9 @@ while true
   when 4
     Snackhack2::Drupal.new(site).all
   when 5
-    Snackhack2::GoogleAnalytics.new(site).run
+    ga = Snackhack2::GoogleAnalytics.new
+    ga.site = site
+    ga.run
   when 6
     Snackhack2::SiteMap.new(site).run
   when 7
