@@ -136,9 +136,7 @@ cj.wlrmdr_With_prompt
 =end
 
 =begin
-ph = Snackhack2::Comments.new
-ph.site = "https://hackex.net"
-ph.run
+dd
 =end
 =begin
 tcp = Snackhack2::PortScan.new

@@ -15,6 +15,8 @@ module Snackhack2
           line = l.strip
           if line.start_with?("<!--")
             puts body[i].next
+          elsif line.include?("<!")
+            puts body[i].next
           end
         end
       else

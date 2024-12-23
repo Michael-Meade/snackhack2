@@ -19,5 +19,13 @@ module Snackhack2
     def windows_search_user
       puts `net user #{@user}`
     end
+    def auto
+      os = RUBY_PLATFORM
+      if os.match?("linux")
+        linux
+      elsif os.match?("mingw") or os.match?(/mswin|msys|mingw|cygwin|bccwin|wince|emc/)
+        windows
+      end
+    end
   end
 end

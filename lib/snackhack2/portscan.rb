@@ -64,7 +64,7 @@ module Snackhack2
 
       if @display
         open_ports.each do |port|
-          puts "#{port} is open"
+          puts "#{ip} - #{port} is open\n"
         end
       end
       File.open("#{ip}_port_scan.txt", 'a') { |file| file.write(open_ports.shift.to_s + "\n") }

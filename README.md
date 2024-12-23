@@ -413,7 +413,7 @@ end
 This could be used to find other sites on the web that uses the same g code
 
 ```ruby
-ga = Snackhack::GoogleAnalytics.new
+ga = Snackhack2::GoogleAnalytics.new
 ga.site = "https://g-form.com"
 ga.run
 ```
