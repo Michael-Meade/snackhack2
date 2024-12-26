@@ -131,9 +131,9 @@ namespace "snackhack" do
     rs = Snackhack2::ReverseShell.new
     rs.ip   = "127.0.0.1"
     rs.port = "99"
-    rs.run
-    puts "\n\n[+] Testing ReverseShell Version2...\n"
-    rs.version2
+    puts "\n\n[+] Testing ReverseShell ncat...\n"
+    rs.ncat
+    rs.nc
   end
   desc "Testing Google Analytics."
   task :ga do

