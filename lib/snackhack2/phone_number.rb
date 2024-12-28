@@ -22,7 +22,7 @@ module Snackhack2
         out = phone.map { |n| n[0] }.compact
         numbers << out
       else
-        puts "[+] Status code: #{http.code}"
+        puts "\n\n[+] Status code: #{http.code}"
       end
       if !numbers.empty?
         if @save_file

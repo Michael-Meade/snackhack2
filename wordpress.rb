@@ -4,7 +4,8 @@ print("Enter URL ( with https:// ):")
 url = gets.chomp
 
 puts "WordPress\n\n".blue
-wp = Snackhack2::WordPress.new(url)
+wp = Snackhack2::WordPress.new
+wp.url
 wp.users
 puts "\n\n"
 

@@ -2,7 +2,8 @@ require 'nokogiri'
 require 'open-uri'
 module Snackhack2
   class Drupal
-    def initialize(site)
+    attr_accessor :site
+    def initialize
       @site = site
     end
 
@@ -30,17 +31,17 @@ module Snackhack2
       posts = doc.xpath('//meta')
       posts.each do |l|
         if l.attributes['content'].to_s.include?("Drupal")
-          puts "[+] Drupal Version: #{l.attributes['content']}\n"
+          puts "\n\n[+] Drupal Version: #{l.attributes['content']}\n"
         end
       end
-      puts "Drupal Score: #{drupal_score}"
+      puts "\nDrupal Score: #{drupal_score}\n"
     end
 
     def user_brute
       for user in 1..1000 do
         u = Snackhack2::get(File.join(@site, "user", user.to_s)).body
         if u.include?("Page not found")
-          puts "User count: #{user - 1}"
+          puts "\nUser count: #{user - 1}\n"
           break
         end
       end

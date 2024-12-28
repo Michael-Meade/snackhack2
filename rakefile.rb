@@ -3,25 +3,29 @@ require './lib/snackHack2'
 namespace "gems" do
   desc "Building gem, Push gem, Install Gem"
   task :all do
-    require "colorize"
-    gemfile = Dir.glob("*.gem").each { |f| f }.shift
-    if !gemfile.nil?
-      if File.exist?(gemfile)
-        puts "Deleting #{gemfile}...\n".red
-        File.delete(gemfile)
-        puts "Building gem...\n".red
-        %x(gem build snackhack2.gemspec)
-        puts "Pushing Gem...\n".red
-        begin
-          sh "gem push #{Dir.glob("*.gem").each { |f| f }.shift}"
-        rescue
-          puts "ERROR in Pushing...\n".red
+    begin
+      require "colorize"
+      gemfile = Dir.glob("*.gem").each { |f| f }.shift
+      if !gemfile.nil?
+        if File.exist?(gemfile)
+          puts "Deleting #{gemfile}...\n".red
+          File.delete(gemfile)
+          puts "Building gem...\n".red
+          %x(gem build snackhack2.gemspec)
+          puts "Pushing Gem...\n".red
+          begin
+            sh "gem push #{Dir.glob("*.gem").each { |f| f }.shift}"
+          rescue
+            puts "ERROR in Pushing...\n".red
+          end
+          puts "[+] Installing gem...\n"
+          sh "gem install #{Dir.glob("*.gem").each { |f| f }.shift}"
         end
-        puts "[+] Installing gem...\n"
-        sh "gem install #{Dir.glob("*.gem").each { |f| f }.shift}"
+      else
+        puts "No gem file found..."
       end
-    else
-      puts "No gem file found..."
+    rescue => e
+      puts e
     end
   end
   desc "Push the gem."
@@ -151,8 +155,15 @@ namespace "snackhack" do
     puts "\n\n[+] Testng Baner Grabber headers...\n"
     bg.headers 
   end
+  desc "Testing Robots.txt"
   task :robots do
     robots = Snackhack2::Robots.new("https://krebsonsecurity.com")
     puts robots.run
+  end
+  desc "Testing Drupal"
+  task :drupal do 
+    d   = Snackhack2::Drupal.new
+    d.site = "https://physiologycore.umn.edu/"
+    d.all
   end
 end
