@@ -560,6 +560,23 @@ Snackhack2::Subdomains2.new("https://netflix.com").run
 ```ruby
 Snackhack2::SSHBute.new("167.98.80.8").run
 ```
+
+## Rakefile
+This command will run all the possible rakefile commands. 
+
+```ruby
+rake -T
+```
+
+This command will build, push, install the gem.
+
+```ruby
+rake gems:all
+```
+This rake command will run all the snackhack2 testing.
+```ruby
+rake snackhack:all
+```
 ## Install needed gems
 
 ```ruby
