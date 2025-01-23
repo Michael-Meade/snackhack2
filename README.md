@@ -574,6 +574,7 @@ This command will build, push, install the gem.
 rake gems:all
 ```
 This rake command will run all the snackhack2 testing.
+
 ```ruby
 rake snackhack:all
 ```

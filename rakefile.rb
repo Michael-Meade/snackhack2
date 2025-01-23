@@ -166,4 +166,10 @@ namespace "snackhack" do
     d.site = "https://physiologycore.umn.edu/"
     d.all
   end
+  desc "DNS MX Records"
+  task :mx do
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    d.mx
+  end
 end
