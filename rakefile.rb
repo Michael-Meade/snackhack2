@@ -172,4 +172,22 @@ namespace "snackhack" do
     d.site = "utica.edu"
     d.mx
   end
+  desc "DNS nameserver Records"
+  task :cname do
+    d   = Snackhack2::Dns.new
+    d.site = "krebsonsecurity.com"
+    d.cname
+  end
+  desc "DNS TXT Records"
+  task :txt do
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    d.txt
+  end
+  desc "DNS SOA Records"
+  task :soa do
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    d.soa
+  end
 end
