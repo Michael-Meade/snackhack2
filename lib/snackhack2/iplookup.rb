@@ -18,9 +18,11 @@ module Snackhack2
       ip = `ping -c 2 #{@site.gsub('https://', '')}`.lines
       ip.each do |l|
         new_ip = l.match(/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/)
-        ips << new_ip.to_s unless ips.include?(new_ip)
+        if !new_ip.to_s.empty?
+          ips << new_ip.to_s unless ips.include?(new_ip)
+        end
       end
-      puts "IP via ping: #{ips.shift}\n\n\n\n"
+    ips
     end
 
     def nslookup

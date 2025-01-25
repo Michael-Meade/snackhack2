@@ -117,7 +117,37 @@ namespace "snackhack" do
     puts "\n\n[+] Testing Baner Grabber headers...\n"
     bg.headers 
 
+    puts "\n\n[+] Testing DNS A Records...\n"
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    puts d.a
 
+    puts "\n\n[+] Testing DNS HINFO Records...\n"
+    d   = Snackhack2::Dns.new
+    d.site = "google.com"
+    puts d.hinfo
+
+    puts "\n\n[+] Testing DNS Nameserver Records...\n"
+    d   = Snackhack2::Dns.new
+    d.site = "krebsonsecurity.com"
+    puts d.nameserver
+
+    puts "\n\n[+] Testing DNS MX Records...\n"
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    puts d.mx
+
+    puts "\n\n[+] Testing DNS AAAA Records...\n"
+    d   = Snackhack2::Dns.new
+    d.site = "google.com"
+    puts d.aaaa
+
+    puts "\n\n[+] Testing DNS SOA Records...\n"
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    puts d.soa
+
+    
   end
   desc "Find all comments on a site."
   task :comments do
@@ -170,24 +200,42 @@ namespace "snackhack" do
   task :mx do
     d   = Snackhack2::Dns.new
     d.site = "utica.edu"
-    d.mx
+    puts d.mx
   end
   desc "DNS nameserver Records"
-  task :cname do
+  task :nameserver do
     d   = Snackhack2::Dns.new
     d.site = "krebsonsecurity.com"
-    d.cname
+    puts d.nameserver
   end
   desc "DNS TXT Records"
   task :txt do
     d   = Snackhack2::Dns.new
     d.site = "utica.edu"
-    d.txt
+    puts d.txt
   end
   desc "DNS SOA Records"
   task :soa do
     d   = Snackhack2::Dns.new
     d.site = "utica.edu"
-    d.soa
+    puts d.soa
+  end
+  desc "DNS AAAA Records"
+  task :aaaa do
+    d   = Snackhack2::Dns.new
+    d.site = "google.com"
+    puts d.aaaa
+  end
+  desc "DNS HINFO Records"
+  task :hinfo do 
+    d   = Snackhack2::Dns.new
+    d.site = "google.com"
+    puts d.hinfo
+  end
+  desc "DNS A Records"
+  task :a do 
+    d   = Snackhack2::Dns.new
+    d.site = "utica.edu"
+    puts d.a
   end
 end
