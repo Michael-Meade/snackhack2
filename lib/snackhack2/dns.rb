@@ -2,7 +2,7 @@ require 'resolv'
 module Snackhack2
   class Dns
     attr_accessor :site
-    def initialize
+    def initialize(site)
       @site = site
     end
     def all_dns

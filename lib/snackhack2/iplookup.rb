@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 require 'socket'
+require 'colorize'
 module Snackhack2
   class IpLookup
     attr_accessor :site
-    def initialize
+    def initialize(site, file_save: false)
+      @file_save = file_save
       @site = site
     end
 
@@ -32,11 +34,17 @@ module Snackhack2
         new_ip = ip.gsub("Address: ", "").strip if ip.include?('Address')
         if !ips.include?(new_ip)
           if !new_ip.nil?
-            ips << new_ip
+            p new_ip.split("Addresses:  ")[1].to_s
+            ips << new_ip.split("Addresses:  ")[1].to_s
           end
         end
       end
-      Snackhack2::file_save(@site, "ip_lookup", ips.to_a.drop(1).join("\n"))
+      
+      if @file_save 
+        Snackhack2::file_save(@site, "ip_lookup", ips.to_a.drop(1).join("\n"))
+      else
+        ips
+      end
       
     end
 

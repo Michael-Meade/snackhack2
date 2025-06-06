@@ -4,11 +4,12 @@ module Snackhack2
   class PortScan
     attr_accessor :display, :ip, :delete, :count
 
-    def initialize(display: true, delete: false, count: 10)
+    def initialize(display: true, delete: false, count: 10, terminal_output: false)
       @ip      = ip
       @display = display
       @delete  = delete
       @count   = count
+      @terminal_output = terminal_output
     end
 
     def run
@@ -33,7 +34,6 @@ module Snackhack2
       end
       ips
     end
-
     def ports_extractor(port)
       ip = []
       files = Dir['*_port_scan.txt']
@@ -66,8 +66,8 @@ module Snackhack2
         open_ports.each do |port|
           puts "#{ip} - #{port} is open\n"
         end
-      end
       File.open("#{ip}_port_scan.txt", 'a') { |file| file.write(open_ports.shift.to_s + "\n") }
+      end
     end
   end
 end
