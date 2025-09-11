@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 require 'nokogiri'
 module Snackhack2
@@ -7,10 +9,10 @@ module Snackhack2
     end
 
     def run
-      sm = Snackhack2::get(File.join(@site, "sitemap.xml"))
+      sm = Snackhack2.get(File.join(@site, 'sitemap.xml'))
       if sm.code == 200
-        if !sm.body.include?("Not Found")
-          Snackhack2::file_save(@site, "site.xml", sm.body)
+        if !sm.body.include?('Not Found')
+          Snackhack2.file_save(@site, 'site.xml', sm.body)
         else
           puts "[+] Eh. I don't think the site has a sitemap. Manually check just in case... :(\n\n"
         end

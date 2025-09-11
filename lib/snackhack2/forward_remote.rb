@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/ssh'
 module Snackhack2
   class SSHForwardRemote
@@ -14,9 +16,9 @@ module Snackhack2
     end
 
     def run
-      Net::SSH.start(@site, @user, :password => @pass, :keys => @key) do |ssh|
+      Net::SSH.start(@site, @user, password: @pass, keys: @key) do |ssh|
         ssh.forward.remote(@lport, @lsite, @rport)
-        puts "[+] Starting SSH remote forward tunnel"
+        puts '[+] Starting SSH remote forward tunnel'
         ssh.loop { true }
       end
     end

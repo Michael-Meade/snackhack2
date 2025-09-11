@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module Snackhack2
   class CommandInjection
     attr_accessor :exe, :title, :prompt
 
     def initialize
-      @exe = "calc.exe"
-      @title = "Click me!"
-      @prompt = "To run calculator"
+      @exe = 'calc.exe'
+      @title = 'Click me!'
+      @prompt = 'To run calculator'
     end
 
     def wlrmdr_With_prompt

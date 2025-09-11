@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'snackhack2'
 require 'colorize'
-print("Enter URL (with HTTPS://): ")
+print('Enter URL (with HTTPS://): ')
 url = gets.chomp
 print("\n\n\n")
 

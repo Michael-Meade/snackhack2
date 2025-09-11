@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Snackhack2
   class ListUsers
     attr_accessor :user
@@ -8,7 +10,7 @@ module Snackhack2
 
     def linux
       `cat /etc/passwd`.split("\n").each do |l|
-        puts l.split(":")[0]
+        puts l.split(':')[0]
       end
     end
 
@@ -19,11 +21,12 @@ module Snackhack2
     def windows_search_user
       puts `net user #{@user}`
     end
+
     def auto
       os = RUBY_PLATFORM
-      if os.match?("linux")
+      if os.match?('linux')
         linux
-      elsif os.match?("mingw") or os.match?(/mswin|msys|mingw|cygwin|bccwin|wince|emc/)
+      elsif os.match?('mingw') || os.match?(/mswin|msys|mingw|cygwin|bccwin|wince|emc/)
         windows
       end
     end

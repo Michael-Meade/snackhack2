@@ -66,9 +66,7 @@ if options[:meta]
   me.run
 end
 Snackhack2::WebServerCleaner.new(options[:weblogclear]).run if options[:weblogclear]
-if options[:cryptoextract]
-  Snackhack2::CryptoExtractWebsite.new(options[:cryptoextract]).run
-end
+Snackhack2::CryptoExtractWebsite.new(options[:cryptoextract]).run if options[:cryptoextract]
 Snackhack2::BannerGrabber.new(options[:bannergrab]).run if options[:bannergrab]
 Snackhack2::BannerGrabber.new(options[:curl]).curl if options[:curl]
 Snackhack2::Subdomains.new(options[:subdomain]).run if options[:subdomain]
@@ -89,6 +87,4 @@ if options[:tomcat]
   tc = Snackhack2::TomCat.new(options[:tomcat])
   tc.run
 end
-if options[:emails]
-  Snackhack2::Email.new(options[:emails]).run
-end
+Snackhack2::Email.new(options[:emails]).run if options[:emails]

@@ -17,7 +17,7 @@ module Snackhack2
       all_links = links.map { |e| e['href'] }.compact
       content = all_links.uniq.join("\n")
       if @save_file
-        Snackhack2::file_save(@site, "links", content)
+        Snackhack2.file_save(@site, 'links', content)
       else
         all_links.each do |links|
           puts links

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'snackhack2'
 require 'colorize'
 puts "\e[H\e[2J"
 
-banner = %Q{
+banner = %(
 
 ███████ ███    ██  █████   ██████ ██   ██ ██   ██  █████   ██████ ██   ██ ██████
 ██      ████   ██ ██   ██ ██      ██  ██  ██   ██ ██   ██ ██      ██  ██       ██
@@ -12,11 +14,10 @@ banner = %Q{
 
 
 
-}
+)
 puts banner.colorize(:blue)
-while true
-
-  options = %Q{
+loop do
+  options = %{
   1) Port Scan
   2) Robots.txt
   3) WordPress
@@ -40,11 +41,11 @@ while true
   21) Reverse Shell
   }
   print(options)
-  print("Enter Number: ")
+  print('Enter Number: ')
 
   num = gets.chomp
 
-  print("Enter Site: ")
+  print('Enter Site: ')
   site = gets.chomp
   print("\n\n\n")
   case num.to_i
@@ -53,10 +54,10 @@ while true
     tcp.site = site
     tcp.run
   when 2
-    ip = Snackhack2::Robots.new(site, save_file: true).run
+    Snackhack2::Robots.new(site, save_file: true).run
   when 3
     Snackhack2::WordPress.new(site).run
-    
+
   when 4
     Snackhack2::Drupal.new(site).all
   when 5
@@ -94,7 +95,7 @@ while true
   when 20
     Snackhack2::PhoneNumber.new(site).spider
   when 21
-    print("Enter Port: ")
+    print('Enter Port: ')
     port = gets.chomp
     Snackhack2::ReverseShell.new(site, port).run
   end

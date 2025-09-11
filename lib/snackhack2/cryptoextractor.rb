@@ -7,7 +7,7 @@ module Snackhack2
     attr_accessor :save_file
 
     def initialize(site, save_file: true)
-      @http = Snackhack2::get(site).body
+      @http = Snackhack2.get(site).body
       @site = site
       @save_file = save_file
     end
@@ -23,14 +23,14 @@ module Snackhack2
       addresses << dogecoin unless dogecoin.nil?
       addresses << stellar unless stellar.nil?
       if @save_file
-        Snackhack2::file_save(@site, "cryptoaddresses", addresses.uniq.join("\n"))
+        Snackhack2.file_save(@site, 'cryptoaddresses', addresses.uniq.join("\n"))
       else
         puts addresses.join("\n")
       end
     end
 
     def monero
-        @http.scan(/([48][0-9AB][1-9A-HJ-NP-Za-km-z]{93})/)
+      @http.scan(/([48][0-9AB][1-9A-HJ-NP-Za-km-z]{93})/)
     end
 
     def bitcoin

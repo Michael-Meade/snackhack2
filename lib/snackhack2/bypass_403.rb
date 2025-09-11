@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'async'
 require 'httparty'
 module Snackhack2
@@ -7,7 +9,7 @@ module Snackhack2
     def initialize
       @site     = site
       @wordlist = File.join(__dir__, 'lists', 'directory-list-2.3-big.txt')
-      @bypass   = "//"
+      @bypass   = '//'
     end
 
     def forward_for
@@ -15,8 +17,8 @@ module Snackhack2
         r = r.strip
         Async do
           url = File.join(@site, @bypass, r)
-          r = HTTParty.get(url, :headers => {
-                             "X-Forwarded-For": "127.0.0.1"
+          r = HTTParty.get(url, headers: {
+                             "X-Forwarded-For": '127.0.0.1'
                            })
           puts url
           puts r.code
@@ -30,7 +32,7 @@ module Snackhack2
         r = r.strip
         Async do
           url = File.join(@site, bypass, r)
-          r = Snackhack2::get(url)
+          r = Snackhack2.get(url)
           puts url
           puts r.code
           puts "\n"
@@ -39,7 +41,7 @@ module Snackhack2
     end
 
     def basic
-      web_request("//")
+      web_request('//')
     end
 
     def uppercase
@@ -48,7 +50,7 @@ module Snackhack2
         Async do
           url = File.join(@site, r)
           puts url
-          r = Snackhack2::get(url)
+          r = Snackhack2.get(url)
           puts r.code
           puts "\n"
         end
@@ -56,11 +58,11 @@ module Snackhack2
     end
 
     def url_encode
-      web_request("%2e")
+      web_request('%2e')
     end
 
     def dots
-      web_request("..;/")
+      web_request('..;/')
     end
   end
 end

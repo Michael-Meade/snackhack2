@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Snackhack2
   class Comments
     attr_accessor :site
@@ -7,15 +9,15 @@ module Snackhack2
     end
 
     def run
-      c = Snackhack2::get(@site)
+      c = Snackhack2.get(@site)
 
       if c.code == 200
         body = c.body.split("\n")
         body.each_with_index do |l, i|
           line = l.strip
-          if line.start_with?("<!--")
+          if line.start_with?('<!--')
             puts body[i].next
-          elsif line.include?("<!")
+          elsif line.include?('<!')
             puts body[i].next
           end
         end

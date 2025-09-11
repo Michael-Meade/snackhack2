@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 module Snackhack2
   class TomCat
@@ -6,9 +8,9 @@ module Snackhack2
     end
 
     def run
-      tc = Snackhack2::get(File.join(@site, "/docs/"))
+      tc = Snackhack2.get(File.join(@site, '/docs/'))
       if tc.code == 404
-        if tc.body.include?("Tomcat")
+        if tc.body.include?('Tomcat')
           doc = Nokogiri::HTML(tc.body)
           version = doc.at('h3').text
           puts "[+] Looks like the site is Tomcat, running #{version}."

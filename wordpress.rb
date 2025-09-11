@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require './lib/snackHack2'
 require 'colorize'
-print("Enter URL ( with https:// ):")
+print('Enter URL ( with https:// ):')
 url = gets.chomp
 
 puts "WordPress\n\n".blue
@@ -11,7 +13,7 @@ puts "\n\n"
 
 puts "Port Scan the Site\n\n".green
 ps = Snackhack2::PortScan.new
-ps.ip = url.gsub("https://", "")
+ps.ip = url.gsub('https://', '')
 ps.run
 puts "\n\n"
 

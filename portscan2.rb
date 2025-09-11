@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'snackhack2'
 
 tcp = Snackhack2::PortScan.new

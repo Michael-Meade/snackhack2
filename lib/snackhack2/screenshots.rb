@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'shellwords'
 module Snackhack2
   class ScreenShot
@@ -5,19 +7,19 @@ module Snackhack2
 
     # https://lolbas-project.github.io/lolbas/Binaries/Psr/
     def initialize
-      @zip = "screenshots.zip"
+      @zip = 'screenshots.zip'
       @time = 60
     end
 
     def run
-      File.open("lol.bat", 'w+') { |file| file.write("psr.exe /start /output #{@zip} /sc 1 /gui 0") }
-      File.open("lol2.bat", 'w+') { |file| file.write("psr.exe /stop") }
-      Process.spawn("lol.bat")
+      File.open('lol.bat', 'w+') { |file| file.write("psr.exe /start /output #{@zip} /sc 1 /gui 0") }
+      File.open('lol2.bat', 'w+') { |file| file.write('psr.exe /stop') }
+      Process.spawn('lol.bat')
       sleep @time.to_i
-      system("lol2.bat")
+      system('lol2.bat')
       sleep 2
-      File.delete("lol.bat")
-      File.delete("lol2.bat")
+      File.delete('lol.bat')
+      File.delete('lol2.bat')
     end
   end
 end

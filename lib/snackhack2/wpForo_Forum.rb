@@ -4,6 +4,7 @@ require 'httparty'
 module Snackhack2
   class WPForoForum
     attr_accessor :site
+
     def initialize
       @site = site
     end

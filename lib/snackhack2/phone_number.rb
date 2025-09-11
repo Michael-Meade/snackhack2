@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 require 'spidr'
 module Snackhack2
@@ -9,13 +11,11 @@ module Snackhack2
       @save_file = save_file
     end
 
-    def save_file
-      @save_file
-    end
+    attr_reader :save_file
 
     def run
       numbers = []
-      http = Snackhack2::get(@site)
+      http = Snackhack2.get(@site)
       if http.code == 200
         regex = http.body
         phone = regex.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
@@ -24,12 +24,11 @@ module Snackhack2
       else
         puts "\n\n[+] Status code: #{http.code}"
       end
-      if !numbers.empty?
-        if @save_file
-          hostname = URI.parse(@site).host
-          Snackhack2::file_save(@site, "phone_numbers", numbers.join("\n"))
-        end
-      end
+      return if numbers.empty?
+      return unless @save_file
+
+      URI.parse(@site).host
+      Snackhack2.file_save(@site, 'phone_numbers', numbers.join("\n"))
     end
 
     def spider
@@ -39,18 +38,16 @@ module Snackhack2
           body = page.to_s
           if body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
             pn = body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)[0]
-            if !pn.nil?
-              pn = pn.compact.select { |i| !i.to_s.nil? }.shift
-              if !phone_numbers.include?(pn.to_s)
-                phone_numbers << pn
-              end
+            unless pn.nil?
+              pn = pn.compact.reject { |i| i.to_s.nil? }.shift
+              phone_numbers << pn unless phone_numbers.include?(pn.to_s)
             end
           end
         end
       end
-      if !phone_numbers.empty?
-        Snackhack2::file_save(@site, "phonenumbers", phone_numbers.join("\n")) if @save_file
-      end
+      return if phone_numbers.empty?
+
+      Snackhack2.file_save(@site, 'phonenumbers', phone_numbers.join("\n")) if @save_file
     end
   end
 end

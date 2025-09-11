@@ -65,6 +65,30 @@ gem install snackhack2
 
 ## Usage
 
+### CVE-2017-9841
+
+This will check if the site is vulerable and if it is it will let you type endless commands until you type 'exit'
+
+```ruby
+require './lib/snackHack2'
+
+php = Snackhack2::Test.new("http://127.0.0.1:3333")
+
+php.shell
+```
+
+The `run` method will only check if the site is vulnerable. If it is, it will say display.
+```ruby
+require './lib/snackHack2'
+
+php = Snackhack2::Test.new("http://127.0.0.1:3333")
+
+php.run
+```
+
+You download the vulnerable site with the link below.
+
+source: https://github.com/vulhub/vulhub/tree/master/phpunit/CVE-2017-9841
 ### Random IP Port Scan
 
 This feature will generate 100 random IPS and scan the top 1k ports. By default it will generate 10 random IPs.

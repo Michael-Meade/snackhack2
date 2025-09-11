@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'httparty'
 require 'spidr'
 module Snackhack2
@@ -10,9 +12,7 @@ module Snackhack2
       @max_depth = max_depth
     end
 
-    def max_depth
-      @max_depth
-    end
+    attr_reader :max_depth
 
     def run
       found_emails = []
@@ -21,15 +21,11 @@ module Snackhack2
           body = page.to_s
           if body.scan(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}/)
             email = body.scan(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}/).uniq
-            if !email.include?(found_emails)
-              if !email.empty?
-                found_emails << email
-              end
-            end
+            found_emails << email if !email.include?(found_emails) && !email.empty?
           end
         end
       end
-      Snackhack2::file_save(@site, "emails", found_emails.uniq.join("\n")) if @save_file
+      Snackhack2.file_save(@site, 'emails', found_emails.uniq.join("\n")) if @save_file
     end
   end
 end

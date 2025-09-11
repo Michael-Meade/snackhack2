@@ -3,6 +3,7 @@
 module Snackhack2
   class WebServerCleaner
     attr_accessor :ip
+
     def initialize(path: File.join('/var/log', 'access.log'))
       @ip   = ip
       @path = path

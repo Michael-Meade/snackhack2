@@ -29,19 +29,18 @@ module Snackhack2
 
     def generate_ips
       ips = []
-      @count.to_i.times do |c|
+      @count.to_i.times do |_c|
         ips << Array.new(4) { rand(256) }.join('.')
       end
       ips
     end
+
     def ports_extractor(port)
       ip = []
       files = Dir['*_port_scan.txt']
       files.each do |f|
         r = File.read(f)
-        if r.include?(port)
-          ip << f.split("_")[0]
-        end
+        ip << f.split('_')[0] if r.include?(port)
         File.delete(f) if delete
       end
       File.open("#{port}_scan.txt", 'w+') { |file| file.write(ip.join("\n")) }
@@ -62,12 +61,12 @@ module Snackhack2
       end
       return if open_ports.empty?
 
-      if @display
-        open_ports.each do |port|
-          puts "#{ip} - #{port} is open\n"
-        end
-      File.open("#{ip}_port_scan.txt", 'a') { |file| file.write(open_ports.shift.to_s + "\n") }
+      return unless @display
+
+      open_ports.each do |port|
+        puts "#{ip} - #{port} is open\n"
       end
+      File.open("#{ip}_port_scan.txt", 'a') { |file| file.write("#{open_ports.shift}\n") }
     end
   end
 end
