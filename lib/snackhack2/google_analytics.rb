@@ -20,6 +20,8 @@ module Snackhack2
         puts a.match(/G-([0-9]+([A-Za-z]+[0-9]+)+)/)
       when /G-[A-Za-z0-9]+/
         puts a.match(/G-[A-Za-z0-9]+/)
+      when /GT-[A-Za-z0-9]+/
+        puts a.match(/GT-[A-Za-z0-9]+/)
       else
         puts '[+] No Google Analytics found :('
       end
