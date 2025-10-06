@@ -81,7 +81,7 @@ The `run` method will only check if the site is vulnerable. If it is, it will sa
 ```ruby
 require './lib/snackHack2'
 
-php = Snackhack2::Test.new("http://127.0.0.1:3333")
+php = Snackhack2::CVE20179841.new("http://127.0.0.1:3333")
 
 php.run
 ```
@@ -89,6 +89,7 @@ php.run
 You download the vulnerable site with the link below.
 
 source: https://github.com/vulhub/vulhub/tree/master/phpunit/CVE-2017-9841
+
 ### Random IP Port Scan
 
 This feature will generate 100 random IPS and scan the top 1k ports. By default it will generate 10 random IPs.

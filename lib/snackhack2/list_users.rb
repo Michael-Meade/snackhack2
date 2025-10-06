@@ -4,7 +4,7 @@ module Snackhack2
   class ListUsers
     attr_accessor :user
 
-    def initialize
+    def initialize(user)
       @user = user
     end
 

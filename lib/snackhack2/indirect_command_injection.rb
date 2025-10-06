@@ -4,7 +4,7 @@ module Snackhack2
   class CommandInjection
     attr_accessor :exe, :title, :prompt
 
-    def initialize
+    def initialize(exe, title, prompt)
       @exe = 'calc.exe'
       @title = 'Click me!'
       @prompt = 'To run calculator'

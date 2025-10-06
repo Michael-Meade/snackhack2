@@ -6,7 +6,7 @@ module Snackhack2
   class WebsiteMeta
     attr_accessor :site
 
-    def initialize
+    def initialize(site)
       @site = site
     end
 

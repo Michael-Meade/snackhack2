@@ -1,4 +1,3 @@
-
 require './lib/snackHack2'
 require 'sqlite3'
 require 'colorize'
@@ -91,7 +90,7 @@ sites.each do |domain|
 				response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true)
 				cert = response.peer_cert
 				puts cert.serial
-			rescue OpenSSL::SSL::SSLError
+			rescue OpenSSL::SSL::SSLError,Net::OpenTimeout, Errno::EHOSTUNREACH
 			end
 	     	found << [new_domain, ip]
 	     end

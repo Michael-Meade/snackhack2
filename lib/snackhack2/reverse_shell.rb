@@ -5,7 +5,7 @@ module Snackhack2
   class ReverseShell
     attr_accessor :ip, :port
 
-    def initialize
+    def initialize(ip, port)
       @ip   = ip
       @port = port
     end
