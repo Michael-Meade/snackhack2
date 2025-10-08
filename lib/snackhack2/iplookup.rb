@@ -6,7 +6,7 @@ module Snackhack2
   class IpLookup
     attr_accessor :site
 
-    def initialize(site, file_save: false)
+    def initialize(file_save: false)
       @file_save = file_save
       @site = site
     end
@@ -33,7 +33,7 @@ module Snackhack2
       ns.each do |ip|
         new_ip = ip.gsub('Address: ', '').strip if ip.include?('Address')
         if !ips.include?(new_ip) && !new_ip.nil?
-          p new_ip.split('Addresses:  ')[1].to_s
+          
           ips << new_ip.split('Addresses:  ')[1].to_s
         end
       end

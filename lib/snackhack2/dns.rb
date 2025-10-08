@@ -5,7 +5,7 @@ module Snackhack2
   class Dns
     attr_accessor :site
 
-    def initialize(site)
+    def initialize()
       @site = site
     end
 

