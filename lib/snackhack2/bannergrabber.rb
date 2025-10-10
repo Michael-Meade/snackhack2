@@ -3,9 +3,9 @@
 require 'socket'
 module Snackhack2
   class BannerGrabber
-    attr_accessor :port, :site, :save_file
+    attr_accessor :site, :port, :save_file
 
-    def initialize(port: 443, save_file: true)
+    def initialize(site, port: 443, save_file: true)
       @site    = site
       @port    = port
       @headers = Snackhack2.get(@site).headers

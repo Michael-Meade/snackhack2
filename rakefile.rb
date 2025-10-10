@@ -115,8 +115,7 @@ namespace 'snackhack' do
       Snackhack2::Subdomains2.new('https://netflix.com').run
 
       puts "\n\n[+] Testing Baner Grabber...\n"
-      bg = Snackhack2::BannerGrabber.new
-      bg.site = "krebsonsecurity.com"
+      bg = Snackhack2::BannerGrabber.new "https://krebsonsecurity.com"
       bg.run
       puts "\n\n[+] Testing Baner Grabber cURL...\n"
       bg.curl
