@@ -90,6 +90,7 @@ You download the vulnerable site with the link below.
 
 source: https://github.com/vulhub/vulhub/tree/master/phpunit/CVE-2017-9841
 
+
 ### Random IP Port Scan
 
 This feature will generate 100 random IPS and scan the top 1k ports. By default it will generate 10 random IPs.
@@ -197,7 +198,8 @@ d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
 d.user_brute
 # This will run all the methods to detect Drupal.
 d.all
-# This will just run the drupal score method. This will also print out the version of Drupal. 
+# This will just run the drupal score method. This will a
+76\ lso print out the version of Drupal. 
 d.drupal_score
 ```
 

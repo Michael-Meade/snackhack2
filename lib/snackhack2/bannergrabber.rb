@@ -72,7 +72,7 @@ module Snackhack2
     def types
       {
         "cloudflare": [ "cf-cache-status", "cf-ray", "cloudflare"],
-        "aws CloudFront": [ "X-Amz-Cf-Pop", "X-Amz-Cf-Id", "CloudFront"] 
+        "aws CloudFront": [ "X-Amz-Cf-Pop", "X-Amz-Cf-Id", "CloudFront", "x-amz-cf-pop", "x-amz-cf-id", "cloudfront.net"] 
       }
     end
     def find_headers
@@ -110,13 +110,48 @@ module Snackhack2
         end
       end
     end
+    def detect_header(return_status: true)
+      # stores the data found in 
+      # the headers.
+      data = {}
+      # loops through the hash stored in the 'types' method.
+      # the t_k is the KEY of the hash
+      # the t_v is the VALUE of the hash.
+      types.each do |t_k, t_v|
+        # make a single get request to the site 
+        # to get the headers.
+        find_headers.each do |fh_k, fh_v|
+          # Get the keys from the 'types' method
+          # which is basicly a hash
+          type_key = t_k
+          # uses the key of the 'types' hash 
+          # to see if they value of the certaian key
+          # includes the string found in 'fh_k'
+          if types[type_key].include?(fh_k)
+            if data.has_key?(type_key)
+              data[type_key] <<  fh_k
+            else
+              data[type_key] = [fh_k]
+            end
+          end
+        end
+      end
+      if return_status
+        return data
+      else
+        data.each do |k,v|
+          puts "K:#{k}"
+          puts "V: #{v}"
+        end
+      end
+    end
     def server
       @headers['server']
     end
 
     attr_reader :site
-    private :headers
-  end
+    private :headers, :find_headers
+  end  
 end
 # to do: instead of doing mutiple methods for each type of
 # header make one method that is dynamic...

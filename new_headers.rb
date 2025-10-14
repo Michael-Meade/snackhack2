@@ -2,9 +2,10 @@ require './lib/snackHack2'
 bg = Snackhack2::BannerGrabber.new
 bg.site = "https://hackex.net"
 
-#cf = bg.cloudflare
-
-#puts "\nStatus: Cloudflare found.\nCount: #{cf[1]}" if cf[0]
-
-
-bg.aws_cloudfront
+headers = bg.detect_header(return_status: true) 
+p headers
+headers.each do |k,v|
+	v.each do |h|
+		p h
+	end
+end
