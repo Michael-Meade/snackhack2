@@ -212,7 +212,6 @@ class PhishingTlds < PhishingData
         end
       end
     end
-    
     suffixes = ["-", ".", "--"]
     # this will generate the 'new_domain' with the keywords
     # as a suffixes

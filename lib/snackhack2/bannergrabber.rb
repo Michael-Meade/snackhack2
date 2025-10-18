@@ -125,8 +125,7 @@ module Snackhack2
           # which is basicly a hash
           type_key = t_k
           # uses the key of the 'types' hash 
-          # to see if they value of the certaian key
-          # includes the string found in 'fh_k'
+          # to see if includes the string found in 'fh_k'
           if types[type_key].include?(fh_k)
             if data.has_key?(type_key)
               data[type_key] <<  fh_k

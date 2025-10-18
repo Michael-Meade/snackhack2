@@ -63,10 +63,17 @@ module Snackhack2
     end
   end
 
-  def self.file_save(site, type, content, ip: false)
-    hostname = URI.parse(site).host
-    File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
-    puts "[+] Saving file to #{hostname}_#{type}.txt..."
+  def self.file_save(site, type, content, ip: false, host: true)
+    if host
+      hostname = URI.parse(site).host
+      File.open("#{hostname}_#{type}.txt", 'w+') { |file| file.write(content) }
+      puts "[+] Saving file to #{hostname}_#{type}.txt..."
+    else
+      File.open("#{site}_#{type}.txt", 'w+') { |file| file.write(content) }
+      puts "[+] Saving file to #{site}_#{type}.txt..."
+    end
+    
+    
   end
 
   def self.get(site)
