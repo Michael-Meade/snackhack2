@@ -173,24 +173,33 @@ class PhishingTlds < PhishingData
     new_ds = ds.shift
     
     # the final array with the duplicates letters removed
-    remove_lettters_out = []
+    remove_letters_out = []
     
     # Loops through the 'letters_with_more_than_one'
     # array and uses 'sub' to remove the occurence
     # of one of the letters
     letters_with_more_than_one.each do |l|
         # removes only first character ( l )
-        remove_lettters_out <<  new_ds.sub(l, "")
+        remove_letters_out <<  new_ds.sub(l, "")
         # removes ALL chracters ( l )
-        remove_lettters_out <<  new_ds.gsub(l, "")
+        remove_letters_out <<  new_ds.gsub(l, "")
     end
     
+    domains_with_tlds = []
+    # adding the TLDS to the 'remove_letter_out' array
+    domains.each do |d|
+      remove_letters_out.each do |rl|
+        # adds the words ( rl ) and the TLDS ( d )
+        # to the domains_with_tld array.
+        domains_with_tlds << "#{rl}#{d}"
+      end
+    end
     if array_out
-        remove_lettters_out
+        domains_with_tlds
     else
        # will print the contents of the array
        # instead of returning the array
-       remove_lettters_out.each  { |a| puts a }
+       domains_with_tlds.each  { |a| puts a }
     end
   end
   def combosquatting

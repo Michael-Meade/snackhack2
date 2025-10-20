@@ -15,14 +15,11 @@ module Snackhack2
       nginx
       apache2
       wordpress
-      headers
     end
     def headers
       @headers = Snackhack2.get(@site).headers
     end
     def nginx
-      return unless @headers['server'].match(/nginx/)
-
       puts "[+] Server is running NGINX... Now checking if #{File.join(@site, 'nginx_status')} is valid..."
       nginx = Snackhack2.get(File.join(@site, 'nginx_status'))
       if nginx.code == 200
@@ -149,7 +146,7 @@ module Snackhack2
     end
 
     attr_reader :site
-    private :headers, :find_headers
+    private :find_headers
   end  
 end
 # to do: instead of doing mutiple methods for each type of

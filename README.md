@@ -65,6 +65,40 @@ gem install snackhack2
 
 ## Usage
 
+### Headers
+
+```ruby
+require './lib/snackHack2'
+bg = Snackhack2::BannerGrabber.new
+bg.site = "https://hackex.net"
+
+headers = bg.detect_header(return_status: true)
+headers.each do |k,v|
+    v.each do |h|
+        puts h
+    end
+end
+```
+
+### Phishing Domains
+
+Generate possible phishing site using a differnt couple methods.
+
+```ruby
+require './lib/snackHack2'
+t = Snackhack2::PhishingTlds.new
+t.site = site
+
+generated_domains = t.combosquatting
+Snackhack2::file_save(t.site, "combosquatting", generated_domains.join("\n"), ip: false, host:false)
+
+changed_tld = t.change_tld
+Snackhack2::file_save(t.site, "tld_changed", change_tld.join("\n"), ip: false, host:false)
+
+letters_removed = t.remove_letters
+Snackhack2::file_save(t.site, "letters_removed", letters_removed.join("\n"), ip: false, host:false)
+```
+
 ### CVE-2017-9841
 
 This will check if the site is vulerable and if it is it will let you type endless commands until you type 'exit'
@@ -72,7 +106,7 @@ This will check if the site is vulerable and if it is it will let you type endle
 ```ruby
 require './lib/snackHack2'
 
-php = Snackhack2::Test.new("http://127.0.0.1:3333")
+php = Snackhack2::CVE20179841.new("http://127.0.0.1:3333")
 
 php.shell
 ```
@@ -516,6 +550,66 @@ s.command = "id"
 puts s.command
 # This will run the exploit. and print out the command output.
 s.run
+```
+## Sqlite3
+Saves data about a site in a database that can be used to query by using sqlite3
+
+```ruby
+require './lib/snackHack2'
+require 'sqlite3'
+class Sql
+  def initialize(site)
+    @site = site
+    @db   = SQLite3::Database.new 'recon.db'
+  end
+
+  def site
+    @site.split('.')[0]
+  end
+end
+
+class Ips < Sql
+  def create_table
+    ct = @db.execute("CREATE TABLE IF NOT EXISTS create table #{site}_ip (ip varchar(30));")
+    puts "#{site}_ip table generated..." if ct.empty?
+  rescue SQLite3::SQLException
+    puts 'ERROR'
+  end
+
+  def read_table
+    @db.execute("select * from #{site}_ip;").each do |rows|
+      puts rows
+    end
+  rescue SQLite3::SQLException
+  end
+
+  def recon
+    ips  = []
+    ip   = Snackhack2::IpLookup.new
+    dns  = Snackhack2::Dns.new
+    dns.site  = @site
+    ns        = dns.nameserver
+    ns.each do |i|
+      ip.site = i
+      ips     = ip.get_ip.shift
+      begin
+        check = @db.execute("select * from #{site}_ip where ip='#{ips}'")
+        unless check.nil?
+          puts ips
+          @db.execute "insert into #{site}_ip values ( ? )", ips
+        end
+      rescue SQLite3::SQLException
+      end
+    end
+  end
+end
+
+class Ports
+  def create_table; end
+end
+Ips.new('netflix.com')
+# sql.recon
+# sql.read_table
 ```
 
 ## Phone Number Extractor
