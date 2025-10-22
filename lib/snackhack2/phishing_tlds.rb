@@ -282,6 +282,68 @@ class PhishingTlds < PhishingData
     list_of_domains
     end
   end
+  def idn_homograph 
+    letters = {
+      "o" => ["0", "О", "ó", "о","ο","օ","ȯ","ọ","ỏ","ơ","ó","ö"],
+      "i" => ["1","ı", "ỉ", "і", "í", "ï"],
+      "a" => ["а","α", "ạ"],
+      "h" => ["н", "һ", "ĥ"], 
+      "c" => ["с"],
+      "I" => "l",
+      "e" => ["е", "℮", "ё", "ė", "ẹ"],
+      "b" => [ "þ", "в", "B" ],
+      "g" => [ "ɢ"],
+      "l" => ["Ɩ", "Ι"],
+      "m" => ["m", "ʍ", "м"],
+      "t" => ["т", "ţ"],
+      "p" => ["р"],
+      "y" => ["у", "ý"],
+      "k" => ["ķ"],
+      "d" => ["ɗ"],
+      "z" => ["ź","ʐ", "ż"],
+      "s" => ["ś", "ṣ"],
+      "u" => ["ų"],
+      "n" => ["ń", "ñ", ""],
+      "r" => ["ɾ", "R", "r", "ʀ", "Ի", "Ꮢ", "ᚱ", "Ｒ", "ｒ"],
+      "ll" => ["ǁ"],
+      "q" => ["զ"],
+      "j" => ["ј", "ʝ"],
+      "v" => ["ν", "ѵ"],
+      "x" => ["х" "ҳ"]
+    }
+    tlds = @site.split(".")
+    # removes the tlds
+    tlds.pop
+    # joins back the rest of the site
+    tlds = tlds.join(".")
+
+    new_domains = []
+    letters.each do |k, v|
+      tlds.split(//).each do |letter|
+        # if the letter elements
+        # are qual to the key vlaue 
+        # located in the letters hash
+        if letter.eql?(k)
+          # find the key and replace it 
+          # the v ( idn )
+          if v.kind_of?(Array)
+            # detct if the v ( value ) 
+            # is an array. If it is 
+            # then it will "fandomly" pick an element
+            v = v.sample
+          end
+          new_domains <<  tlds.gsub(k, v)                                                                                          
+        end
+      end
+    end
+    domains_with_tlds = []
+    new_domains.each do |nd|
+      domains.each do |d|
+        domains_with_tlds << "#{nd}#{d}"
+      end
+    end
+  domains_with_tlds
+  end
   private :remove_tlds, :domain_split
   end
 end

@@ -1,5 +1,5 @@
-#require './lib/snackHack2'
-require "snackhack2"
+require './lib/snackHack2'
+#require "snackhack2"
 
 =begin
 tlds.site = "dropbox.com"
@@ -51,16 +51,22 @@ def combine(t, site)
   changed_tld = t.change_tld
   
   letters_removed = t.remove_letters
+
+  idn = t.idn_homograph
+
   new_domains += generated_domains.join("\n")
   new_domains += "\n=======================================\n"
   new_domains += changed_tld.join("\n")
   new_domains += "\n=======================================\n"
   new_domains += letters_removed.join("\n")
   new_domains += "\n=======================================\n"
+  new_domains += idn.join("\n")
+  new_domains += "\n=======================================\n"
 
   Snackhack2::file_save(t.site, "phshing_domains", new_domains, ip: false, host:false)
 end
 
 t = Snackhack2::PhishingTlds.new
-
-combine(t, "google.net")
+t.site = "google.com"
+#combine(t, "google.net")
+p t.idn_homograph
