@@ -184,16 +184,8 @@ class PhishingTlds < PhishingData
         # removes ALL chracters ( l )
         remove_letters_out <<  new_ds.gsub(l, "")
     end
-    
-    domains_with_tlds = []
-    # adding the TLDS to the 'remove_letter_out' array
-    domains.each do |d|
-      remove_letters_out.each do |rl|
-        # adds the words ( rl ) and the TLDS ( d )
-        # to the domains_with_tld array.
-        domains_with_tlds << "#{rl}#{d}"
-      end
-    end
+    # add tldds to the created list
+    domains_with_tlds = add_tlds(remove_letters_out)
     if array_out
         domains_with_tlds
     else
@@ -201,6 +193,18 @@ class PhishingTlds < PhishingData
        # instead of returning the array
        domains_with_tlds.each  { |a| puts a }
     end
+  end
+  def add_tlds(list)
+    # takes the newly created domains (list)
+    # and adds the tlds (domains) to the newly created
+    # ones. 
+    o = []
+    list.each do |rr|
+      domains.each do |dd|
+        o << "#{rr}#{dd}"
+      end
+    end
+  o
   end
   def combosquatting
     # where the generated domains will be located.
@@ -232,16 +236,8 @@ class PhishingTlds < PhishingData
         end
       end
     end
-    final_results = []
-    
-    # Loops through the domains array in the PhishingData class
-    domains.each do |tlds|
-      results.each do |r|
-        new_domain = "#{r}#{tlds}"
-        final_results << new_domain
-      end
-    end
-    final_results
+  # adds the tlds to the newly created domains
+  add_tlds(results)
   end
   def change_tld(no_tld: true)
     # This method will take the inputted site in @site and 
@@ -270,14 +266,14 @@ class PhishingTlds < PhishingData
       # removes .com, .org, etc
       ds = remove_tlds
     
-      # join the elements together
+      # join the elements together with .
       ds = ds.join(".")
-      
       
       # loops through the tlds
       domains.each do |tlds|
           # adds the new domains to the array
-          list_of_domains <<  ds + tlds
+          list_of_domains << "#{ds}#{tlds}" 
+          #ds + tlds
       end
     list_of_domains
     end
@@ -302,8 +298,8 @@ class PhishingTlds < PhishingData
       "d" => ["ɗ"],
       "z" => ["ź","ʐ", "ż"],
       "s" => ["ś", "ṣ"],
-      "u" => ["ų"],
-      "n" => ["ń", "ñ", ""],
+      "u" => ["ų", "υ", "ս","ü","ú","ù"],
+      "n" => ["ń", "ñ"],
       "r" => ["ɾ", "R", "r", "ʀ", "Ի", "Ꮢ", "ᚱ", "Ｒ", "ｒ"],
       "ll" => ["ǁ"],
       "q" => ["զ"],
@@ -329,13 +325,14 @@ class PhishingTlds < PhishingData
           if v.kind_of?(Array)
             # detct if the v ( value ) 
             # is an array. If it is 
-            # then it will "fandomly" pick an element
+            # then it will "randomly" pick an element
             v = v.sample
           end
           new_domains <<  tlds.gsub(k, v)                                                                                          
         end
       end
     end
+=begin
     domains_with_tlds = []
     new_domains.each do |nd|
       domains.each do |d|
@@ -343,6 +340,8 @@ class PhishingTlds < PhishingData
       end
     end
   domains_with_tlds
+=end
+  add_tlds(new_domains)
   end
   private :remove_tlds, :domain_split
   end

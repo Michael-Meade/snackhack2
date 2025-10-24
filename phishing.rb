@@ -70,3 +70,4 @@ t = Snackhack2::PhishingTlds.new
 t.site = "google.com"
 #combine(t, "google.net")
 p t.idn_homograph
+#t.remove_letters
