@@ -167,8 +167,6 @@ class PhishingTlds < PhishingData
           letters_with_more_than_one << key
       end
     end
-    
-    
     ds = remove_tlds
     new_ds = ds.shift
     
@@ -184,15 +182,7 @@ class PhishingTlds < PhishingData
         # removes ALL chracters ( l )
         remove_letters_out <<  new_ds.gsub(l, "")
     end
-    # add tldds to the created list
-    domains_with_tlds = add_tlds(remove_letters_out)
-    if array_out
-        domains_with_tlds
-    else
-       # will print the contents of the array
-       # instead of returning the array
-       domains_with_tlds.each  { |a| puts a }
-    end
+  add_tlds(remove_letters_out)
   end
   def add_tlds(list)
     # takes the newly created domains (list)
@@ -237,6 +227,7 @@ class PhishingTlds < PhishingData
       end
     end
   # adds the tlds to the newly created domains
+
   add_tlds(results)
   end
   def change_tld(no_tld: true)
@@ -332,15 +323,6 @@ class PhishingTlds < PhishingData
         end
       end
     end
-=begin
-    domains_with_tlds = []
-    new_domains.each do |nd|
-      domains.each do |d|
-        domains_with_tlds << "#{nd}#{d}"
-      end
-    end
-  domains_with_tlds
-=end
   add_tlds(new_domains)
   end
   private :remove_tlds, :domain_split

@@ -63,11 +63,12 @@ def combine(t, site)
   new_domains += idn.join("\n")
   new_domains += "\n=======================================\n"
 
-  Snackhack2::file_save(t.site, "phshing_domains", new_domains, ip: false, host:false)
+  Snackhack2::file_save(t.site, "phishing_domains", new_domains, ip: false, host:false)
 end
 
 t = Snackhack2::PhishingTlds.new
 t.site = "google.com"
-#combine(t, "google.net")
-p t.idn_homograph
+t.combosquatting.each do |a|
+  puts a
+end
 #t.remove_letters

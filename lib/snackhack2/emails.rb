@@ -6,7 +6,7 @@ module Snackhack2
   class Email
     attr_accessor :max_depth
 
-    def initialize(site, save_file: true, max_depth: 4)
+    def initialize(site, save_file: true, max_depth: 2)
       @site = site
       @save_file = save_file
       @max_depth = max_depth

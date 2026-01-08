@@ -5,12 +5,12 @@
 module Snackhack2
   class SSRF
     attr_accessor :site
-
     def initialize
       @site = site
     end
-
-    def ssrf
+    def port_scan
+    end
+    def ssrf_google
       url = @site.gsub('SSRF', 'http://google.com')
       ht = HTTParty.get(url)
       if ht.body.include?("Search the world's information, including webpages, images, videos and more. Google has many special features to help you find exactly what you're looking for.")

@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+ # frozen_string_literal: true
 require 'socket'
 module Snackhack2
   class BannerGrabber
@@ -15,6 +14,7 @@ module Snackhack2
       nginx
       apache2
       wordpress
+      get_ssh_info
     end
     def headers
       @headers = Snackhack2.get(@site).headers
@@ -75,6 +75,15 @@ module Snackhack2
     def find_headers
       # make a request to the site and grab the headers. 
       Snackhack2.get(@site).headers
+    end
+
+    def get_tcp_info(ports: "")
+      ports = 22 if ports.empty?
+      begin
+        TCPSocket.new(@site, ports).recv(1024)
+      rescue => e
+        puts "ERROR OCCURRED"
+      end
     end
     def cloudflare(print_status: true)
       # the purpose of this method is to 

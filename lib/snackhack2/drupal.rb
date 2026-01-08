@@ -19,13 +19,12 @@ module Snackhack2
       drupal_score = 0
       d = Snackhack2.get(@site)
       if d.code == 200
-        d.headers.each do |k|
-          drupal_score += 10 if k.include?('drupal')
+        d.headers.each do |k,v|
+          drupal_score += 10 if k.downcase.include?('drupal')
+          drupal_score += 10 if v.downcase.include?('drupal')
         end
       end
-      d.headers.each do |v|
-        drupal_score += 10 if v.include?('drupal')
-      end
+      
       doc = Nokogiri::HTML(URI.open(@site))
       posts = doc.xpath('//meta')
       posts.each do |l|

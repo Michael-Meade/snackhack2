@@ -86,7 +86,17 @@ module Snackhack2
       File.delete(file)
     end
   end
-
+  def self.read_emails
+    email_filter = []
+    Dir['*_emails.txt'].each do |file|
+      File.readlines(file).each do |k|
+        domain =  k.split(".")[1].strip
+        unless domain.eql?("png")
+          puts k
+        end
+      end
+    end
+  end
   def self.read_portscan
     files = Dir['*_port_scan.txt']
     files.each do |f|

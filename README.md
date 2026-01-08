@@ -699,6 +699,12 @@ This rake command will run all the snackhack2 testing.
 ```ruby
 rake snackhack:all
 ```
+
+## Gem
+
+https://rubygems.org/gems/snackhack2
+
+
 ## Install needed gems
 
 ```ruby
