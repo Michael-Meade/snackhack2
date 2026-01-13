@@ -39,7 +39,7 @@ Not all cryptocurrencies balances are public, cryptocurrencies like Monero have 
 
 Websites use the HTML meta tag to include information about the site that is supposed to help in being ranked higher on a search engine. This information could also be used to figure out what software or even the software version. Finding the Google Analytics tag could aid a hacker in locating different sites that are probably owned by the same owner. 
 
-## Port Scanning. .
+## Port Scanning.
 
 Scanning the first thousand ports of a server or computer will help reveal the purposes of the server and might give the hacker a way into the computer's internal network. If the server shows that port 22 is open, the hacker might be able to brute force the SSH server or figure out the version of the service and exploit a vulnerability. This feature will only scan TCP ports. Future versions might include UDP ports.
 
@@ -82,7 +82,7 @@ end
 
 ### Phishing Domains
 
-Generate possible phishing site using a differnt couple methods.
+Generate possible phishing site using a couple differnt methods.
 
 ```ruby
 require './lib/snackHack2'
@@ -134,7 +134,48 @@ tcp = Snackhack2::PortScan.new
 tcp.count = 100
 tcp.mass_scan
 ```
+### Host Injection
 
+The code snippet below is a really basic web server that you can test host injection.. You will need to install the Sinatra gem. 
+
+```ruby
+
+# old_host_ip: the IP of the host (public IP) that its supposed to be
+# new_host_ip: the IP of the host to bypass access controls
+require 'sinatra'
+
+get '/admin' do
+    if request.host.eql?("192.168.1.100")
+        "<b>YES</b>"
+    else
+        "<b>NO</b>"
+    end 
+end
+```
+In the example above make the injected host the `192.168.1.100`.
+
+The code below will perform the inject host. 
+
+
+```ruby
+a = Snackhack2::HostInjection.new
+a.site = "http://127.0.0.1:4567/admin"
+a.old_host_ip = "172.28.170.34"
+a.new_host_ip = "192.168.1.101"
+
+a.host_ip
+a.double_host_ip
+a.x_forwarded
+```
+Currently there are three different methods that can perform the host injection. 
+
+
+`host_ip` will add a certain host-ip ( old_host_ip) to the request with the hopes it bypasses access control.
+
+`double_host_ip` will double up by sending a request  that has TWO host headers with the hopes that it tricks the host into accepting the second host ip. 
+
+The `x_forwarded` will create a header with the name of `x_forwarded`
+ 
 ### Indirect Command Injection
 
 This allows you to execute exe's using features built into Windows. 

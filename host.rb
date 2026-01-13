@@ -18,7 +18,7 @@ end
 a = Snackhack2::HostInjection.new
 a.site = "http://127.0.0.1:4567/admin"
 a.old_host_ip = "172.28.170.34"
-a.new_host_ip = "192.168.1.101"
+a.new_host_ip = "192.168.1.100"
 
 #a.host_ip
 #a.double_host_ip
