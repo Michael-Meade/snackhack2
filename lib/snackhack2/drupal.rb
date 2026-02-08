@@ -26,14 +26,17 @@ module Snackhack2
       end
       
       doc = Nokogiri::HTML(URI.open(@site))
+      # uses xpath to extra the data stored in the meta tags
       posts = doc.xpath('//meta')
       posts.each do |l|
+        # display the drupal version and other info
         puts "\n\n[+] Drupal Version: #{l.attributes['content']}\n" if l.attributes['content'].to_s.include?('Drupal')
       end
       puts "\nDrupal Score: #{drupal_score}\n"
     end
 
     def user_brute
+      # enumerate the users by looping 0 to 1000
       (1..1000).each do |user|
         u = Snackhack2.get(File.join(@site, 'user', user.to_s)).body
         if u.include?('Page not found')

@@ -30,6 +30,7 @@ module Snackhack2
     end
 
     def curl
+      # uses cURL to head a website header
       servers = ''
       # rus the curl command to get the headers of the given site. 
       cmd = `curl -s -I #{@site.gsub('https://', '')}`

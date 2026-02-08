@@ -13,13 +13,17 @@ module Snackhack2
     end
 
     def run
+      # runs `tcp` with threads
       threads = []
+      # creates all the ports between 1 and 1000
       ports = [*1..1000]
       ports.each { |i| threads << Thread.new { tcp(i) } }
       threads.each(&:join)
     end
 
     def mass_scan
+      # uses the `generate_ips` to generate radom 
+      # IPs. then performs the scan
       generate_ips.each do |ips|
         tcp = PortScan.new
         tcp.ip = ips
@@ -28,6 +32,8 @@ module Snackhack2
     end
 
     def generate_ips
+      # generate a bunch of different Ips to an
+      # array named `ips`.
       ips = []
       @count.to_i.times do |_c|
         ips << Array.new(4) { rand(256) }.join('.')
@@ -36,6 +42,10 @@ module Snackhack2
     end
 
     def ports_extractor(port)
+      # Looks through the files in the folder that 
+      # match '_port_scan.txt' which extracts the 
+      # ports
+
       ip = []
       files = Dir['*_port_scan.txt']
       files.each do |f|
@@ -62,7 +72,7 @@ module Snackhack2
       return if open_ports.empty?
 
       return unless @display
-
+      # displays the open ports and IPs
       open_ports.each do |port|
         puts "#{ip} - #{port} is open\n"
       end

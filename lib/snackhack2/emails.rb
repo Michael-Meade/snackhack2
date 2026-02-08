@@ -19,8 +19,11 @@ module Snackhack2
       Spidr.start_at(@site, max_depth: @max_depth) do |agent|
         agent.every_page do |page|
           body = page.to_s
+          # uses a regex to look for email addresses
           if body.scan(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}/)
+            # again, uses regex to extract the email addresses and removes duplicates
             email = body.scan(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}/).uniq
+            # if emails not found already in the array, it will add the email to the array. 
             found_emails << email if !email.include?(found_emails) && !email.empty?
           end
         end

@@ -54,6 +54,7 @@ module Snackhack2
     end
 
     def wp_login
+      # detects if the site is using wordpress
       percent = 0
       ## todo: maybe add Bayes Theorem to detect wp
       wp = ['wp-includes', 'wp-admin', 'Powered by WordPress', 'wp-login.php', 'yoast.com/wordpress/plugins/seo/',
@@ -72,6 +73,8 @@ module Snackhack2
     end
 
     def yoast_seo
+      # checks to see if the wordpress site
+      # uses the yoast seo plugin
       ys = Snackhack2.get(@site)
       return unless ys.code == 200
 
@@ -85,6 +88,7 @@ module Snackhack2
     def all_in_one_seo
       alios = Snackhack2.get(@site)
       return unless alios.code == 200
+      # scans the body for the text `All in One SEO Pro`
       return unless alios.body.scan(/(All in One SEO Pro\s\d.\d.\d)/)
 
       puts "Site is using the plugin: #{alios.body.match(/(All in One SEO Pro\s\d.\d.\d)/)}"
@@ -105,6 +109,7 @@ module Snackhack2
 
     def wp_plugin
       wp_plugin_score = 0
+      # text in which it will search for
       wp = ['Index of', 'Name', 'Last modified', 'Size', 'Parent Directory', '/wp-content/plugins']
       plug = Snackhack2.get(File.join(@site, '/wp-content/plugins/'))
       if plug.code == 200

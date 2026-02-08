@@ -4,7 +4,7 @@ require 'net/ssh'
 module Snackhack2
   class SSHForwardRemote
     attr_accessor :site, :user, :pass, :key, :lport, :lsite, :rport
-
+    # forwards ssh traffic 
     def initialize
       @site = site
       @user = user

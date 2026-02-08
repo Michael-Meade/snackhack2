@@ -10,6 +10,10 @@ module Snackhack2
     end
 
     def run
+      # uses a handful of different regexs to extract the Google Analytics
+      # code from sites. This is used by the site admin to track and mesaure 
+      # people who visit the site. This could be used to find more sites 
+      # they own where they re-use the code.
       a = Snackhack2.get(@site).body
       case a
       when /UA-\d{8}-\d/

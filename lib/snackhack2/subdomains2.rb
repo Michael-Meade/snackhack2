@@ -18,6 +18,8 @@ module Snackhack2
 
     def run
       File.readlines(wordlist).each do |a|
+        # removes `https://` from the instance variable
+        # `@site`. Adds the subdomain from the file to test if it is valid
         url = "https://#{a.strip}.#{@site.gsub('https://', '')}"
         fetch(url)
         puts url
@@ -30,6 +32,8 @@ module Snackhack2
         task.with_timeout(2) do
           internet = Async::HTTP::Internet.new
           m = internet.get(url, { 'user-agent' => Snackhack2::UA })
+          # only adds it to the @url instance variable if
+          # it returns a status code of `200` OR `301`
           @urls << url if (m.status == 200) || (m.status == 301)
           m.read
         end

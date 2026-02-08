@@ -18,6 +18,7 @@ module Snackhack2
       http = Snackhack2.get(@site)
       if http.code == 200
         regex = http.body
+        # regex to extract phone numbers 
         phone = regex.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
         out = phone.map { |n| n[0] }.compact
         numbers << out
@@ -36,6 +37,7 @@ module Snackhack2
       Spidr.start_at(@site, max_depth: 4) do |agent|
         agent.every_page do |page|
           body = page.to_s
+          # regex to extract phone numbers
           if body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)
             pn = body.scan(/((\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/)[0]
             unless pn.nil?

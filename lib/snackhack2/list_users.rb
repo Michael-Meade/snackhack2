@@ -9,6 +9,8 @@ module Snackhack2
     end
 
     def linux
+      # uses the cat file to read the users in /etc/passwd
+      # then displays all the users
       `cat /etc/passwd`.split("\n").each do |l|
         puts l.split(':')[0]
       end

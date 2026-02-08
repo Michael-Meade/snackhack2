@@ -11,10 +11,13 @@ module Snackhack2
     end
 
     def site
+      # returns the site
+      # and removes `https://` from the instance variable
       @site.gsub('https://', '')
     end
 
     def wordlist
+      # gets the location of the subdomains list
       File.join(__dir__, 'lists', 'subdomains.txt')
     end
 
@@ -26,6 +29,8 @@ module Snackhack2
 
     def brute
       found = ''
+      # loops through each of the subdomains and adds it to
+      # the site which checks if it returns a `200` status code or `300` status code
       File.readlines(wordlist).each do |l|
         s = "#{l.strip}.#{site}"
         begin

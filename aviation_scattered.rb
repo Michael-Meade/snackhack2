@@ -81,8 +81,10 @@ require 'openssl'
 sites.each do |domain|
 	keywords.each do |keywords|
 	    new_domain = "#{keywords}.#{domain}".strip
-	    ip = Snackhack2::Dns.new(new_domain).a
-	     if !ip.empty?
+	    ip = Snackhack2::Dns.new
+	    ip.site = new_domain
+	    ip = ip.a
+	     unless ip.empty?
 	     	#puts "#{new_domain} #{ip}".green
 	     	begin
 	     		puts "#{new_domain}"
