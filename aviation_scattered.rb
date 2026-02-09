@@ -84,18 +84,18 @@ sites.each do |domain|
 	    ip = Snackhack2::Dns.new
 	    ip.site = new_domain
 	    ip = ip.a
-	     unless ip.empty?
-	     	#puts "#{new_domain} #{ip}".green
-	     	begin
-	     		puts "#{new_domain}"
-				uri = URI::HTTPS.build(host: new_domain)
-				response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true)
-				cert = response.peer_cert
-				puts cert.serial
-			rescue OpenSSL::SSL::SSLError,Net::OpenTimeout, Errno::EHOSTUNREACH
-			end
-	     	found << [new_domain, ip]
-	     end
+     unless ip.empty?
+     	#puts "#{new_domain} #{ip}".green
+     	begin
+     		puts "#{new_domain}"
+			uri = URI::HTTPS.build(host: new_domain)
+			response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true)
+			cert = response.peer_cert
+			puts cert.serial
+		rescue OpenSSL::SSL::SSLError,Net::OpenTimeout, Errno::EHOSTUNREACH
+		end
+     	found << [new_domain, ip]
+     end
 	end
 end
 =begin
