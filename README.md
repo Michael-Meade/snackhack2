@@ -273,8 +273,7 @@ d = Snackhack2::Drupal.new("https://physiologycore.umn.edu/")
 d.user_brute
 # This will run all the methods to detect Drupal.
 d.all
-# This will just run the drupal score method. This will a
-76\ lso print out the version of Drupal. 
+# This will just run the drupal score method. This will also print out the version of Drupal. 
 d.drupal_score
 ```
 

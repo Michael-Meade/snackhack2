@@ -73,29 +73,23 @@ sites = [
 	"modern-aviation.com",
 	"cscos.com",
 	"suncountry.com",
-	"mccarthy.com"
+	"mccarthy.com",
+	"utica.edu",
+	"ung.edu",
+	"principia.edu",
+	"lynn.edu",
+	"cccs.edu"
 ]
 found = []
 require 'net/http'
 require 'openssl'
 sites.each do |domain|
 	keywords.each do |keywords|
-	    new_domain = "#{keywords}.#{domain}".strip
-	    ip = Snackhack2::Dns.new
-	    ip.site = new_domain
-	    ip = ip.a
-     unless ip.empty?
-     	#puts "#{new_domain} #{ip}".green
-     	begin
-     		puts "#{new_domain}"
-			uri = URI::HTTPS.build(host: new_domain)
-			response = Net::HTTP.start(uri.host, uri.port, :use_ssl => true)
-			cert = response.peer_cert
-			puts cert.serial
-		rescue OpenSSL::SSL::SSLError,Net::OpenTimeout, Errno::EHOSTUNREACH
-		end
-     	found << [new_domain, ip]
-     end
+	   new_domain = "#{keywords}.#{domain}".strip
+	   ip = Snackhack2::Dns.new
+	   ip.site = new_domain
+	   ip = ip.a
+      puts ip
 	end
 end
 =begin

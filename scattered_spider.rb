@@ -43,7 +43,7 @@ require 'colorize'
   "ops",
   "hr"
 ]
-db = SQLite3::Database.new 'sites.db'
+db = SQLite3::Database.new 'sites2.db'
 begin
   db.execute('create table IF NOT EXISTS NotActive (id integer primary key autoincrement, domain text);')
   db.execute('create table IF NOT EXISTS Active (id integer primary key autoincrement, domain text, IPs text);')
@@ -55,7 +55,7 @@ File.readlines("top-10000-domains.txt").each do |domain|
    keywords.each do |keywords|
     new_domain = "#{keywords}-#{domain}".strip
     ip = Snackhack2::Dns.new(new_domain).a
-     if !ip.empty?
+     unless ip.empty?
        #found_ips << [[new_domain, ip]]
        puts "#{new_domain} #{ip}".green
        db.execute 'insert into Active values (?, ?, ?)', nil, new_domain, ip.join(" ")
