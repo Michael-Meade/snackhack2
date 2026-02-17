@@ -8,7 +8,7 @@ ssrf.ssrf_site = "http://localhost"
 ssrf.protocol = "https"
 
 # Test ssrf with google.com
-ssrf.ssrf_google
+#ssrf.ssrf_google
 
 # HTTP port scan
 p ssrf.http_port_scan

@@ -2,7 +2,7 @@
 
 # Process.spawn("ruby -run -ehttpd . -p8008")
 # sleep 10
-require 'colorize'
+require 'typhoeus'
 module Snackhack2
   class SSRF
     attr_accessor :site, :ssrf_site, :protocol
@@ -33,27 +33,25 @@ module Snackhack2
         "ldap://"
       end
     end
-    def http_port_scan(port_count: 3000)
+    def http_port_scan(port_count: 8082)
+      # save the found ports in an array.
+      hydra = Typhoeus::Hydra.new
+      i = 0
       found_ports = []
-      ssrf_status = false
-      # 6553
-      for port in 0..port_count.to_i
-        site = @site.gsub("SSRF", "#{@ssrf_site}") + ":" + port.to_s
-        puts site
-        begin
-          j = HTTParty.get(site)
-          puts "Response code: #{j.code}"
-          if j.code.to_i.eql?(200)
-            found_ports << port
-            ssrf_status = true
-          end 
-        rescue => e
-          #puts "error: #{e}"
-          ssrf_satus = false
+      65530.times.each_with_index.map{ |i|
+        request = Typhoeus::Request.new("http://127.0.0.1:10/?url=#{i}", followlocation: true)
+        t = hydra.queue(request)
+        request.on_complete do |response|
+          if response.code.to_i.eql?(200)
+            puts i
+            puts "#{response.code}"
+            found_ports << i
+          end
         end
-        port += 1
-      end
-    found_ports
+        #i+=1
+      }
+      hydra.run
+      p found_ports
     end
     def ssrf_google
       url = @site.gsub('SSRF', 'http://google.com')
