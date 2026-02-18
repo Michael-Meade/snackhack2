@@ -34,24 +34,29 @@ module Snackhack2
       end
     end
     def http_port_scan(port_count: 8082)
-      # save the found ports in an array.
       hydra = Typhoeus::Hydra.new
       i = 0
+      # Where found ports will be saved.
       found_ports = []
+      # tries 65530 ports
       65530.times.each_with_index.map{ |i|
-        request = Typhoeus::Request.new("http://127.0.0.1:10/?url=#{i}", followlocation: true)
-        t = hydra.queue(request)
+        # adds the port to @ssrf
+        site = @site.gsub("SSRF", "#{@ssrf_site}") + ":" + i.to_s
+        request = Typhoeus::Request.new("#{site}", followlocation: true)
+        hydra.queue(request)
         request.on_complete do |response|
+          # If the response code returns 200 it will save
+          # the port number to `found_ports`.
           if response.code.to_i.eql?(200)
             puts i
             puts "#{response.code}"
             found_ports << i
           end
         end
-        #i+=1
       }
       hydra.run
-      p found_ports
+    # returns the `found_ports` array.
+    found_ports
     end
     def ssrf_google
       url = @site.gsub('SSRF', 'http://google.com')
