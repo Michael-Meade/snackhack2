@@ -20,12 +20,16 @@ module Snackhack2
       @headers = Snackhack2.get(@site).headers
     end
     def nginx
-      puts "[+] Server is running NGINX... Now checking if #{File.join(@site, 'nginx_status')} is valid..."
-      nginx = Snackhack2.get(File.join(@site, 'nginx_status'))
-      if nginx.code == 200
-        puts "Check #{@site}/nginx_status"
-      else
-        puts "Response code: #{nginx.code}"
+      if headers['server'].include?("nginx")
+        puts "[+] Server is running NGINX... Now checking if #{File.join(@site, 'nginx_status')} is valid..."
+        nginx = Snackhack2.get(File.join(@site, 'nginx_status'))
+        if nginx.code == 200
+          puts "Check #{@site}/nginx_status"
+        else
+          puts "Response code: #{nginx.code}... nginx_status not giving 200"
+        end
+      else 
+        puts "[+] No nginx detected..."
       end
     end
 
@@ -63,9 +67,11 @@ module Snackhack2
 
     def wordpress
       wp = Snackhack2.get(@site).body
-      return unless wp.match(/wp-content/)
+      # return unless wp.match(/wp-content/)
 
-      puts "[+] Wordpress found [+]\n\n\n"
+      puts "[+] Wordpress '/wp-content' found [+]\n\n\n" if wp.match(/wp-content/)
+
+      
     end
     def types
       {
@@ -114,6 +120,37 @@ module Snackhack2
           puts "Cloudflare was found. The count is: #{cf_count}"
         else
           puts "Cloudflare was NOT found. The count is #{cf_count}"
+        end
+      end
+    end
+    def cloudfront(print_status: false)
+      # the purpose of this method is to 
+      # check to see if a site has 
+      # cloudflare in the headers
+
+      cf_status = false
+      cf_count  = 0
+
+      # access the 'types' hash to get the cloudflare strings. 
+      cf = types[:"aws CloudFront"]
+
+      # make a single get request to the site defined at '@site'
+      find_headers.each do |k,v|
+        # if the key is in the array cf
+        if cf.include?(k)
+          cf_status = true
+          cf_count += 1
+        end
+      end
+      unless print_status
+        # cf_status[0] : the status if cloudfront was found
+        # cf_count[1]  : the number of found elements in the 'cloudfront' hash. 
+        return [cf_status, cf_count]
+      else
+        if cf_status
+          puts "Cloudfront was found. The count is: #{cf_count}"
+        else
+          puts "Cloudfront was NOT found. The count is #{cf_count}"
         end
       end
     end

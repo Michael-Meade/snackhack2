@@ -1,4 +1,4 @@
-require './lib/snackHack2'
+require_relative '../lib/snackHack2'
 require 'sqlite3'
 insurance = [ "unitedhealthgroup.com",
 	"berkshirehathaway.com",

@@ -13,7 +13,7 @@ module Snackhack2
       # defined in `@site` instance variable.
       sm = Snackhack2.get(File.join(@site, 'sitemap.xml'))
       # site returns 200 status code
-      if sm.code == 200
+      if sm.code.to_i.eql?(200)
         # checks the body of the page to detetmine if the words
         # `Not Found` is it
         unless sm.body.include?('Not Found')

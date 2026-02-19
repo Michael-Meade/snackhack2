@@ -157,6 +157,13 @@ namespace 'snackhack' do
       ct.site = "blog.google.com"
       new_domains = ct.check_domains
       puts new_domains
+
+      puts "\n\n[+] Testing Ruby Comments...\n"
+      rc = Snackhack2::RubyComments.new
+      rc.file = "./test/test_comments.rb"
+      rc.comments
+
+      
     end
 
 end

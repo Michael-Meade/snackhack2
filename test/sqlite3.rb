@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/snackHack2'
+require_relative '../lib/snackHack2'
 require 'sqlite3'
 class Sql
   def initialize(site)

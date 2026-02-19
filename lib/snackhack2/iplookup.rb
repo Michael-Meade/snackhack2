@@ -7,10 +7,13 @@ module Snackhack2
   class IpLookup
     attr_accessor :site
 
-    def initialize(site, file_save: false)
+    def initialize(file_save: false)
       @file_save = file_save
       # Clean the URL immediately to avoid repeating .gsub everywhere
-      @site = site.gsub(%r{https?://}, '').split('/').first
+    end
+
+    def site
+      @site = @site.gsub(%r{https?://}, '').split('/').first
     end
 
     def run
