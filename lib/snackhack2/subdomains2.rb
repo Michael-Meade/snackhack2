@@ -3,7 +3,8 @@
 require 'async/http/internet'
 module Snackhack2
   class Subdomains2
-    def initialize(site)
+    attr_accessor :site
+    def initialize
       @site = site
       @urls = []
     end

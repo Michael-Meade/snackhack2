@@ -5,15 +5,10 @@ require 'resolv'
 require 'async/http/internet'
 module Snackhack2
   class Subdomains
-    def initialize(site, wordlist: nil)
+    attr_accessor :site
+    def initialize(wordlist: nil)
       @site     = site
       @wordlist = wordlist
-    end
-
-    def site
-      # returns the site
-      # and removes `https://` from the instance variable
-      @site.gsub('https://', '')
     end
 
     def wordlist
@@ -31,10 +26,13 @@ module Snackhack2
       found = ''
       # loops through each of the subdomains and adds it to
       # the site which checks if it returns a `200` status code or `300` status code
+      unless @site.nil?
+        @site = @site.gsub("https://", "")
+      end
       File.readlines(wordlist).each do |l|
-        s = "#{l.strip}.#{site}"
+        s = "#{l.strip}.#{@site}"
+        p File.join('https://', s)
         begin
-          puts File.join('https://', s)
           g = Snackhack2.get(File.join('https://', s))
           if g.code == 200
             found += "#{s}\n"

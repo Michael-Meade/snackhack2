@@ -1,31 +1,45 @@
 # frozen_string_literal: true
 
-require 'snackhack2'
+require_relative '../lib/snackHack2'
 require 'colorize'
-print('Enter URL (with HTTPS://): ')
-url = gets.chomp
+#print('Enter URL (with HTTPS://): ')
+
+#url = gets.chomp
+url = "https://abc.com"
 print("\n\n\n")
 
 puts "[+] Checking for Drupal...\n".red
-Snackhack2::Drupal.new(url).all
+d = Snackhack2::Drupal.new
+d.site = url
+d.all
 puts "--------\n"
 
 puts "[+] Checking for WordPress...\n".red
-Snackhack2::WordPress.new(url).run
+wp = Snackhack2::WordPress.new
+wp.site = url
+wp.run
 puts "--------\n"
 
 puts "[+] Checking for TomCat...\n".red
-Snackhack2::TomCat.new(url)
+tc = Snackhack2::TomCat.new
+
+
 puts "--------\n"
 
 puts "[+] Checking the site for Google Analytics...\n".red
-Snackhack2::GoogleAnalytics.new(url).run
+ga = Snackhack2::GoogleAnalytics.new
+
+ga.site = url
+ga.run
 puts "--------\n"
 
 puts "[+] Grabbing the Banner...\n".red
-Snackhack2::BannerGrabber.new(url).run
+bg = Snackhack2::BannerGrabber.new
+bg.site = url
+bg.run
 puts "--------\n"
 
 puts "[+] Checking Robots.txt...\n".red
-Snackhack2::Robots.new(url).run
+r = Snackhack2::Robots.new(url)
+r.run
 puts "--------\n"

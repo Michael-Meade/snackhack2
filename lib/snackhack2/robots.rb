@@ -2,13 +2,14 @@
 
 module Snackhack2
   class Robots
+    attr_accessor :port, :site, :save_file
     def initialize(site, save_file: true)
       @site = site
       @http = Snackhack2.get(File.join(@site, 'robots.txt'))
       @save_file = save_file
     end
 
-    attr_reader :save_file
+    # attr_reader :save_file
 
     def run
       save_txt_file = ''

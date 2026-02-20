@@ -14,7 +14,6 @@ module Snackhack2
       nginx
       apache2
       wordpress
-      get_ssh_info
     end
     def headers
       @headers = Snackhack2.get(@site).headers
@@ -60,8 +59,6 @@ module Snackhack2
         else
           puts "[+] Response Code: #{apache.code}...\n\n"
         end
-      else
-        puts "Apache2 is not found...\n\n"
       end
     end
 

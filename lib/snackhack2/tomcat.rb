@@ -3,7 +3,8 @@
 require 'nokogiri'
 module Snackhack2
   class TomCat
-    def initialize(site)
+    attr_accessor :site
+    def initialize
       @site = site
     end
 

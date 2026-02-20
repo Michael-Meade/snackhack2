@@ -76,12 +76,13 @@ module Snackhack2
       # checks to see if the wordpress site
       # uses the yoast seo plugin
       ys = Snackhack2.get(@site)
-      return unless ys.code == 200
-
-      yoast_version = ys.body.split('<!-- This site is optimized with the Yoast SEO Premium plugin')[1].split(' -->')[0]
-      ['This site is optimized with the Yoast SEO plugin',
-       'This site is optimized with the Yoast SEO Premium plugin'].each do |site|
-        puts "#{ys.body.scan(/#{site}/).shift} with version #{yoast_version}" unless ys.body.scan(/#{site}/).shift.nil?
+      if ys.code.to_i.eql?(200)
+        if ys.body.match?("Yoast")
+          yoast_version = ys.body.split('<!-- This site is optimized with the Yoast SEO Premium plugin')[1].split(' -->')[0]
+          ['This site is optimized with the Yoast SEO plugin', 'This site is optimized with the Yoast SEO Premium plugin'].each do |site|
+            puts "#{ys.body.scan(/#{site}/).shift} with version #{yoast_version}" unless ys.body.scan(/#{site}/).shift.nil?
+          end
+        end
       end
     end
 
