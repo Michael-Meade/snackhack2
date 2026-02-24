@@ -22,6 +22,7 @@ module Snackhack2
         # removes `https://` from the instance variable
         # `@site`. Adds the subdomain from the file to test if it is valid
         url = "https://#{a.strip}.#{@site.gsub('https://', '')}"
+        
         fetch(url)
         puts url
       end
