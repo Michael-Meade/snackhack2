@@ -22,8 +22,8 @@ puts "--------\n"
 
 puts "[+] Checking for TomCat...\n".red
 tc = Snackhack2::TomCat.new
-
-
+tc.site = url
+tc.run
 puts "--------\n"
 
 puts "[+] Checking the site for Google Analytics...\n".red
