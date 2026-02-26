@@ -1,5 +1,23 @@
 #### Web
-
+    + [Web](#web)
+- [WordPress](#wordpress)
+- [Getting Server Header](#getting-server-header)
+  * [cURL](#curl)
+  * [Cloudflare](#cloudflare)
+- [Robots.txt](#robotstxt)
+- [Google Analytics](#google-analytics)
+- [Get site's CERT Hash](#get-site-s-cert-hash)
+- [Get ALL the links of a site](#get-all-the-links-of-a-site)
+- [Get site's Meta Data](#get-site-s-meta-data)
+- [Get a site's sitemap.xml](#get-a-site-s-sitemapxml)
+- [Get a site's DNS records](#get-a-site-s-dns-records)
+  * [A records](#a-records)
+  * [Nameserver records](#nameserver-records)
+  * [SOA records](#soa-records)
+  * [TXT records](#txt-records)
+  * [aaaa records](#aaaa-records)
+  * [hinfo records](#hinfo-records)
+  * [Mx records](#mx-records)
 ## WordPress
 Detects if the website uses WordPress. Will give it a score based on if WordPress attributes are found.
 
