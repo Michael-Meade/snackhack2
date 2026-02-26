@@ -124,7 +124,7 @@ xml.run
 
 ## Get a site's DNS records
 
-# A records
+### A records
 
 ```ruby
 dns = Snackhack2::Dns.new
@@ -135,7 +135,7 @@ dns.a.each do |a|
 end
 ```
 
-# Nameserver records
+### Nameserver records
 
 ```ruby
 dns = Snackhack2::Dns.new
@@ -147,7 +147,7 @@ dns.nameserver.each do |ns|
 end
 ```
 
-# SOA records
+### SOA records
 
 ```ruby
 dns = Snackhack2::Dns.new
@@ -158,7 +158,7 @@ dns.soa.each do |s|
 end
 ```
 
-# TXT records
+### TXT records
 
 ```ruby
 dns = Snackhack2::Dns.new
@@ -169,7 +169,7 @@ dns.txt.each do |s|
 end
 ```
 
-# aaaa records
+### aaaa records
 
 ```ruby
 dns = Snackhack2::Dns.new
@@ -180,7 +180,7 @@ dns.aaaa.each do |s|
 end
 ```
 
-# hinfo records
+### hinfo records
 
 ```ruby
 dns = Snackhack2::Dns.new
@@ -192,7 +192,7 @@ dns.hinfo.each do |s|
 end
 ```
 
-# Mx records 
+### Mx records 
 
 ```ruby
 dns = Snackhack2::Dns.new
