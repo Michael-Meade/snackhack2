@@ -6,7 +6,7 @@ module Snackhack2
   class WebsiteMeta
     attr_accessor :site
 
-    def initialize()
+    def initialize
       @site = site
     end
 
@@ -23,7 +23,7 @@ module Snackhack2
         doc = Nokogiri::HTML(URI.open("https://#{@site}", "User-Agent" => Snackhack2::UA))
         unless doc.xpath('/html/head/meta[@name="description"]/@content').to_s.empty?
           # extracts the description tag from meta tags
-          doc.xpath('/html/head/meta[@name="description"]/@content').to_s
+          puts doc.xpath('/html/head/meta[@name="description"]/@content').to_s
         end
       rescue => e
         puts "ERROR: #{e}"

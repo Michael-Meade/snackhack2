@@ -4,7 +4,8 @@ require 'httparty'
 require 'nokogiri'
 module Snackhack2
   class SiteMap
-    def initialize(site)
+    attr_accessor :site
+    def initialize
       @site = site
     end
 

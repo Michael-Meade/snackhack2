@@ -18,9 +18,9 @@ module Snackhack2
           line = l.strip
           # detects if html code is present
           if line.start_with?('<!--')
-            puts body[i].next
+            puts body[i].next.strip
           elsif line.include?('<!')
-            puts body[i].next
+            puts body[i].next.strip
           end
         end
       else

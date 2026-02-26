@@ -7,6 +7,7 @@ module Snackhack2
 
     def initialize
       @site = site
+     
     end
 
     def all_dns
