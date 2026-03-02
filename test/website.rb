@@ -12,26 +12,26 @@ puts "[+] Checking for Drupal...\n".red
 d = Snackhack2::Drupal.new
 d.site = url
 d.all
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Checking for WordPress...\n".red
 wp = Snackhack2::WordPress.new
 wp.site = url
 wp.run
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Checking for TomCat...\n".red
 tc = Snackhack2::TomCat.new
 tc.site = url
 tc.run
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Checking the site for Google Analytics...\n".red
 ga = Snackhack2::GoogleAnalytics.new
 
 ga.site = url
 ga.run
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Grabbing the Banner...\n".red
 bg = Snackhack2::BannerGrabber.new
@@ -42,14 +42,14 @@ puts "--------\n"
 puts "[+] Checking Robots.txt...\n".red
 r = Snackhack2::Robots.new(url)
 r.run
-puts "--------\n"
+puts "\n--------\n"
 
 
 puts "[+] Getting HTML comments\n".red
 c = Snackhack2::Comments.new
 c.site = "https://abc.com"
 c.run
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Getting Site's SSL Cert\n".red
 
@@ -58,7 +58,7 @@ ssl =  Snackhack2::SSLCert.new
 ssl.site = "https://google.com"
 ssl.get_cert
 
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Getting links of a site\n".red
 
@@ -67,7 +67,7 @@ sl = Snackhack2::WebsiteLinks.new
 sl.site = "https://abc.com"
 sl.run
 
-puts "--------\n"
+puts "\n--------\n"
 
 puts "[+] Getting a website's META data\n".red
 
@@ -76,11 +76,12 @@ meta = Snackhack2::WebsiteMeta.new
 meta.site = "https://abc.com"
 meta.run
 
-puts "--------\n" 
+puts "\n--------\n" 
 
 puts "[+] Getting a website's META descriptio\n".red
 meta.description
-puts "--------\n"
+
+puts "\n--------\n"
 
 
 puts "[+] Getting a website's site.xml\n".red
@@ -89,7 +90,7 @@ xml.site = "https://michaelmeade.org"
 xml.run
 
 
-puts "--------\n"
+puts "\n--------\n"
 
 
 puts "[+] Getting a website's dns records\n".red
@@ -131,3 +132,16 @@ puts "mx: "
 dns.mx.each do |mx|
 	puts mx
 end
+
+puts "\n--------\n"
+
+puts "[+] Getting a website's Phone Numbers\n".red
+
+d = Snackhack2::PhoneNumber.new
+d.site = "https://www.hardin.kyschools.us/schools-1/school-phone-numbers"
+
+d.run
+
+#d.spider
+
+puts "\n--------\n"

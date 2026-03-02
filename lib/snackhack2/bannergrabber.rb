@@ -120,7 +120,7 @@ module Snackhack2
         end
       end
     end
-    def cloudfront(print_status: false)
+    def cloudfront(print_status: true)
       # the purpose of this method is to 
       # check to see if a site has 
       # cloudflare in the headers

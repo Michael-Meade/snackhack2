@@ -1,10 +1,14 @@
 #### Web
-    + [Web](#web)
+
 - [WordPress](#wordpress)
 - [Getting Server Header](#getting-server-header)
   * [cURL](#curl)
   * [Cloudflare](#cloudflare)
+  * [Cloudfront](#cloudfront)
+  * [Detect Headers](#detect-headers)
 - [Robots.txt](#robotstxt)
+  * [Disallow](#disallow)
+  * [Allow](#allow)
 - [Google Analytics](#google-analytics)
 - [Get site's CERT Hash](#get-site-s-cert-hash)
 - [Get ALL the links of a site](#get-all-the-links-of-a-site)
@@ -18,6 +22,13 @@
   * [aaaa records](#aaaa-records)
   * [hinfo records](#hinfo-records)
   * [Mx records](#mx-records)
+- [Get HTML comments](#html-comments)
+- [Get Phone Number](#phone-number)
+- [Host Injection](#host-injection)
+  * [Host IP](#host-ip)
+  * [Double Host IP](#double-host-ip)
+  * [X Forward](#x-forward)
+
 ## WordPress
 Detects if the website uses WordPress. Will give it a score based on if WordPress attributes are found.
 
@@ -51,15 +62,33 @@ bg.site = "https://abc.com"
 bg.curl
 ```
 
+### Detect Headers
+
+Will make a get request and print out the headers that are returned. 
+
+```ruby
+bg = Snackhack2::BannerGrabber.new
+bg.site = "https://abc.com"
+bg.detect_header(return_status: false)
+```
 ### Cloudflare
-
-
 
 ```ruby
 bg = Snackhack2::BannerGrabber.new
 bg.site = "https://abc.com"
 bg.cloudflare
 ```
+
+### Cloudfront
+```ruby
+
+bg = Snackhack2::BannerGrabber.new
+bg.site = "https://abc.com"
+bg.cloudfront
+
+```
+
+
 ## Robots.txt
 A site uses `robots.txt` to tell honest web site crawlers what they can and cannot crawl. The `allowed` section in the text file
 tells honest web crawlers that they can crawl that part of the site. The `disallow` tells honest crawlers what they cannot crawl. 
@@ -76,6 +105,27 @@ r.run
 
 ```
 
+### Disallow
+Only show the disallowed entries to `robots.txt`. Will only show if the site returns a `200` status code when a single GET Request is made to it. 
+
+```ruby
+url = "https://abc.com"
+r = Snackhack2::Robots.new(url)
+r.disallow_robots.each do |da|
+  puts da
+end
+```
+### Allow
+
+Only show the allowed entries to `robots.txt`. Will only show if the site returns a `200` status code when a single GET Request is made to it. 
+
+```ruby
+url = "https://abc.com"
+r = Snackhack2::Robots.new(url)
+r.allow_robots.each do |da|
+  puts da
+end
+```
 ## Google Analytics 
 
 Google Analytics is a piece of code in the site that allows the site owner to see the amount of 
@@ -219,4 +269,70 @@ puts "MX: "
 dns.mx.each do |s|
 	puts s
 end
+```
+
+## HTML Comments
+
+This class will make a GET request to the site and display any comments in the source code.
+
+```ruby
+c = Snackhack2::Comments.new
+c.site = "https://abc.com"
+c.run
+```
+## Phone Numbers
+
+This class has two methods, `run` & `spider`. The `spider` method will crawl each of the website's pages. While the 
+`run` method will just send a GET request to the side and use a handful of regexs to extract the phone numbers. 
+
+
+```ruby
+
+d = Snackhack2::PhoneNumber.new
+d.site = "https://www.hardin.kyschools.us/schools-1/school-phone-numbers"
+
+d.run
+
+d.spider
+```
+
+## Host Injection
+
+
+### Host IP
+
+```ruby
+hi = Snackhack2::HostInjection.new
+
+hi.site = "http://127.0.0.1:4567/admin"
+hi.old_host_ip = "172.28.170.34"
+hi.new_host_ip = "192.168.1.100"
+
+#a.host_ip
+#a.double_host_ip
+hi.x_forwarded
+```
+
+### Double Host IP
+
+```ruby
+hi = Snackhack2::HostInjection.new
+
+hi.site = "http://127.0.0.1:4567/admin"
+hi.old_host_ip = "172.28.170.34"
+hi.new_host_ip = "192.168.1.100"
+
+a.double_host_ip
+```
+
+### X Forward
+
+```ruby
+hi = Snackhack2::HostInjection.new
+
+hi.site = "http://127.0.0.1:4567/admin"
+hi.old_host_ip = "172.28.170.34"
+hi.new_host_ip = "192.168.1.100"
+
+hi.x_forwarded
 ```
