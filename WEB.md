@@ -28,6 +28,8 @@
   * [Host IP](#host-ip)
   * [Double Host IP](#double-host-ip)
   * [X Forward](#x-forward)
+- [Tomcat](#tomcat)
+- [IP Lookup](#ip-lookup)
 
 ## WordPress
 Detects if the website uses WordPress. Will give it a score based on if WordPress attributes are found.
@@ -335,4 +337,26 @@ hi.old_host_ip = "172.28.170.34"
 hi.new_host_ip = "192.168.1.100"
 
 hi.x_forwarded
+```
+
+## Tomcat
+
+
+```ruby
+
+
+tc = Snackhack2::TomCat
+tc.run
+``` 
+
+## IP Lookup
+
+```ruby
+require_relative '../lib/snackHack2'
+ip   = Snackhack2::IpLookup.new
+
+ip.site = "abc.com"
+
+ip.run
+
 ```
