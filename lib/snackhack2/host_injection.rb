@@ -10,45 +10,56 @@ module Snackhack2
     def initialize
       @site = site
     end
-    def test
-      [host_ip, double_host_ip, x_forwarded, double_x_forwarded, x_forwarded_server]
+    def test_all
+      [host_ip, double_host_ip, x_forwarded, double_x_forwarded, 
+        x_forwarded_server, extra_return_host, extra_space_host, 
+        http_host_override].each do |meth|
+        self.meth
+      end
     end
     def host_ip
       unless @old_host_ip.nil?
         response = HTTParty.get(@site, headers: { "Host" => @old_host_ip})
         puts response.body
+        puts response.code
       end
     end
     def double_host_ip
       unless @old_host_ip.nil?
         response = HTTParty.get(@site, headers: { "Host" => @old_host_ip, "Host" => @new_host_ip})
         puts response.body
+        puts response.code
       end
     end
     def x_forwarded
       unless @old_host_ip.nil?
         response = HTTParty.get(@site, headers: { "Host" => @old_host_ip, "X-Forwarded-Host" => @new_host_ip})
         puts response.body
+        puts response.code
       end
     end
     def double_x_forwarded
       unless @old_host_ip.nil?
         response = HTTParty.get(@site, headers: { "X-Forwarded-Host" => @old_host_ip, "X-Forwarded-Host" => @new_host_ip})
         puts response.body
+        puts response.code
       end
     end
     def x_forwarded_server
       unless @old_host_ip.nil?
-        r = HTTParty.get(@site, headers: {"Host" => @old_host_ip, "X-Forwarded-Server" => @new_host_ip}).body
-        puts r
-        r = HTTParty.get(@site, headers: {"X-Forwarded-Server" => @old_host_ip, "X-Forwarded-Server" => @new_host_ip}).body
-        puts r
+        r = HTTParty.get(@site, headers: {"Host" => @old_host_ip, "X-Forwarded-Server" => @new_host_ip})
+        puts r.body
+        puts r.code
+        r = HTTParty.get(@site, headers: {"X-Forwarded-Server" => @old_host_ip, "X-Forwarded-Server" => @new_host_ip})
+        puts r.body
+        puts r.code
       end
     end
     def http_host_override
       unless @old_host_ip.nil?
-        r = HTTParty.get(@site, headers: {"Host" => @old_host_ip, "X-HTTP-Host-Override" => @new_host_ip}).body
-        puts r
+        r = HTTParty.get(@site, headers: {"Host" => @old_host_ip, "X-HTTP-Host-Override" => @new_host_ip})
+        puts r.body
+        puts r.code
         r = HTTParty.get(@site, headers: {"X-HTTP-Host-Override" => @old_host_ip, "X-HTTP-Host-Override" => @new_host_ip}).body
       end
     end
