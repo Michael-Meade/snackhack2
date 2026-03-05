@@ -11,12 +11,22 @@ module Snackhack2
       @site = site
     end
     def test_all
-      [host_ip, double_host_ip, x_forwarded, double_x_forwarded, 
-        x_forwarded_server, extra_return_host, extra_space_host, 
-        http_host_override].each do |meth|
-        self.meth
+      p @new_host_ip
+      p @old_host_ip
+      [ "Host", "\sHost", "\rHost", "X-Forwarded-Host", "\sX-Forwarded-Host",
+        "X-Host", "\sX-Host", "\rX-Host", "X-Remote-Addr", "\sX-Remote-Addr",
+        "\rX-Remote-Addr", "X-Remote-IP", "\sX-Remote-IP", "\rX-Remote-IP",
+        "X-Forwarded-Server", "\sX-Forwarded-Server", "\rX-Forwarded-Server",
+        "Forwarded", "\sForwarded", "\rForwarded", "\sX-HTTP-Host-Override",
+        "X-HTTP-Host-Override", "\rX-HTTP-Host-Override"].each do |h|
+          head = {"Host" => @old_host_ip}
+          head[h] = @new_host_ip
+          r = HTTParty.get(@site, headers: head)
+          puts r.code
+          puts "\n==========================\n"
       end
     end
+
     def host_ip
       unless @old_host_ip.nil?
         response = HTTParty.get(@site, headers: { "Host" => @old_host_ip})
