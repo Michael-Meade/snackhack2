@@ -30,7 +30,7 @@
   * [X Forward](#x-forward)
 - [Tomcat](#tomcat)
 - [IP Lookup](#ip-lookup)
-- [WordPress Yoast SEO](#WordPress-Yoast-SEO)
+- [WordPress Yoast SEO](#wordpress---yoast-seo)
 
 ## WordPress
 Detects if the website uses WordPress. Will give it a score based on if WordPress attributes are found.
