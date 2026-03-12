@@ -13,6 +13,34 @@ Originally this idea was a part of my senior project but I had to ditch the idea
 
 Banner grabbing is used to get information about a server or computer. This information could help the hacker determine if the server or service is vulnerable. This information could also be used to figure out the best way to enumerate a service. 
 
+## Folders and files of the program in action.
+
+```ruby
+scripts
+├── ga.rb
+├── top-1000000-domains.txt
+└── top_gas.txt
+test
+├── banner_grab.rb
+├── ga.rb
+├── host.rb
+├── iplookup.rb
+├── phone.rb
+├── portscan.rb
+├── recon.db
+├── ruby_comments.rb
+├── scattered_spider_1.rb
+├── scattered_spider_posible_targets.txt
+├── spider2.rb
+├── sqlite3.rb
+├── test_comments.txt
+├── tomcat.rb
+├── website.rb
+└── wp.rb
+
+2 directories, 19 files
+```
+
 ## Extracting Emails & Phone Numbers.
 
 Scraping Emails or phone numbers from a site could be used to attempt to Social Engineer a user from that site via email, phone, or SMS. Not all phishing emails or texts contain misspellings or improper grammar. Some common techniques used when writing phishing emails or messages include the following:
