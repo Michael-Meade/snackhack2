@@ -8,12 +8,12 @@ ww = Snackhack2::WordPress.new
 
 
 s = ["https://www.sccfd.org", "https://www.caicorp.com", "https://michaelmeade.org"]
-
+puts "\n\n<---------------------------------------->\n\n"
 s.each do |ss|
 	ww.site = ss
-	ww.yoast_seo(print_version: true)
-	puts "<--------------------------------------->"
-	puts ww.yoast_seo
+	ww.find_plugins
+	puts ww.site
+	puts "\n\n<---------------------------------------->\n\n"
 end
 
 

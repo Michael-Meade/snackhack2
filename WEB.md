@@ -35,6 +35,12 @@
 ## WordPress
 Detects if the website uses WordPress. Will give it a score based on if WordPress attributes are found.
 
+```ruby
+wp = Snackhack2::WordPress.new
+wp.site = "https://michaelmeade.org"
+wp.run
+```
+
 ## Getting Server Header
 Most web servers display a header in each request that includes the 'brand' of server. This can be
 changed or ignored. But the class will use a handful of different techniques like using:
