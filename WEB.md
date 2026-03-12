@@ -360,3 +360,13 @@ ip.site = "abc.com"
 ip.run
 
 ```
+
+## WordPress - Yoast SEO
+
+Gets the Yoast SEO Version.
+```ruby
+ww = Snackhack2::WordPress.new
+ww.site = "https://www.caicorp.com"
+ww.yoast_seo(print_version: true)
+puts ww.yoast_seo
+```
