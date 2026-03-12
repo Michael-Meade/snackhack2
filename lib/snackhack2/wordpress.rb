@@ -72,26 +72,33 @@ module Snackhack2
       puts "Wordpress Points: #{percent}"
     end
 
-    def yoast_seo
+    def yoast_seo(print_version: false)
       # checks to see if the wordpress site
       # uses the yoast seo plugin
       ys = Snackhack2.get(@site)
       if ys.code.to_i.eql?(200)
         if ys.body.match?("Yoast")
-          yoast_version = ys.body.split('<!-- This site is optimized with the Yoast SEO Premium plugin')[1].split(' -->')[0]
-          ['This site is optimized with the Yoast SEO plugin', 'This site is optimized with the Yoast SEO Premium plugin'].each do |site|
-            puts "#{ys.body.scan(/#{site}/).shift} with version #{yoast_version}" unless ys.body.scan(/#{site}/).shift.nil?
+          v = ys.body.scan(/This site is optimized with the Yoast SEO plugin\sv\d\d\.\d/).join(" ")
+          # makes sure the word 'plugin' is in the 'v' string
+          if v.include?("plugin") 
+            # gets the version
+            version = v.split("plugin")[1].strip
           end
         end
+      end
+      unless print_version
+        return version
+      else
+        puts "Yoast Seo is running version: #{version}"
       end
     end
 
     def all_in_one_seo
       alios = Snackhack2.get(@site)
-      return unless alios.code == 200
-      # scans the body for the text `All in One SEO Pro`
-      return unless alios.body.scan(/(All in One SEO Pro\s\d.\d.\d)/)
-
+      if alios.code.eql?(200)
+        # scans the body for the text `All in One SEO Pro`
+        alios.body.scan(/(All in One SEO Pro\s\d.\d.\d)/)
+      end
       puts "Site is using the plugin: #{alios.body.match(/(All in One SEO Pro\s\d.\d.\d)/)}"
     end
 
