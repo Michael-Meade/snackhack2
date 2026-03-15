@@ -324,8 +324,6 @@ ip.socket
 
 By default @max_depth is set to four. This can be changed as seen below. This wil save the emails with the host name of the site
 and the '_emails.txt'. For example: 'example.com_emails.txt'
-
-
 ```ruby
 e = Snackhack2::Email.new("https://www.tupeloschools.com/leadership/staff-directory")
 e.run
