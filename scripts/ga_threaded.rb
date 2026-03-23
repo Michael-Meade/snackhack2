@@ -3,7 +3,7 @@ require 'date'
 require_relative '../lib/snackHack2'
 # Input and Output files
 input_file = "top-1000000-domains.txt"
-output_file = "top_gas4.txt"
+output_file = "top_gas5.txt"
 
 
 thread_count = 50
@@ -29,7 +29,7 @@ Parallel.each(File.foreach(input_file), in_threads: thread_count) do |line|
     end
     count += 1
   rescue => e
-    puts e
+    
     d = DateTime.now
     time = d.strftime("%d/%m/%Y %H:%M")
     File.open("ga_logs.txt", 'a') { |file| file.write("#{time} - #{e}\n") }

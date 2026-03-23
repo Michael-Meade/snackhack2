@@ -1,7 +1,12 @@
 require_relative '../lib/snackHack2'
-site = "https://michaelmeade.org"
-r = Snackhack2::Robots.new(site)
+site = "https://hackex.net"
+r = Snackhack2::Robots.new
+r.site = site
+r.run
 
+    
+r.site = "https://michaelmeade.org"
+puts "DISALLOW: "
 r.disallow_robots.each do |da|
   puts da
 end

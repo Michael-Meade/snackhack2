@@ -2,11 +2,13 @@
 
 module Snackhack2
   class Robots
-    attr_accessor :port, :site, :save_file
-    def initialize(site, save_file: true)
+    attr_accessor :port, :site, :save_file, :http
+    def initialize(site: "", save_file: true)
       @site = site
-      @http = Snackhack2.get(File.join(@site, 'robots.txt'))
-      @save_file = save_file
+
+    end
+    def site=(t)
+      @http = File.join(t, 'robots.txt')
     end
 
     # attr_reader :save_file
@@ -29,16 +31,27 @@ module Snackhack2
           end
         end
       else
-        puts allow
-        puts disallow
+        unless allow[1].empty?
+          puts "ALLOW: "
+          allow[1].each do |a|
+            puts a
+          end
+        end
+        unless disallow[1].empty?
+          puts "Disallow: "
+          disallow[1].each do |d|
+            puts d
+          end
+        end
       end
-      Snackhack2.file_save(@site, 'robots', save_txt_file) if @save_file
+    Snackhack2.file_save(@site, 'robots', save_txt_file) if @save_file
     end
 
     def allow_robots
       allow_dir = []
-      if @http.code == 200
-        body = @http.body.lines
+      http = Snackhack2.get(@http)
+      if http.code == 200
+        body = http.body.lines
         body.each do |l|
           allow_dir << l.split('Allow: ')[1] if l.match(/Allow:/)
         end
@@ -47,21 +60,25 @@ module Snackhack2
       end
       open_links = []
       allow_dir.each do |path|
-        link = Snackhack2.get(File.join(@site, path.strip))
+        link = Snackhack2.get(@http)
         if link.code == 200
           valid_links = "#{@site}#{path}"
           open_links << valid_links
         end
       end
-      open_links
+      [ open_links, allow_dir]
     end
 
     def disallow_robots
+      http = Snackhack2.get(@http)
       disallow_dir = []
-      if @http.code == 200
-        body = @http.body.lines
+      if http.code == 200
+        body = http.body.lines
         body.each do |l|
-          disallow_dir << l.split('Disallow: ')[1] if l.match(/Disallow:/)
+          if l.match(/Disallow:/)
+
+            disallow_dir << l.split('Disallow: ')[1]
+          end 
         end
       else
         puts "[+] Not giving code 200.\n"
@@ -75,7 +92,7 @@ module Snackhack2
         end
       rescue StandardError
       end
-      open_links
+      [ open_links, disallow_dir]
     end
   end
 end
