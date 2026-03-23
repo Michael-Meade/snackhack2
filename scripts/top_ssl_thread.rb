@@ -6,7 +6,7 @@ THREAD_COUNT = 20
 queue = Queue.new
 mutex = Mutex.new
 
-# Load domains into queue
+
 File.foreach("top-1000000-domains.txt") do |site|
   queue << site.strip
 end
@@ -21,9 +21,9 @@ workers = THREAD_COUNT.times.map do
       site = nil
 
       begin
-        site = queue.pop(true) # non-blocking
+        site = queue.pop(true) 
       rescue ThreadError
-        break # queue empty
+        break 
       end
 
       begin
@@ -52,5 +52,5 @@ workers = THREAD_COUNT.times.map do
   end
 end
 
-# Wait for all threads to finish
+
 workers.each(&:join)
