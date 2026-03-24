@@ -10,7 +10,6 @@
   * [Disallow](#disallow)
   * [Allow](#allow)
 - [Google Analytics](#google-analytics)
-#stats-on-scrapped-gas
   * [Scrape Top million site's GA](#scrape-top-million-sites-ga)
   * [Stats on Scrapped GA's](#stats-on-scrapped-gas)
 - [Get site's CERT Hash](#get-site-s-cert-hash)
