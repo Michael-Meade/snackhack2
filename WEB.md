@@ -147,6 +147,7 @@ ga.site = "https://abc.com"
 ga.run
 ```
 
+
 ## Get site's CERT Hash
 
 This class will get the hash of the SSL cert the site i using. It could be used to find other sites that are using the same 

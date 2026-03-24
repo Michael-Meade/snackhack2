@@ -4,12 +4,19 @@
 
 # Snackhack2
 
+
 ### What is SnackHack?
 
 A collection of scripts that could be used to aid in hacking or performing recon on a target. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 
 Originally this idea was a part of my senior project but I had to ditch the idea. 
 
+
+## WEB Attacks ReadMe.md
+
+[a link](WEB.md)
+
 ## Banner Grabbing.
+
 
 Banner grabbing is used to get information about a server or computer. This information could help the hacker determine if the server or service is vulnerable. This information could also be used to figure out the best way to enumerate a service. 
 
