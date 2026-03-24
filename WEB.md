@@ -10,8 +10,9 @@
   * [Disallow](#disallow)
   * [Allow](#allow)
 - [Google Analytics](#google-analytics)
-  * [Scrape Top million site's GA](#Scrape-Top-million-site's-GA)
-  * [Stats on Scrapped GA's](#Stats-on-Scrapped-GA's)
+#stats-on-scrapped-gas
+  * [Scrape Top million site's GA](#scrape-top-million-sites-ga)
+  * [Stats on Scrapped GA's](#stats-on-scrapped-gas)
 - [Get site's CERT Hash](#get-site-s-cert-hash)
 - [Get ALL the links of a site](#get-all-the-links-of-a-site)
 - [Get site's Meta Data](#get-site-s-meta-data)
