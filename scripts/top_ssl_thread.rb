@@ -1,7 +1,7 @@
 require 'thread'
 require_relative '../lib/snackHack2'
 
-THREAD_COUNT = 20
+THREAD_COUNT = 100
 
 queue = Queue.new
 mutex = Mutex.new
@@ -39,7 +39,7 @@ workers = THREAD_COUNT.times.map do
 
         unless s.nil?
           mutex.synchronize do
-            File.open("top_ssl.txt", 'a') do |file|
+            File.open("top_ssl_1.txt", 'a') do |file|
               file.write("#{s}:#{site}\n")
             end
           end
