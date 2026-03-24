@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://i.imgur.com/R5JEtiq.png">
+    <img src="https://i.imgur.com/qHNBm81.jpeg">
 </p>
 
 # Snackhack2
