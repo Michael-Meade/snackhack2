@@ -10,6 +10,8 @@
   * [Disallow](#disallow)
   * [Allow](#allow)
 - [Google Analytics](#google-analytics)
+  * [Scrape Top million site's GA](#Scrape-Top-million-site's-GA)
+  * [Stats on Scrapped GA's](#Stats-on-Scrapped-GA's)
 - [Get site's CERT Hash](#get-site-s-cert-hash)
 - [Get ALL the links of a site](#get-all-the-links-of-a-site)
 - [Get site's Meta Data](#get-site-s-meta-data)
@@ -147,7 +149,75 @@ ga.site = "https://abc.com"
 ga.run
 ```
 
+### Scrape Top million site's GA
 
+```ruby
+require 'parallel'
+require 'date'
+require_relative '../lib/snackHack2'
+# Input and Output files
+input_file = "top-1000000-domains.txt"
+output_file = "top_gas5.txt"
+
+
+thread_count = 150
+count = 0
+
+Parallel.each(File.foreach(input_file), in_threads: thread_count) do |line|
+  site = line.strip
+  next if site.empty?
+
+  begin
+    ga = Snackhack2::GoogleAnalytics.new
+    ga.site = "https://#{site}"
+    
+    results = ga.run
+    puts "count: #{count}"
+    g = results.is_a?(Array) ? results.shift : nil
+
+    if g && !g.include?("[+] No Google Analytics found")
+      result_string = "#{g.strip}:#{site}"
+      puts "[FOUND] #{result_string}"
+      
+      File.open(output_file, 'a') { |file| file.puts(result_string) }
+    end
+    count += 1
+  rescue => e
+    
+    d = DateTime.now
+    time = d.strftime("%d/%m/%Y %H:%M")
+    File.open("ga_logs.txt", 'a') { |file| file.write("#{time} - #{e}\n") }
+    next
+  end
+end
+```
+
+### Stats on Scrapped GA's
+
+```ruby
+# purpose of this script is to take the GA from the top
+# million sites and save them in a file named `top_gas4.txt`
+# it is saved in this foramt GA Code:website. 
+
+# This script will get the top 10 most common ones found in the 
+# file and display it.
+
+data = {}
+
+
+File.open("top_gas4.txt").each do |line|
+  ga, site  = line.chomp.split(":")
+  unless data.has_key?(ga)
+    data[ga] = 1
+  else
+    data[ga] += 1
+  end 
+end
+data.sort_by { |k, v| -v }.first(10).to_h.each do |ga, count|
+  puts "GA: #{ga}"
+  puts "Count: #{count}\n\n"
+end
+```
 ## Get site's CERT Hash
 
 This class will get the hash of the SSL cert the site i using. It could be used to find other sites that are using the same 

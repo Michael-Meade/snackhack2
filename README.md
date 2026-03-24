@@ -13,7 +13,7 @@ Originally this idea was a part of my senior project but I had to ditch the idea
 
 ## WEB Attacks ReadMe.md
 
-[a link](WEB.md)
+[Web Attacks scripts](WEB.md)
 
 ## Banner Grabbing.
 
@@ -25,8 +25,19 @@ Banner grabbing is used to get information about a server or computer. This info
 ```ruby
 scripts
 ├── ga.rb
+├── ga_logs.txt
+├── ga_threaded.rb
+├── ga_threaded2.rb
+├── grep.rb
+├── robots.rb
+├── search.rb
+├── ssl_top.rb
 ├── top-1000000-domains.txt
-└── top_gas.txt
+├── top_gas2.txt
+├── top_gas4.txt
+├── top_ssl.txt
+├── top_ssl_1.txt
+└── top_ssl_thread.rb
 test
 ├── banner_grab.rb
 ├── ga.rb
@@ -45,7 +56,7 @@ test
 ├── website.rb
 └── wp.rb
 
-2 directories, 19 files
+2 directories, 30 files
 ```
 
 ## Extracting Emails & Phone Numbers.
