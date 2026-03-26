@@ -20,3 +20,6 @@ data.sort_by { |k, v| -v }.first(10).to_h.each do |ga, count|
 	puts "GA: #{ga}"
 	puts "Count: #{count}\n\n"
 end
+
+
+# p File.open("top_gas4.txt").grep(/GTM-PXZ2RXK/)

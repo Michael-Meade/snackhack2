@@ -52,6 +52,6 @@ end
 class Ports
   def create_table; end
 end
-Ips.new('netflix.com')
+sql = Ips.new('netflix.com')
 # sql.recon
-# sql.read_table
+sql.read_table

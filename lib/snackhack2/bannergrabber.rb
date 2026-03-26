@@ -13,7 +13,9 @@ module Snackhack2
     def run
       nginx
       apache2
+      cloudflare
       wordpress
+      cloudfront
     end
     def headers
       @headers = Snackhack2.get(@site).headers

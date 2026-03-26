@@ -1,6 +1,6 @@
 
 #require './lib/snackHack2'
-require "snackhack2"
+#require "snackhack2"
 bg = Snackhack2::BannerGrabber.new
 bg.site = "https://krebsonsecurity.com"
 bg.run

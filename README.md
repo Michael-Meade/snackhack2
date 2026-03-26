@@ -4,7 +4,7 @@
 
 # Snackhack2
 
-
+** WORKS BEST ON LINUX SYSTEMS **
 ### What is SnackHack?
 
 A collection of scripts that could be used to aid in hacking or performing recon on a target. The idea of this project is to take techniques learned in college to get experience and a better understanding of the techniques used to perform recon & hacking. 
