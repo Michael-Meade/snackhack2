@@ -44,11 +44,13 @@ test
 ├── host.rb
 ├── iplookup.rb
 ├── phone.rb
-├── portscan.rb
+├── port
+
+# the IP range that will bescan.rb
 ├── recon.db
 ├── ruby_comments.rb
 ├── scattered_spider_1.rb
-├── scattered_spider_posible_targets.txt
+├── scttered_spider_posible_targets.txt
 ├── spider2.rb
 ├── sqlite3.rb
 ├── test_comments.txt
@@ -57,6 +59,30 @@ test
 └── wp.rb
 
 2 directories, 30 files
+```
+## Local Scan
+
+This class will use `nmap` and the nmap gem to scan a local network to find devices on the network. It has a method that 
+can take the output from the scan and list the different IPs found within the network. 
+
+```ruby
+require_relative '../lib/snackHack2'
+
+sl = Snackhack2::ScanLocal.new
+
+sl.ip_range = "192.168.1.0/24"
+
+file = sl.ping_scan
+
+
+# sl.list_scan
+
+sl.read_file = file
+# This will go through each of the IPs found and display them
+up = sl.get_up_hosts_from_file
+up.each do |ip|
+    puts ip
+end
 ```
 
 ## Extracting Emails & Phone Numbers.

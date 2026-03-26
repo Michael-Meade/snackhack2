@@ -8,7 +8,6 @@ File.readlines("top-1000000-domains.txt").each do |site|
 	ssl.site = "https://#{site}"
 	begin
 		puts "count: #{count}\n"
-
 		s = ssl.get_cert(print_status: false)
 		puts "#{s}:#{site}\n"
 		unless s.nil?
@@ -18,5 +17,4 @@ File.readlines("top-1000000-domains.txt").each do |site|
 	rescue => e
 		puts e
 	end
-
 end
