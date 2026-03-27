@@ -24,6 +24,10 @@ module Snackhack2
       end
     end
     def output_file(type)
+      # creates the output file name by first having the 'type'
+      # which is the type of scan and then 
+      # removing the / from the ip ranage 
+      # and adding the .txt file to the end
      "#{type}_#{cleaned_ip_range}.txt" 
     end
     def list_scan
@@ -31,11 +35,22 @@ module Snackhack2
         Nmap::Command.sudo do |nmap|
           nmap.list           = true
           nmap.output_xml     = output_file("list_scan") 
-          nmap.verbose        = true
+          nmap.skip_discovery = true
           nmap.targets = @ip_range
         end
       end
       return output_file("list_scan")
+    end
+    def arp_ping_scan(skip_discovery: true)
+      if check_nmap?
+        Nmap::Command.sudo do |nmap|
+          nmap.arp_ping = true
+          nmap.skip_discovery = skip_discovery
+          nmap.output_grepable = output_file("arp_ping_scan")
+          nmap.targets = @ip_range
+        end
+      return output_file("arp_ping_scan")
+      end
     end
     def ping_scan
       # ping scan
@@ -43,13 +58,15 @@ module Snackhack2
         Nmap::Command.sudo do |nmap|
           nmap.ping            = true
           nmap.verbose         = true
-          nmap.output_grepable = output_file("grepable")
+          nmap.output_grepable = output_file("grepable_ping_scan")
           nmap.targets = @ip_range
         end
       end
-    return output_file("grepable")
+    return output_file("grepable_ping_scan")
     end
     def get_up_hosts_from_file
+      # neesds to sleep, hopefully fix problem. 
+      #sleep(5)
       up_ips = []
       File.foreach(@read_file) do |file|
         if file.include?("Up")

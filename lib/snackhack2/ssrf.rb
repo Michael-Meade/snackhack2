@@ -2,7 +2,11 @@
 
 # Process.spawn("ruby -run -ehttpd . -p8008")
 # sleep 10
-require 'typhoeus'
+begin
+  require 'typhoeus'
+rescue LoadError
+  puts "Try running it on linux or install the gem: gem install typhoeus"
+end
 module Snackhack2
   class SSRF
     attr_accessor :site, :ssrf_site, :protocol
