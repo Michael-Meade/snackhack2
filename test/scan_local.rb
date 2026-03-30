@@ -2,19 +2,30 @@ require_relative '../lib/snackHack2'
 require 'colorize'
 def ping_scan
 	sl = Snackhack2::ScanLocal.new
-	sl.ip_range = "192.168.1.0/24"
+	sl.ip_range = "192.168.0.1/24"
 	file = sl.ping_scan
 	sl.read_file = file
 	up = sl.get_up_hosts_from_file
-	puts "IPs FOUND: ".green
-	up.each do |ip|
-		puts ip
+	unless up.empty?
+		puts "IPs FOUND: ".green
+		up.each do |ip|
+			if ip.include?("Up")
+				if ip.include?(" ")
+					ips  = ip.split(" ")[0].gsub('"', "")
+					host = ip.split(" ")[1].gsub("(", "").gsub(")", "")
+					puts "IP: #{ips}"
+					puts "Host: #{host}"
+					File.open("networks.txt", 'a+') { |file| file.write("#{ips}:#{host}\n") }
+				end
+			end
+		end
 	end
 end
 
 def list_scan
 	sl = Snackhack2::ScanLocal.new
-	sl.ip_range = "192.168.1.0/24"
+	sl.ip_range = "192.168.0.1/24"
+
 	file = sl.list_scan
 	sl.read_file = file
 	up = sl.get_up_hosts_from_file

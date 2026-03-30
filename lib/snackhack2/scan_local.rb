@@ -78,4 +78,12 @@ module Snackhack2
     return up_ips
     end
   end
+  def extract_hostname(line)
+    line = line.split("(")[1].split(")")[0]
+    if line.empty?
+      return "none"
+    else
+      return line
+    end
+  end
 end

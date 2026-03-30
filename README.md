@@ -114,7 +114,7 @@ gem install snackhack2
 
 ## Usage
 
-## Local Scan
+### Local Scan
 
 This class will use `nmap` and the nmap gem to scan a local network to find devices on the network. It has a method that 
 can take the output from the scan and list the different IPs found within the network. 
