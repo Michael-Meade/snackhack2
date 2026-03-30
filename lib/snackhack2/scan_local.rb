@@ -64,6 +64,7 @@ module Snackhack2
       end
     return output_file("grepable_ping_scan")
     end
+
     def get_up_hosts_from_file
       # neesds to sleep, hopefully fix problem. 
       #sleep(5)
@@ -77,13 +78,33 @@ module Snackhack2
       end
     return up_ips
     end
-  end
-  def extract_hostname(line)
-    line = line.split("(")[1].split(")")[0]
-    if line.empty?
-      return "none"
-    else
-      return line
+    def get_ips_hash
+      found = {}
+      sl = Snackhack2::ScanLocal.new
+      sl.ip_range = "192.168.0.1/24"
+      file = sl.ping_scan
+      sl.read_file = file
+
+
+      File.readlines(file).each do |line|
+        line = line.chomp
+        if line.include?("Status: Up")
+          host = extract_hostname(line)
+          ip   =  line.match(/(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}/).to_s
+          unless found.has_key?(ip)
+            found[ip] = host
+          end
+        end
+      end
+      return found
+    end
+    def extract_hostname(line)
+      line = line.split("(")[1].split(")")[0]
+      if line.empty?
+        return "none"
+      else
+        return line
+      end
     end
   end
 end
