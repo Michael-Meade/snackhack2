@@ -78,10 +78,10 @@ module Snackhack2
       end
     return up_ips
     end
-    def get_ips_hash
+    def get_ips_hash(ip)
       found = {}
       sl = Snackhack2::ScanLocal.new
-      sl.ip_range = "192.168.0.1/24"
+      sl.ip_range = ip
       file = sl.ping_scan
       sl.read_file = file
 
