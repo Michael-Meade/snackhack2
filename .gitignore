@@ -9,5 +9,5 @@ clean.sh
 *.zip
 t.rb
 test.rb
-
+*.db
 !/scripts/*
