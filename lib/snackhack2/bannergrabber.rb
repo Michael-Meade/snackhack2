@@ -69,8 +69,9 @@ module Snackhack2
       wp_types = ["Yoast SEO plugin", "wp-content", "wp-json"]
       wp = Snackhack2.get(@site).body
       # return unless wp.match(/wp-content/)
+      puts "FOUND: "
       wp_types.each do |wp|
-        p wp.match(/#{wp}/)
+        puts wp.match(/#{wp}/).to_s
       end
       #puts "[+] Wordpress '/wp-content' found [+]\n\n\n" if wp.match(/wp-content/)
 

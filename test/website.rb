@@ -17,7 +17,7 @@ puts "\n--------\n"
 puts "[+] Checking for WordPress...\n".red
 wp = Snackhack2::WordPress.new
 wp.site = url
-wp.run
+wp.find_plugins
 puts "\n--------\n"
 
 puts "[+] Checking for TomCat...\n".red
@@ -40,7 +40,8 @@ bg.run
 puts "--------\n"
 
 puts "[+] Checking Robots.txt...\n".red
-r = Snackhack2::Robots.new(url)
+r = Snackhack2::Robots.new
+r.site = url
 r.run
 puts "\n--------\n"
 
